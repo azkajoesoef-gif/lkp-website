@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Struktur Organisasi — Lingkar Peduli Anak Negeri</title>
+  <meta name="description" content="Susunan Dewan Pimpinan Pusat Lingkar Peduli Anak Negeri masa bakti 2025–2030.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">Tentang Kami</p>
+      <h1>Struktur Organisasi</h1>
+      <p class="page-header__lead">
+        Dewan Pimpinan Pusat Lingkar Peduli Anak Negeri<br>
+        Masa Bakti 2025 – 2030
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container" id="strukturContainer">
+      <div style="text-align:center;padding:3rem;color:var(--color-text-soft);">
+        Memuat data pengurus...
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import './assets/js/components.js';
+    import { fetchPengurus, escapeHtml } from './assets/js/api.js';
+
+    function getInitials(nama) {
+      return nama.split(' ').filter(w => w.length > 1)
+        .slice(0, 2).map(w => w[0].toUpperCase()).join('');
+    }
+
+    function renderPersonCard(p, featured = false) {
+      return `
+        <article class="person-card${featured ? ' person-card--featured' : ''}">
+          <div class="person-card__photo${featured ? ' person-card__photo--lg' : ''}">
+            ${getInitials(p.nama)}
+          </div>
+          <h3 class="person-card__name">${escapeHtml(p.nama)}</h3>
+          <p class="person-card__role">${escapeHtml(p.jabatan)}</p>
+        </article>
+      `;
+    }
+
+    function renderSection(title, subtitle, people) {
+      if (!people.length) return '';
+      return `
+        <section class="struktur-section">
+          <header class="struktur-section__header">
+            <h2>${title}</h2>
+            ${subtitle ? `<p>${subtitle}</p>` : ''}
+          </header>
+          <div class="struktur-grid">
+            ${people.map(p => renderPersonCard(p)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    async function renderStruktur() {
+      const container = document.getElementById('strukturContainer');
+
+      try {
+        const all = await fetchPengurus();
+        const aktif = all.filter(p => String(p.aktif).toUpperCase() === 'YA');
+
+        const pengawas   = aktif.filter(p => p.tingkat === 'Pengawas');
+        const penasehat  = aktif.filter(p => p.tingkat === 'Penasehat');
+        const harian     = aktif.filter(p => p.tingkat === 'Harian');
+        const departemen = aktif.filter(p => p.tingkat === 'Departemen');
+
+        const ketua = harian.find(p => p.jabatan === 'Ketua Umum');
+        const harianLain = harian.filter(p => p.jabatan !== 'Ketua Umum');
+
+        container.innerHTML = `
+          ${ketua ? `<div class="ketua-umum">${renderPersonCard(ketua, true)}</div>` : ''}
+          ${renderSection('Dewan Pengawas', '', pengawas)}
+          ${renderSection('Dewan Penasehat', '', penasehat)}
+          ${renderSection('Pengurus Harian', '', harianLain)}
+          ${renderSection('Departemen-Departemen', 'Bidang kerja DPP LKP', departemen)}
+        `;
+
+      } catch (err) {
+        container.innerHTML = `
+          <div style="text-align:center;padding:3rem;">
+            <h3>Gagal memuat data pengurus</h3>
+            <p style="color:var(--color-text-soft);">${escapeHtml(err.message)}</p>
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderStruktur);
+  </script>
+</body>
+</html>
