@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabung Anggota — Lingkar Peduli Anak Negeri</title>
+  <meta name="description" content="Formulir pendaftaran anggota Lingkar Peduli Anak Negeri. Terbuka untuk seluruh Warga Negara Indonesia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+
+  <style>
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-12);
+    }
+    .benefit {
+      background: #fff;
+      padding: var(--space-6);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      border-top: 4px solid var(--color-accent);
+    }
+    .benefit__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-3);
+    }
+    .benefit h3 {
+      font-size: var(--fs-base);
+      margin-bottom: var(--space-2);
+    }
+    .benefit p {
+      font-size: var(--fs-sm);
+      color: var(--color-text-soft);
+      margin: 0;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form__note {
+      font-size: var(--fs-xs);
+      color: var(--color-text-soft);
+      text-align: center;
+      margin-top: var(--space-4);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">Pendaftaran Anggota</p>
+      <h1>Gabung Bersama Kami</h1>
+      <p class="page-header__lead">
+        Terbuka untuk seluruh Warga Negara Indonesia yang peduli terhadap
+        pembangunan daerah, pemberdayaan masyarakat, dan keutuhan NKRI.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <!-- BENEFIT -->
+      <div class="benefit-grid">
+        <div class="benefit">
+          <div class="benefit__icon">🤝</div>
+          <h3>Jaringan Nasional</h3>
+          <p>Terhubung dengan pengurus dan anggota di seluruh Indonesia.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon">📚</div>
+          <h3>Program &amp; Pelatihan</h3>
+          <p>Akses kegiatan edukasi, pelatihan, dan pemberdayaan.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit__icon">🌱</div>
+          <h3>Kontribusi Nyata</h3>
+          <p>Berperan langsung dalam aksi sosial untuk masyarakat.</p>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <header class="section__header">
+        <h2>Formulir Pendaftaran</h2>
+        <p>Isi data di bawah, pendaftaran akan diteruskan ke WhatsApp resmi LKP</p>
+      </header>
+
+      <form class="form" id="gabungForm" novalidate>
+
+        <div class="form-group">
+          <label for="nama">Nama Lengkap *</label>
+          <input type="text" id="nama" name="nama" required placeholder="Sesuai KTP">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nik">NIK</label>
+            <input type="text" id="nik" name="nik" inputmode="numeric" maxlength="16" placeholder="16 digit">
+          </div>
+          <div class="form-group">
+            <label for="wa">Nomor WhatsApp *</label>
+            <input type="tel" id="wa" name="wa" required placeholder="08xxxxxxxxxx">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nama@email.com">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="provinsi">Provinsi *</label>
+            <input type="text" id="provinsi" name="provinsi" required placeholder="Contoh: DKI Jakarta">
+          </div>
+          <div class="form-group">
+            <label for="kabkota">Kabupaten / Kota *</label>
+            <input type="text" id="kabkota" name="kabkota" required placeholder="Contoh: Jakarta Timur">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="minat">Bidang Minat</label>
+          <select id="minat" name="minat">
+            <option value="">— Pilih bidang (opsional) —</option>
+            <option value="Sosial Kemasyarakatan">Sosial Kemasyarakatan</option>
+            <option value="Edukasi dan Pelatihan">Edukasi dan Pelatihan</option>
+            <option value="Konsultasi">Konsultasi</option>
+            <option value="Ekonomi dan Bisnis">Ekonomi dan Bisnis</option>
+            <option value="Bantuan Hukum dan Politik">Bantuan Hukum dan Politik</option>
+            <option value="Pemberdayaan Perempuan dan Anak">Pemberdayaan Perempuan dan Anak</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="motivasi">Motivasi Bergabung</label>
+          <textarea id="motivasi" name="motivasi" placeholder="Ceritakan singkat alasan Anda ingin bergabung..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary form__submit">Kirim Pendaftaran via WhatsApp</button>
+
+        <p class="form__note">
+          Setelah tombol diklik, Anda akan diarahkan ke WhatsApp untuk
+          menyelesaikan pengiriman formulir. Data Anda akan diverifikasi
+          oleh pengurus DPP LKP.
+        </p>
+      </form>
+
+    </div>
+  </section>
+
+  <script type="module">
+    import './assets/js/components.js';
+    import { CONFIG } from './assets/js/config.js';
+
+    document.getElementById('gabungForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = {
+        nama:     document.getElementById('nama').value.trim(),
+        nik:      document.getElementById('nik').value.trim(),
+        wa:       document.getElementById('wa').value.trim(),
+        email:    document.getElementById('email').value.trim(),
+        provinsi: document.getElementById('provinsi').value.trim(),
+        kabkota:  document.getElementById('kabkota').value.trim(),
+        minat:    document.getElementById('minat').value,
+        motivasi: document.getElementById('motivasi').value.trim(),
+      };
+
+      // Validasi wajib
+      const required = ['nama', 'wa', 'provinsi', 'kabkota'];
+      const missing = required.filter(k => !data[k]);
+      if (missing.length) {
+        alert('Mohon lengkapi kolom bertanda *');
+        return;
+      }
+
+      const lines = [
+        '*PENDAFTARAN ANGGOTA BARU LKP*',
+        '─────────────────────',
+        `*Nama:* ${data.nama}`,
+        data.nik      ? `*NIK:* ${data.nik}` : null,
+        `*WhatsApp:* ${data.wa}`,
+        data.email    ? `*Email:* ${data.email}` : null,
+        `*Provinsi:* ${data.provinsi}`,
+        `*Kab/Kota:* ${data.kabkota}`,
+        data.minat    ? `*Bidang Minat:* ${data.minat}` : null,
+        data.motivasi ? `\n*Motivasi:*\n${data.motivasi}` : null,
+      ].filter(Boolean).join('\n');
+
+      const url = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(lines)}`;
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
