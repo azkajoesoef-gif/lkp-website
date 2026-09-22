@@ -45,8 +45,12 @@ export async function fetchGaleri() {
   return res.data || [];
 }
 
+export async function fetchMitra() {
+  const res = await callAPI({ action: 'getMitra' });
+  return res.data || [];
+}
+
 export async function postAnggota(payload) {
-  // Kirim via GET karena Apps Script + CORS sederhana
   const res = await callAPI({ action: 'postAnggota', ...payload });
   return res;
 }
