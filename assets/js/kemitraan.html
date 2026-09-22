@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kemitraan — Lingkar Peduli Anak Negeri</title>
+  <meta name="description" content="Mitra strategis Lingkar Peduli Anak Negeri dalam membangun bangsa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <style>
+    .mitra-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 600px) {
+      .mitra-stats { grid-template-columns: 1fr; }
+    }
+    .stat-card {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      color: #fff;
+      padding: 24px 16px;
+      border-radius: 14px;
+      text-align: center;
+      border: 2px solid rgba(201,162,75,0.2);
+    }
+    .stat-card__num {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card__label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mitra-filter {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .mitra-filter__btn {
+      background: #fff;
+      border: 2px solid var(--color-border);
+      color: var(--color-text-soft);
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 180ms ease;
+    }
+    .mitra-filter__btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-primary);
+    }
+    .mitra-filter__btn.is-active {
+      background: var(--color-navy);
+      border-color: var(--color-navy);
+      color: #fff;
+    }
+
+    .mitra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .mitra-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px 22px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(11,37,69,0.07);
+      border: 2px solid transparent;
+      transition: all 220ms cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 260px;
+    }
+    .mitra-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-cta));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 320ms ease;
+    }
+    .mitra-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(11,37,69,0.14);
+      border-color: rgba(201,162,75,0.35);
+    }
+    .mitra-card:hover::before { transform: scaleX(1); }
+
+    .mitra-card__logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 16px;
+      border-radius: 12px;
+      background: var(--color-bg-alt);
+      padding: 8px;
+      transition: transform 220ms ease;
+    }
+    .mitra-card:hover .mitra-card__logo { transform: scale(1.08); }
+
+    .mitra-card__kat {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(201,162,75,0.12);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .mitra-card__name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.3;
+      margin: 0 0 10px;
+    }
+    .mitra-card__desc {
+      font-size: 12.5px;
+      color: var(--color-text-soft);
+      line-height: 1.5;
+      margin: 0;
+      flex: 1;
+    }
+    .mitra-card__link {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--color-cta);
+      font-weight: 600;
+      padding-top: 12px;
+      border-top: 1px dashed var(--color-border);
+      width: 100%;
+      text-decoration: none;
+    }
+    .mitra-card__link:hover { color: var(--color-merah-dark); }
+
+    .loading-block {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--color-text-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">Kemitraan</p>
+      <h1>Mitra Strategis Kami</h1>
+      <p class="page-header__lead">
+        Bersama membangun bangsa — kolaborasi LKP dengan instansi pemerintah,
+        penegak hukum, dan lembaga nasional.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="mitra-stats">
+        <div class="stat-card">
+          <div class="stat-card__num" id="statCount">—</div>
+          <div class="stat-card__label">Mitra Aktif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__num">5</div>
+          <div class="stat-card__label">Kategori</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__num">34</div>
+          <div class="stat-card__label">Target Provinsi</div>
+        </div>
+      </div>
+
+      <div class="mitra-filter" id="filterBar"></div>
+
+      <div class="mitra-grid" id="mitraGrid">
+        <div class="loading-block" style="grid-column:1/-1;">Memuat data mitra...</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="cta-join">
+        <h2>Ingin Bermitra dengan LKP?</h2>
+        <p>Kami terbuka untuk kolaborasi dengan instansi, lembaga, dan perusahaan yang memiliki visi sama untuk Indonesia.</p>
+        <a href="hubungi-kami.html" class="btn btn--primary">Hubungi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import './assets/js/components.js';
+    import { fetchMitra, escapeHtml } from './assets/js/api.js';
+
+    const grid = document.getElementById('mitraGrid');
+    const filterBar = document.getElementById('filterBar');
+    const statCount = document.getElementById('statCount');
+    let allItems = [];
+    let activeKat = 'Semua';
+
+    function renderGrid(items) {
+      if (!items.length) {
+        grid.innerHTML = '<div class="loading-block" style="grid-column:1/-1;">Belum ada data mitra.</div>';
+        return;
+      }
+      grid.innerHTML = items.map(m => `
+        <div class="mitra-card">
+          <img class="mitra-card__logo" src="${escapeHtml(m.logo_url)}" alt="${escapeHtml(m.nama)}" loading="lazy"
+               onerror="this.src='https://placehold.co/300x300/0B2545/C9A24B?text=${encodeURIComponent((m.nama || 'Mitra').substring(0,10))}'">
+          <span class="mitra-card__kat">${escapeHtml(m.kategori || 'Umum')}</span>
+          <h3 class="mitra-card__name">${escapeHtml(m.nama)}</h3>
+          <p class="mitra-card__desc">${escapeHtml(m.deskripsi || '')}</p>
+          ${m.website ? `<a class="mitra-card__link" href="${escapeHtml(m.website)}" target="_blank" rel="noopener">Kunjungi Website →</a>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderFilter() {
+      const categories = ['Semua', ...new Set(allItems.map(m => m.kategori).filter(Boolean))];
+      filterBar.innerHTML = categories.map(c => `
+        <button class="mitra-filter__btn ${c === activeKat ? 'is-active' : ''}" data-kat="${escapeHtml(c)}">
+          ${escapeHtml(c)}
+        </button>
+      `).join('');
+      filterBar.querySelectorAll('.mitra-filter__btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeKat = btn.dataset.kat;
+          const filtered = activeKat === 'Semua'
+            ? allItems
+            : allItems.filter(m => m.kategori === activeKat);
+          renderGrid(filtered);
+          renderFilter();
+        });
+      });
+    }
+
+    async function init() {
+      try {
+        allItems = await fetchMitra();
+        const aktif = allItems.filter(m => String(m.aktif).toUpperCase() === 'YA');
+        statCount.textContent = aktif.length;
+        renderGrid(aktif);
+        renderFilter();
+      } catch (err) {
+        grid.innerHTML = `<div class="loading-block" style="grid-column:1/-1;">Gagal memuat: ${escapeHtml(err.message)}</div>`;
+      }
+    }
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
