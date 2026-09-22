@@ -50,6 +50,11 @@ export async function fetchMitra() {
   return res.data || [];
 }
 
+export async function fetchWilayah() {
+  const res = await callAPI({ action: 'getWilayah' });
+  return res.data || [];
+}
+
 export async function postAnggota(payload) {
   const res = await callAPI({ action: 'postAnggota', ...payload });
   return res;
