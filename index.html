@@ -109,7 +109,6 @@
     }
     @media (max-width: 900px) { .hero-new__actions { justify-content: center; } }
 
-    /* Hero visual */
     .hero-new__visual {
       display: flex;
       justify-content: center;
@@ -212,11 +211,23 @@
       margin: 0;
     }
 
-    /* ===== PROGRAM / 5 PILAR ===== */
+    /* ===== 5 PILAR ===== */
     .pilar-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       gap: 24px;
+    }
+    .pilar-card { grid-column: span 2; }
+    .pilar-card:nth-child(4) { grid-column: 2 / span 2; }
+    .pilar-card:nth-child(5) { grid-column: 4 / span 2; }
+    @media (max-width: 900px) {
+      .pilar-grid { grid-template-columns: repeat(2, 1fr); }
+      .pilar-card,
+      .pilar-card:nth-child(4),
+      .pilar-card:nth-child(5) { grid-column: auto; }
+    }
+    @media (max-width: 600px) {
+      .pilar-grid { grid-template-columns: 1fr; }
     }
     .pilar-card {
       background: #fff;
@@ -345,6 +356,8 @@
       position: relative;
       box-shadow: 0 3px 14px rgba(11,37,69,0.08);
       transition: all 280ms ease;
+      text-decoration: none;
+      color: inherit;
     }
     .galeri-prev__item:hover {
       transform: translateY(-4px) scale(1.02);
@@ -472,6 +485,276 @@
       font-size: 12px;
       color: var(--color-accent);
       text-align: left;
+    }
+
+    /* ===== ORG SLIDER ===== */
+    .os-wrap {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .os-viewport {
+      overflow: hidden;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 40px rgba(11,37,69,0.08);
+    }
+    .os-track {
+      display: flex;
+      transition: transform 420ms cubic-bezier(.4,0,.2,1);
+    }
+    .os-slide {
+      flex: 0 0 100%;
+      padding: 48px 32px;
+    }
+    @media (max-width: 600px) {
+      .os-slide { padding: 32px 20px; }
+    }
+    .os-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      color: #fff;
+      border: 2px solid var(--color-accent);
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 200ms ease;
+      z-index: 2;
+      box-shadow: 0 8px 20px rgba(11,37,69,0.25);
+      line-height: 1;
+      padding: 0;
+      padding-bottom: 3px;
+    }
+    .os-nav:hover:not(:disabled) {
+      background: var(--color-accent);
+      color: var(--color-navy);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .os-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .os-nav--prev { left: -24px; }
+    .os-nav--next { right: -24px; }
+    @media (max-width: 1000px) {
+      .os-nav--prev { left: 8px; }
+      .os-nav--next { right: 8px; }
+    }
+    .os-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .os-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(11,37,69,0.2);
+      cursor: pointer;
+      transition: all 220ms ease;
+      padding: 0;
+    }
+    .os-dot.is-active {
+      background: var(--color-accent);
+      width: 32px;
+      border-radius: 999px;
+    }
+    .os-hint {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--color-text-soft);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .os-dewan {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 700px) { .os-dewan { grid-template-columns: 1fr; } }
+    .os-panel {
+      background: #FFFDF7;
+      border: 2px dashed var(--color-accent);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .os-panel__label {
+      display: block;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1px dashed rgba(201,162,75,0.4);
+    }
+    .os-panel__list { display: flex; flex-direction: column; gap: 10px; }
+    .os-pcard {
+      background: #fff;
+      border: 1.5px solid rgba(201,162,75,0.3);
+      border-radius: 10px;
+      padding: 14px 16px;
+      text-align: center;
+      transition: all 200ms ease;
+    }
+    .os-pcard:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(11,37,69,0.08);
+    }
+    .os-pcard__name {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0 0 3px;
+      line-height: 1.35;
+    }
+    .os-pcard__role {
+      font-size: 11px;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+    .os-bph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .os-hero {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      border: 3px solid var(--color-accent);
+      border-radius: 16px;
+      padding: 24px 32px;
+      text-align: center;
+      min-width: 280px;
+      box-shadow: 0 12px 32px rgba(11,37,69,0.25);
+      position: relative;
+    }
+    .os-hero__badge {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .os-hero__avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 22px;
+      margin: 0 auto 12px;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.25);
+    }
+    .os-hero__name {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 4px;
+    }
+    .os-hero__role {
+      font-size: 11px;
+      color: var(--color-accent);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .os-mini {
+      background: #fff;
+      border: 2px solid var(--color-navy-soft);
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-align: center;
+      min-width: 220px;
+      transition: all 200ms ease;
+    }
+    .os-mini:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(11,37,69,0.12);
+    }
+    .os-mini__avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--color-navy-soft);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0 auto 10px;
+    }
+    .os-mini__name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0 0 4px;
+    }
+    .os-mini__role {
+      font-size: 11px;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 0;
+    }
+    .os-fork {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      width: 100%;
+      max-width: 640px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+      .os-fork { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .os-fork__col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .os-fork__label {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: rgba(201,162,75,0.18);
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 4px;
     }
 
     /* ===== CTA FINAL ===== */
@@ -660,8 +943,71 @@
     </div>
   </section>
 
-  <!-- GALERI PREVIEW -->
+  <!-- STRUKTUR ORGANISASI SLIDER -->
   <section class="sec">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Kepengurusan</span>
+        <h2>Struktur DPP LKP</h2>
+        <p>Dewan Pengawas, Dewan Penasehat, dan Badan Pengurus Harian periode 2025–2030.</p>
+      </div>
+
+      <div class="os-wrap">
+        <button class="os-nav os-nav--prev" id="osPrev" aria-label="Sebelumnya" disabled>‹</button>
+        <button class="os-nav os-nav--next" id="osNext" aria-label="Berikutnya">›</button>
+
+        <div class="os-viewport">
+          <div class="os-track" id="osTrack">
+
+            <!-- SLIDE 1: DEWAN -->
+            <div class="os-slide">
+              <div class="os-dewan">
+                <div class="os-panel">
+                  <span class="os-panel__label">Dewan Pengawas</span>
+                  <div class="os-panel__list" id="osPengawas">
+                    <div class="loading-mini">Memuat...</div>
+                  </div>
+                </div>
+                <div class="os-panel">
+                  <span class="os-panel__label">Dewan Penasehat</span>
+                  <div class="os-panel__list" id="osPenasehat">
+                    <div class="loading-mini">Memuat...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDE 2: BPH -->
+            <div class="os-slide">
+              <div class="os-bph">
+                <div id="osKetuaUmum"></div>
+                <div id="osKetuaHarian"></div>
+                <div class="os-fork">
+                  <div class="os-fork__col">
+                    <span class="os-fork__label">Sekretariat</span>
+                    <div id="osSekjen"></div>
+                    <div id="osWakilSekjen"></div>
+                  </div>
+                  <div class="os-fork__col">
+                    <span class="os-fork__label">Bendahara</span>
+                    <div id="osBendahara"></div>
+                    <div id="osWakilBendahara"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="os-dots" id="osDots"></div>
+        <div class="os-hint" id="osHint"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI PREVIEW -->
+  <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Dokumentasi</span>
@@ -678,7 +1024,7 @@
   </section>
 
   <!-- MITRA STRIP -->
-  <section class="sec sec--alt">
+  <section class="sec">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Kemitraan Strategis</span>
@@ -710,7 +1056,7 @@
 
   <script type="module">
     import './assets/js/components.js';
-    import { fetchBerita, fetchGaleri, fetchMitra, formatTanggal, escapeHtml } from './assets/js/api.js';
+    import { fetchBerita, fetchGaleri, fetchMitra, fetchPengurus, formatTanggal, escapeHtml } from './assets/js/api.js';
 
     // ===== BERITA PREVIEW (3 terbaru) =====
     (async () => {
@@ -735,7 +1081,7 @@
           </a>
         `).join('');
       } catch (err) {
-        el.innerHTML = `<div class="loading-mini">Gagal memuat berita.</div>`;
+        el.innerHTML = '<div class="loading-mini">Gagal memuat berita.</div>';
       }
     })();
 
@@ -757,11 +1103,11 @@
           </a>
         `).join('');
       } catch (err) {
-        el.innerHTML = `<div class="loading-mini">Gagal memuat galeri.</div>`;
+        el.innerHTML = '<div class="loading-mini">Gagal memuat galeri.</div>';
       }
     })();
 
-    // ===== MITRA STRIP (semua aktif) =====
+    // ===== MITRA STRIP =====
     (async () => {
       const el = document.getElementById('mitraStrip');
       try {
@@ -775,7 +1121,116 @@
           </a>
         `).join('');
       } catch (err) {
-        el.innerHTML = `<div class="loading-mini">Gagal memuat mitra.</div>`;
+        el.innerHTML = '<div class="loading-mini">Gagal memuat mitra.</div>';
+      }
+    })();
+
+    // ===== ORG SLIDER (Struktur DPP) =====
+    let osCurrent = 0;
+    const osTotal = 2;
+
+    function getInitialsOrg(nama) {
+      return nama.split(' ').filter(w => w.length > 1)
+        .slice(0, 2).map(w => w[0].toUpperCase()).join('');
+    }
+
+    function renderPcard(p) {
+      return `
+        <div class="os-pcard">
+          <p class="os-pcard__name">${escapeHtml(p.nama)}</p>
+          <p class="os-pcard__role">${escapeHtml(p.jabatan)}</p>
+        </div>
+      `;
+    }
+
+    function renderMiniCard(p) {
+      if (!p) return '';
+      return `
+        <div class="os-mini">
+          <div class="os-mini__avatar">${getInitialsOrg(p.nama)}</div>
+          <p class="os-mini__name">${escapeHtml(p.nama)}</p>
+          <p class="os-mini__role">${escapeHtml(p.jabatan)}</p>
+        </div>
+      `;
+    }
+
+    function renderHeroCard(p) {
+      if (!p) return '';
+      return `
+        <div class="os-hero">
+          <span class="os-hero__badge">Ketua Umum</span>
+          <div class="os-hero__avatar">${getInitialsOrg(p.nama)}</div>
+          <p class="os-hero__name">${escapeHtml(p.nama)}</p>
+          <p class="os-hero__role">Ketua Umum</p>
+        </div>
+      `;
+    }
+
+    function goToSlide(idx) {
+      osCurrent = Math.max(0, Math.min(osTotal - 1, idx));
+      const track = document.getElementById('osTrack');
+      if (!track) return;
+      track.style.transform = `translateX(-${osCurrent * 100}%)`;
+
+      document.querySelectorAll('.os-dot').forEach((d, i) => {
+        d.classList.toggle('is-active', i === osCurrent);
+      });
+
+      document.getElementById('osPrev').disabled = osCurrent === 0;
+      document.getElementById('osNext').disabled = osCurrent === osTotal - 1;
+
+      const labels = ['Dewan Pengawas & Penasehat', 'Badan Pengurus Harian'];
+      document.getElementById('osHint').textContent = `Slide ${osCurrent + 1} dari ${osTotal} — ${labels[osCurrent]}`;
+    }
+
+    (async () => {
+      try {
+        const all = await fetchPengurus();
+        const aktif = all.filter(p => String(p.aktif).toUpperCase() === 'YA');
+
+        const pengawas = aktif.filter(p => p.tingkat === 'Pengawas' || String(p.jabatan).toLowerCase().includes('pengawas'));
+        const penasehat = aktif.filter(p => p.tingkat === 'Penasehat' || String(p.jabatan).toLowerCase().includes('penasehat'));
+        const harian = aktif.filter(p => p.tingkat === 'Harian');
+
+        const findH = j => harian.find(p => String(p.jabatan).toLowerCase() === j);
+
+        document.getElementById('osPengawas').innerHTML =
+          pengawas.length ? pengawas.map(renderPcard).join('') : '<div class="loading-mini">Belum ada data.</div>';
+        document.getElementById('osPenasehat').innerHTML =
+          penasehat.length ? penasehat.map(renderPcard).join('') : '<div class="loading-mini">Belum ada data.</div>';
+
+        document.getElementById('osKetuaUmum').innerHTML = renderHeroCard(findH('ketua umum'));
+        document.getElementById('osKetuaHarian').innerHTML = renderMiniCard(findH('ketua harian'));
+        document.getElementById('osSekjen').innerHTML = renderMiniCard(findH('sekretaris jenderal'));
+        document.getElementById('osWakilSekjen').innerHTML = renderMiniCard(findH('wakil sekretaris'));
+        document.getElementById('osBendahara').innerHTML = renderMiniCard(findH('bendahara umum'));
+        document.getElementById('osWakilBendahara').innerHTML = renderMiniCard(findH('wakil bendahara'));
+
+        const dotsEl = document.getElementById('osDots');
+        dotsEl.innerHTML = Array.from({ length: osTotal }, (_, i) =>
+          `<button class="os-dot ${i === 0 ? 'is-active' : ''}" data-idx="${i}" aria-label="Slide ${i+1}"></button>`
+        ).join('');
+        dotsEl.querySelectorAll('.os-dot').forEach(d => {
+          d.addEventListener('click', () => goToSlide(parseInt(d.dataset.idx)));
+        });
+
+        document.getElementById('osPrev').addEventListener('click', () => goToSlide(osCurrent - 1));
+        document.getElementById('osNext').addEventListener('click', () => goToSlide(osCurrent + 1));
+
+        const viewport = document.querySelector('.os-viewport');
+        let startX = 0;
+        viewport.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+        viewport.addEventListener('touchend', e => {
+          const diff = startX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 60) {
+            goToSlide(diff > 0 ? osCurrent + 1 : osCurrent - 1);
+          }
+        }, { passive: true });
+
+        goToSlide(0);
+
+      } catch (err) {
+        console.warn('Org slider error:', err);
       }
     })();
   </script>
