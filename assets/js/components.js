@@ -6,11 +6,16 @@ const NAV_ITEMS = [
   { label: 'Program Kerja', href: 'program-kerja.html' },
   { label: 'Struktur Pengurus', href: 'struktur-organisasi.html' },
   { label: 'Berita', href: 'berita.html' },
+  { label: 'Galeri', href: 'galeri.html' },
+  { label: 'Kemitraan', href: 'kemitraan.html' },
+  { label: 'Cek Status', href: 'cek-status.html' },
   { label: 'Gabung', href: 'gabung.html' },
   { label: 'Hubungi Kami', href: 'hubungi-kami.html' },
 ];
 
 export function renderNavbar() {
+  const current = location.pathname.split('/').pop() || 'index.html';
+
   const html = `
     <nav class="navbar">
       <div class="container navbar__inner">
@@ -19,9 +24,13 @@ export function renderNavbar() {
           <span>LKP</span>
         </a>
         <ul class="navbar__menu">
-          ${NAV_ITEMS.map(i =>
-            `<li><a class="navbar__link" href="${i.href}">${i.label}</a></li>`
-          ).join('')}
+          ${NAV_ITEMS.map(i => `
+            <li>
+              <a class="navbar__link ${current === i.href ? 'navbar__link--active' : ''}" href="${i.href}">
+                ${i.label}
+              </a>
+            </li>
+          `).join('')}
         </ul>
       </div>
     </nav>
