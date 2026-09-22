@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lingkar Peduli Anak Negeri</title>
-  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) — organisasi kemasyarakatan penggerak kepedulian terhadap NKRI.">
+  <title>Lingkar Peduli Anak Negeri — Penggerak Kepedulian Bangsa</title>
+  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) adalah organisasi kemasyarakatan yang bergerak di bidang sosial, edukasi, konsultasi, ekonomi, dan bantuan hukum untuk kesejahteraan rakyat Indonesia.">
+  <meta property="og:title" content="Lingkar Peduli Anak Negeri">
+  <meta property="og:description" content="Penggerak terdepan kepedulian terhadap NKRI.">
+  <meta property="og:image" content="assets/img/logo-lkp.png">
+  <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -12,23 +16,104 @@
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
 </head>
 <body>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>Lingkar Peduli Anak Negeri</h1>
-      <p>Penggerak terdepan kepedulian terhadap Negara Kesatuan Republik Indonesia.</p>
-      <p style="margin-top:2rem;">
+      <p style="color:var(--color-accent);font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:var(--fs-sm);margin-bottom:var(--space-3);">
+        Ormas Resmi — SK AHU-0004737.AH.01.07.TAHUN 2022
+      </p>
+      <h1>Penggerak Terdepan Kepedulian terhadap NKRI</h1>
+      <p style="max-width:640px;font-size:var(--fs-lg);">
+        Lingkar Peduli Anak Negeri hadir untuk membangun daerah, mencerdaskan
+        masyarakat, dan menjaga persatuan bangsa — dari Sabang sampai Merauke.
+      </p>
+      <p style="margin-top:var(--space-8);display:flex;gap:var(--space-4);flex-wrap:wrap;">
         <a href="gabung.html" class="btn btn--primary">Gabung Sekarang</a>
+        <a href="tentang-kami.html" class="btn" style="border-color:var(--color-accent);color:var(--color-accent);">Kenali Kami</a>
       </p>
     </div>
   </section>
 
+  <!-- 5 PILAR -->
   <section class="section">
     <div class="container">
-      <h2>Selamat Datang</h2>
-      <p>Website LKP sedang dalam proses pembangunan. Halaman lengkap akan segera hadir.</p>
+      <header class="section__header">
+        <h2>5 Pilar Ruang Lingkup Kerja</h2>
+        <p>Fondasi gerakan kami untuk masyarakat Indonesia</p>
+      </header>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <div class="card__icon">🤝</div>
+          <h3 class="card__title">Sosial Kemasyarakatan</h3>
+          <p class="card__text">Bakti sosial, pemberdayaan komunitas, dan respons cepat terhadap kebutuhan sosial masyarakat.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">📚</div>
+          <h3 class="card__title">Edukasi &amp; Pelatihan</h3>
+          <p class="card__text">Program edukasi dan pelatihan keterampilan untuk membangun SDM unggul Indonesia.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">💼</div>
+          <h3 class="card__title">Konsultasi</h3>
+          <p class="card__text">Layanan konsultasi strategis untuk masyarakat, lembaga, maupun mitra kerja.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">📈</div>
+          <h3 class="card__title">Ekonomi &amp; Bisnis</h3>
+          <p class="card__text">Pengembangan UMKM dan ekonomi kreatif untuk kesejahteraan rakyat.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">⚖️</div>
+          <h3 class="card__title">Bantuan Hukum &amp; Politik</h3>
+          <p class="card__text">Pendampingan, advokasi, bantuan hukum, dan masukan kebijakan publik.</p>
+        </article>
+        <article class="card">
+          <div class="card__icon">🌱</div>
+          <h3 class="card__title">Pemberdayaan Anak &amp; Perempuan</h3>
+          <p class="card__text">Program perlindungan dan pemberdayaan perempuan serta anak Indonesia.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKILAS LKP -->
+  <section class="section section--alt">
+    <div class="container">
+      <header class="section__header">
+        <h2>Sekilas LKP</h2>
+        <p>Fakta singkat tentang organisasi kami</p>
+      </header>
+
+      <div class="grid grid--3" style="text-align:center;">
+        <div class="card">
+          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">2022</div>
+          <p class="card__text" style="margin-top:var(--space-3);">Tahun Berdiri</p>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">5</div>
+          <p class="card__text" style="margin-top:var(--space-3);">Pilar Ruang Lingkup Kerja</p>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">38</div>
+          <p class="card__text" style="margin-top:var(--space-3);">Target Provinsi (DPD)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-join">
+        <h2>Siap Berkontribusi untuk Negeri?</h2>
+        <p>Bergabunglah bersama ribuan anak bangsa yang peduli. Terbuka untuk seluruh Warga Negara Indonesia.</p>
+        <a href="gabung.html" class="btn btn--primary">Daftar Anggota</a>
+      </div>
     </div>
   </section>
 
