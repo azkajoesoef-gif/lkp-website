@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hubungi Kami — Lingkar Peduli Anak Negeri</title>
+  <meta name="description" content="Kontak resmi sekretariat Dewan Pimpinan Pusat Lingkar Peduli Anak Negeri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <style>
+    .alert {
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .alert.is-show { display: block; }
+    .alert--success {
+      background: #E8F5E9;
+      color: #1B5E20;
+      border-left: 4px solid #2E7D32;
+    }
+    .alert--error {
+      background: #FFEBEE;
+      color: #B71C1C;
+      border-left: 4px solid #C0392B;
+    }
+    .form__submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">Hubungi Kami</p>
+      <h1>Mari Terhubung</h1>
+      <p class="page-header__lead">
+        Sampaikan pertanyaan, aspirasi, atau kerja sama Anda kepada kami.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="kontak-grid">
+        <article class="kontak-card">
+          <div class="kontak-card__icon">📍</div>
+          <h3>Sekretariat</h3>
+          <p>Jl. Balai Pustaka Barat No.337,<br>Rawamangun, Jakarta Timur</p>
+        </article>
+        <article class="kontak-card">
+          <div class="kontak-card__icon">📞</div>
+          <h3>Telepon / WhatsApp</h3>
+          <p>
+            <a href="tel:+6287780986660">+62 877-8098-6660</a><br>
+            <a href="https://wa.me/6287780986660" target="_blank" rel="noopener">Chat WhatsApp →</a>
+          </p>
+        </article>
+        <article class="kontak-card">
+          <div class="kontak-card__icon">✉️</div>
+          <h3>Email</h3>
+          <p><a href="mailto:info@lingkarpedulianaknegeri.id">info@lingkarpedulianaknegeri.id</a></p>
+        </article>
+        <article class="kontak-card">
+          <div class="kontak-card__icon">📱</div>
+          <h3>Instagram</h3>
+          <p><a href="https://instagram.com/lingkarpedulianaknegeri" target="_blank" rel="noopener">@lingkarpedulianaknegeri</a></p>
+        </article>
+      </div>
+
+      <header class="section__header">
+        <h2>Kirim Pesan</h2>
+        <p>Pesan Anda akan tersimpan di sistem LKP dan diteruskan ke WhatsApp pengurus</p>
+      </header>
+
+      <form class="form" id="contactForm" novalidate>
+        <div class="alert" id="alertBox"></div>
+
+        <div class="form-group">
+          <label for="nama">Nama Lengkap *</label>
+          <input type="text" id="nama" name="nama" required placeholder="Nama Anda">
+        </div>
+
+        <div class="form-group">
+          <label for="kontak">Nomor WhatsApp / Email *</label>
+          <input type="text" id="kontak" name="kontak" required placeholder="0812xxxxxxxx atau nama@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="kategori">Topik</label>
+          <select id="kategori" name="kategori">
+            <option value="Pertanyaan Umum">Pertanyaan Umum</option>
+            <option value="Kerja Sama / Kemitraan">Kerja Sama / Kemitraan</option>
+            <option value="Pendaftaran Anggota">Pendaftaran Anggota</option>
+            <option value="Pengaduan / Aspirasi">Pengaduan / Aspirasi</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pesan">Pesan *</label>
+          <textarea id="pesan" name="pesan" required placeholder="Tuliskan pesan Anda..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary form__submit" id="submitBtn">
+          Kirim Pesan
+        </button>
+      </form>
+
+    </div>
+  </section>
+
+  <script type="module">
+    import './assets/js/components.js';
+    import { CONFIG } from './assets/js/config.js';
+    import { postPengaduan } from './assets/js/api.js';
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const alertBox = document.getElementById('alertBox');
+
+    function showAlert(type, msg) {
+      alertBox.className = 'alert alert--' + type + ' is-show';
+      alertBox.textContent = msg;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        nama:     document.getElementById('nama').value.trim(),
+        kontak:   document.getElementById('kontak').value.trim(),
+        kategori: document.getElementById('kategori').value,
+        pesan:    document.getElementById('pesan').value.trim(),
+      };
+
+      if (!data.nama || !data.kontak || !data.pesan) {
+        showAlert('error', 'Mohon lengkapi semua kolom bertanda *.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Mengirim...';
+      alertBox.classList.remove('is-show');
+
+      try {
+        const result = await postPengaduan(data);
+        if (result.error) throw new Error(result.error);
+
+        showAlert('success', 'Pesan berhasil dikirim! Anda akan diarahkan ke WhatsApp untuk konfirmasi.');
+
+        const lines = [
+          '*Pesan Baru dari Website LKP*',
+          '─────────────────────',
+          `*ID:* ${result.id}`,
+          `*Nama:* ${data.nama}`,
+          `*Kontak:* ${data.kontak}`,
+          `*Topik:* ${data.kategori}`,
+          '',
+          '*Pesan:*',
+          data.pesan,
+        ].join('\n');
+
+        setTimeout(() => {
+          window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(lines)}`, '_blank');
+          form.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Kirim Pesan';
+        }, 1500);
+
+      } catch (err) {
+        showAlert('error', 'Gagal mengirim: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Kirim Pesan';
+      }
+    });
+  </script>
+</body>
+</html>
