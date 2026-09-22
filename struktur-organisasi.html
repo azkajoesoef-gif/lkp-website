@@ -12,194 +12,266 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
   <style>
-    /* ===== MIND MAP SECTION ===== */
-    .org-section {
-      background: linear-gradient(180deg, var(--color-bg-alt) 0%, #fff 100%);
-      padding: 60px 0;
+    /* ============================================================
+       MIND MAP — Struktur Ormas Indonesia
+       ============================================================ */
+    .org-wrapper {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,162,75,0.06) 0%, transparent 60%),
+        linear-gradient(180deg, var(--color-bg-alt) 0%, #fff 100%);
+      padding: 72px 0;
       overflow-x: auto;
     }
     .org-chart {
-      max-width: 1080px;
+      max-width: 1040px;
       margin: 0 auto;
+      padding: 0 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Tier 1: Advisors | Ketua Umum | Advisors */
-    .org-tier-1 {
+    /* ---------- CARD BASE ---------- */
+    .node {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(11,37,69,0.07);
+      border: 2px solid transparent;
+      transition: all 220ms cubic-bezier(.4,0,.2,1);
+      position: relative;
+      min-width: 0;
+    }
+    .node:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 34px rgba(11,37,69,0.14);
+    }
+    .node__avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      color: var(--color-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 16px;
+      margin: 0 auto 10px;
+      letter-spacing: 0.5px;
+    }
+    .node__name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--color-primary);
+      font-size: 13.5px;
+      line-height: 1.35;
+      margin: 0 0 4px;
+    }
+    .node__role {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      letter-spacing: 0.3px;
+      margin: 0;
+    }
+
+    /* ---------- LEVEL 1: DEWAN (top) ---------- */
+    .level-dewan {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 40px;
-      align-items: center;
       width: 100%;
+      max-width: 720px;
+      margin-bottom: 0;
     }
-    .advisor-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+    .dewan-panel {
+      background: rgba(255,255,255,0.6);
+      border: 2px dashed var(--color-accent);
+      border-radius: 16px;
+      padding: 18px;
+      backdrop-filter: blur(4px);
     }
-    .advisor-col__label {
-      display: inline-block;
+    .dewan-panel__title {
+      display: block;
+      text-align: center;
       font-family: var(--font-heading);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--color-primary);
-      background: #fff;
-      border: 2px dashed var(--color-accent);
-      padding: 6px 16px;
-      border-radius: 999px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(201,162,75,0.4);
     }
-    .advisor-col__cards {
+    .dewan-panel__list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      width: 100%;
-      max-width: 220px;
     }
-
-    /* Node card base */
-    .oc {
-      background: #fff;
-      border-radius: 10px;
-      padding: 14px 16px;
-      text-align: center;
-      box-shadow: 0 3px 10px rgba(11,37,69,0.06);
-      transition: all 200ms ease;
-    }
-    .oc:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(11,37,69,0.12);
-    }
-    .oc__name {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      color: var(--color-primary);
-      font-size: 13px;
-      line-height: 1.35;
-      margin: 0 0 3px;
-    }
-    .oc__role {
-      font-size: 11px;
-      color: var(--color-accent);
-      font-weight: 600;
-      margin: 0;
-      letter-spacing: 0.3px;
-    }
-
-    /* Advisor (dashed) */
-    .oc--advisor {
-      border: 2px dashed var(--color-accent);
+    .dewan-panel .node {
       background: #FFFDF7;
+      border: 1.5px solid rgba(201,162,75,0.35);
+      padding: 12px 14px;
     }
-    .oc--advisor:hover {
-      border-style: solid;
+    .dewan-panel .node:hover {
+      border-color: var(--color-accent);
       background: #fff;
     }
+    .dewan-panel .node__name { font-size: 13px; }
+    .dewan-panel .node__role { color: var(--color-accent); font-size: 10.5px; }
 
-    /* Ketua Umum hero */
-    .oc--ketua {
+    /* ---------- CONVERGING CONNECTORS from Dewan to Ketua Umum ---------- */
+    .converge {
+      width: 100%;
+      max-width: 720px;
+      height: 56px;
+      position: relative;
+    }
+    .converge::before,
+    .converge::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 40px;
+      background: var(--color-accent);
+    }
+    .converge::before { left: 25%; }
+    .converge::after  { right: 25%; }
+    .converge__bar {
+      position: absolute;
+      bottom: 16px;
+      left: 25%;
+      right: 25%;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    .converge__stem {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 16px;
+      background: var(--color-accent);
+    }
+    .converge__stem::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--color-accent);
+    }
+
+    /* ---------- KETUA UMUM (Hero) ---------- */
+    .node--ketua {
       background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
       border: 3px solid var(--color-accent);
-      padding: 24px 28px;
-      min-width: 260px;
-      box-shadow: 0 16px 40px rgba(11,37,69,0.22), 0 0 0 6px rgba(201,162,75,0.12);
+      padding: 26px 32px;
+      min-width: 280px;
+      box-shadow:
+        0 20px 50px rgba(11,37,69,0.28),
+        0 0 0 8px rgba(201,162,75,0.10),
+        0 0 40px rgba(201,162,75,0.15);
+      animation: heroPulse 3.5s ease-in-out infinite;
     }
-    .oc--ketua:hover {
+    @keyframes heroPulse {
+      0%, 100% {
+        box-shadow:
+          0 20px 50px rgba(11,37,69,0.28),
+          0 0 0 8px rgba(201,162,75,0.10),
+          0 0 40px rgba(201,162,75,0.15);
+      }
+      50% {
+        box-shadow:
+          0 20px 50px rgba(11,37,69,0.34),
+          0 0 0 12px rgba(201,162,75,0.16),
+          0 0 60px rgba(201,162,75,0.25);
+      }
+    }
+    .node--ketua:hover {
       transform: translateY(-5px) scale(1.02);
     }
-    .oc__badge {
+    .node__badge {
       display: inline-block;
       background: var(--color-accent);
       color: var(--color-navy);
       font-family: var(--font-heading);
       font-weight: 800;
       font-size: 10px;
-      letter-spacing: 1.5px;
-      padding: 3px 12px;
+      letter-spacing: 1.8px;
+      padding: 4px 14px;
       border-radius: 999px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
     }
-    .oc__avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--color-navy);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 18px;
-      margin: 0 auto 10px;
-    }
-    .oc--ketua .oc__avatar {
-      width: 68px;
-      height: 68px;
+    .node--ketua .node__avatar {
+      width: 76px; height: 76px;
       background: var(--color-accent);
       color: var(--color-navy);
-      font-size: 22px;
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.25);
+      font-size: 24px;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.25);
+      margin-bottom: 14px;
     }
-    .oc--ketua .oc__name {
+    .node--ketua .node__name {
       color: #fff;
-      font-size: 17px;
-      margin-bottom: 3px;
+      font-size: 19px;
+      margin-bottom: 4px;
     }
-    .oc--ketua .oc__role {
+    .node--ketua .node__role {
       color: var(--color-accent);
       font-size: 11px;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
-    /* Vertical connector */
-    .org-connector {
+    /* ---------- SIMPLE VERTICAL CONNECTOR ---------- */
+    .stem {
       width: 2px;
-      height: 28px;
+      height: 32px;
       background: var(--color-accent);
       position: relative;
     }
-    .org-connector::after {
+    .stem::after {
       content: '';
       position: absolute;
-      bottom: -1px;
+      bottom: -6px;
       left: 50%;
-      transform: translate(-50%, 100%);
-      width: 0; height: 0;
+      transform: translateX(-50%);
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
       border-top: 6px solid var(--color-accent);
     }
+    .stem--short { height: 20px; }
+    .stem--short::after { display: none; }
 
-    /* Ketua Harian */
-    .oc--deputy {
-      background: #fff;
+    /* ---------- KETUA HARIAN ---------- */
+    .node--deputy {
       border: 2px solid var(--color-navy-soft);
-      padding: 20px 24px;
-      min-width: 220px;
-      box-shadow: 0 8px 24px rgba(11,37,69,0.10);
+      padding: 18px 24px;
+      min-width: 240px;
+      box-shadow: 0 8px 24px rgba(11,37,69,0.12);
     }
-    .oc--deputy .oc__avatar {
+    .node--deputy .node__avatar {
+      width: 60px; height: 60px;
       background: var(--color-navy-soft);
       font-size: 18px;
     }
-    .oc--deputy .oc__name { font-size: 15px; }
+    .node--deputy .node__name { font-size: 15px; }
+    .node--deputy .node__role { color: var(--color-accent); }
 
-    /* Fork connector */
-    .org-fork {
+    /* ---------- FORK (2 parallel children) ---------- */
+    .fork {
       width: 100%;
-      max-width: 640px;
-      height: 48px;
+      max-width: 680px;
+      padding-top: 44px;
       position: relative;
-      margin: 0 auto;
     }
-    .org-fork::before {
-      content: '';
+    .fork__stem {
       position: absolute;
       top: 0;
       left: 50%;
@@ -208,211 +280,273 @@
       height: 24px;
       background: var(--color-accent);
     }
-    .org-fork::after {
-      content: '';
+    .fork__bar {
       position: absolute;
       top: 24px;
-      left: 22%;
-      right: 22%;
+      left: 25%;
+      right: 25%;
       height: 2px;
       background: var(--color-accent);
     }
-    .org-fork__stem {
-      position: absolute;
-      top: 24px;
-      width: 2px;
-      height: 24px;
-      background: var(--color-accent);
-    }
-    .org-fork__stem--left { left: 22%; transform: translateX(-50%); }
-    .org-fork__stem--right { right: 22%; transform: translateX(50%); }
-
-    /* Tier 3: Sekretariat | Bendahara */
-    .org-tier-3 {
+    .fork__children {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      max-width: 640px;
-      width: 100%;
+      gap: 40px;
     }
-    .org-column {
+    .fork__child {
+      position: relative;
+      padding-top: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 10px;
     }
-    .org-column__label {
-      display: inline-block;
-      font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      background: rgba(201,162,75,0.18);
-      padding: 6px 16px;
-      border-radius: 999px;
-    }
-    .oc--main {
-      border: 2px solid var(--color-navy-soft);
-      width: 100%;
-      max-width: 260px;
-    }
-    .oc--main .oc__avatar { background: var(--color-navy-soft); }
-    .oc--sub {
-      border: 2px solid var(--color-border);
-      background: var(--color-bg-alt);
-      padding: 10px 12px;
-      width: 100%;
-      max-width: 240px;
-    }
-    .oc--sub .oc__avatar {
-      width: 40px;
-      height: 40px;
-      background: var(--color-text-soft);
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
-    .oc--sub .oc__name { font-size: 12px; }
-    .oc--sub .oc__role { font-size: 10px; }
-    .org-mini-connector {
+    .fork__child::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 2px;
-      height: 16px;
-      background: var(--color-border);
+      height: 20px;
+      background: var(--color-accent);
     }
 
-    /* Divider + departments */
-    .org-divider {
-      width: 60px;
-      height: 4px;
-      background: var(--color-accent);
-      border-radius: 2px;
-      margin: 56px auto 32px;
+    /* ---------- SUB-NODE (Wakil) ---------- */
+    .node--sub {
+      border: 2px solid var(--color-border);
+      background: var(--color-bg-alt);
+      padding: 12px 14px;
+      max-width: 220px;
+      width: 100%;
     }
-    .org-dept-header {
+    .node--sub .node__avatar {
+      width: 42px; height: 42px;
+      background: var(--color-text-soft);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .node--sub .node__name { font-size: 12.5px; }
+    .node--sub .node__role { font-size: 10.5px; color: var(--color-text-soft); }
+
+    /* ---------- DEPARTMENT GRID ---------- */
+    .dept-section {
+      width: 100%;
+      margin-top: 64px;
+      position: relative;
+    }
+    .dept-section::before {
+      content: '';
+      position: absolute;
+      top: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 32px;
+      background: var(--color-accent);
+    }
+    .dept-header {
       text-align: center;
       margin-bottom: 32px;
     }
-    .org-dept-header h3 {
+    .dept-header h3 {
       font-family: var(--font-heading);
       color: var(--color-primary);
-      font-size: 20px;
-      margin: 0 0 6px;
+      font-size: 22px;
+      margin: 0 0 8px;
+      display: inline-block;
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--color-accent);
     }
-    .org-dept-header p {
+    .dept-header p {
       color: var(--color-text-soft);
-      font-size: 13px;
-      margin: 0;
+      font-size: 13.5px;
+      margin: 8px 0 0;
     }
     .dept-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-      width: 100%;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px) {
+      .dept-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .dept-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .dept-card {
       background: #fff;
-      border-radius: 10px;
-      padding: 18px 14px;
+      border-radius: 12px;
+      padding: 20px 12px 16px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(11,37,69,0.06);
+      box-shadow: 0 2px 10px rgba(11,37,69,0.06);
       border: 2px solid transparent;
-      transition: all 200ms ease;
+      transition: all 220ms cubic-bezier(.4,0,.2,1);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 140px;
     }
     .dept-card::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--color-accent);
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-cta));
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 250ms ease;
+      transition: transform 320ms ease;
     }
     .dept-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 28px rgba(11,37,69,0.14);
-      border-color: var(--color-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(11,37,69,0.16);
+      border-color: rgba(201,162,75,0.4);
     }
     .dept-card:hover::before { transform: scaleX(1); }
     .dept-card__icon {
-      font-size: 28px;
+      font-size: 30px;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1;
     }
     .dept-card__name {
       font-family: var(--font-heading);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: var(--color-primary);
-      line-height: 1.3;
-      margin: 0 0 4px;
+      line-height: 1.35;
+      margin: 0 0 6px;
+      flex: 1;
     }
     .dept-card__ketua {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--color-accent);
       font-weight: 600;
       margin: 0;
+      padding-top: 6px;
+      border-top: 1px dashed var(--color-border);
     }
 
-    /* ===== LIST SECTION (grid versi sebelumnya) ===== */
-    .list-section {
-      padding: 60px 0;
-      background: #fff;
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 720px) {
+      .level-dewan {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .converge { height: 40px; }
+      .converge::before, .converge::after { height: 26px; }
+      .converge__bar { bottom: 12px; }
+      .converge__stem { height: 12px; }
+      .fork__children { gap: 20px; }
+      .org-chart { padding: 0 16px; }
     }
-    .list-section__header {
+
+    /* ============================================================
+       SECTION 2: LIST LENGKAP
+       ============================================================ */
+    .list-wrapper {
+      padding: 72px 0;
+      background: linear-gradient(180deg, #fff 0%, var(--color-bg-alt) 100%);
+    }
+    .list-wrapper .section-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
-    .list-section__header h2 {
+    .list-wrapper .section-header h2 {
       font-family: var(--font-heading);
       color: var(--color-primary);
-      margin-bottom: 8px;
+      font-size: 28px;
+      margin: 0 0 8px;
     }
-    .list-section__header p {
+    .list-wrapper .section-header p {
       color: var(--color-text-soft);
       font-size: 14px;
       margin: 0;
     }
-    .struktur-block { margin-bottom: 48px; }
-    .struktur-block__header {
-      text-align: center;
+
+    .grp {
+      margin-bottom: 56px;
+    }
+    .grp:last-child { margin-bottom: 0; }
+
+    .grp__title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 24px;
     }
-    .struktur-block__header h3 {
-      display: inline-block;
+    .grp__title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-accent), transparent);
+    }
+    .grp__title h3 {
       font-family: var(--font-heading);
       color: var(--color-primary);
-      font-size: 18px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--color-accent);
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .struktur-grid {
+    .grp__title h3::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.2);
+    }
+    .grp__title .count {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-soft);
+      background: var(--color-bg-alt);
+      padding: 2px 10px;
+      border-radius: 999px;
+      letter-spacing: 0;
+    }
+
+    /* Person grid — equal height cards */
+    .pgrid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
+      gap: 16px;
     }
-    .person-card {
+    .pgrid--2 { grid-template-columns: repeat(2, 1fr); max-width: 640px; }
+    .pgrid--3 { grid-template-columns: repeat(3, 1fr); }
+    .pgrid--4 { grid-template-columns: repeat(4, 1fr); }
+    .pgrid--5 { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 900px) {
+      .pgrid--2, .pgrid--3, .pgrid--4, .pgrid--5 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .pgrid--2, .pgrid--3, .pgrid--4, .pgrid--5 { grid-template-columns: 1fr; }
+    }
+
+    .pcard {
       background: #fff;
-      border-radius: 12px;
-      padding: 22px 18px;
+      border-radius: 14px;
+      padding: 20px 16px;
       text-align: center;
-      box-shadow: 0 3px 12px rgba(11,37,69,0.07);
-      transition: all 200ms ease;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
       border-top: 4px solid var(--color-accent);
+      transition: all 220ms cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 200px;
     }
-    .person-card:hover {
-      box-shadow: 0 12px 32px rgba(11,37,69,0.14);
-      transform: translateY(-4px);
+    .pcard:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(11,37,69,0.14);
     }
-    .person-card__photo {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 14px;
+    .pcard__avatar {
+      width: 64px; height: 64px;
       border-radius: 50%;
       background: var(--color-navy);
       color: var(--color-accent);
@@ -421,62 +555,50 @@
       justify-content: center;
       font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
+      margin-bottom: 12px;
+      flex-shrink: 0;
     }
-    .person-card--featured .person-card__photo {
-      width: 100px;
-      height: 100px;
-      font-size: 26px;
-      background: var(--color-accent);
-      color: var(--color-navy);
-      box-shadow: 0 0 0 6px rgba(201,162,75,0.18);
-    }
-    .person-card__name {
+    .pcard__name {
       font-family: var(--font-heading);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: var(--color-primary);
       line-height: 1.35;
       margin: 0 0 6px;
     }
-    .person-card__role {
-      font-size: 12px;
-      color: var(--color-accent);
+    .pcard__role {
+      font-size: 11px;
       font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.3px;
       margin: 0;
-    }
-    .ketua-umum-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 48px;
-    }
-    .ketua-umum-wrap .person-card {
-      max-width: 280px;
-      border-top-width: 5px;
+      text-transform: uppercase;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .org-tier-1 {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .advisor-col__cards {
-        flex-direction: row;
-        max-width: 100%;
-        justify-content: center;
-      }
-      .advisor-col__cards .oc { flex: 1; }
-      .org-fork { max-width: 100%; }
-      .org-tier-3 { gap: 20px; }
-      .dept-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      }
+    /* Featured Ketua Umum */
+    .pcard--featured {
+      max-width: 300px;
+      margin: 0 auto 32px;
+      border-top-width: 5px;
+      background: linear-gradient(180deg, #fff 0%, #FFFDF7 100%);
+      padding: 28px 24px;
     }
-    .org-loading {
+    .pcard--featured .pcard__avatar {
+      width: 88px; height: 88px;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      font-size: 26px;
+      box-shadow: 0 0 0 6px rgba(201,162,75,0.18);
+    }
+    .pcard--featured .pcard__name { font-size: 17px; }
+    .pcard--featured .pcard__role { font-size: 12px; }
+
+    .loading-block {
       text-align: center;
       padding: 60px 20px;
       color: var(--color-text-soft);
+      font-size: 14px;
     }
   </style>
 </head>
@@ -493,24 +615,24 @@
     </div>
   </header>
 
-  <!-- ===== SECTION 1: MIND MAP ===== -->
-  <section class="org-section">
+  <!-- ============ SECTION 1: MIND MAP ============ -->
+  <section class="org-wrapper">
     <div class="container">
       <div id="orgChart" class="org-chart">
-        <div class="org-loading">Memuat struktur organisasi...</div>
+        <div class="loading-block">Memuat struktur organisasi...</div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SECTION 2: LIST ===== -->
-  <section class="list-section">
+  <!-- ============ SECTION 2: LIST LENGKAP ============ -->
+  <section class="list-wrapper">
     <div class="container">
-      <div class="list-section__header">
+      <div class="section-header">
         <h2>Daftar Lengkap Pengurus</h2>
-        <p>Susunan personalia DPP LKP periode 2025–2030</p>
+        <p>Susunan personalia Dewan Pimpinan Pusat LKP periode 2025–2030</p>
       </div>
       <div id="listChart">
-        <div class="org-loading">Memuat daftar pengurus...</div>
+        <div class="loading-block">Memuat daftar pengurus...</div>
       </div>
     </div>
   </section>
@@ -519,15 +641,11 @@
     import './assets/js/components.js';
     import { fetchPengurus, escapeHtml } from './assets/js/api.js';
 
+    const norm = s => String(s || '').trim().toLowerCase();
+
     function getInitials(nama) {
       return nama.split(' ').filter(w => w.length > 1)
         .slice(0, 2).map(w => w[0].toUpperCase()).join('');
-    }
-    function normalize(s) {
-      return String(s || '').trim().toLowerCase();
-    }
-    function pMatch(p, keyword) {
-      return normalize(p.tingkat) === keyword || normalize(p.jabatan).includes(keyword);
     }
 
     const DEPT_ICONS = {
@@ -542,31 +660,34 @@
       'seni budaya dan pariwisata': '🎨',
       'pertanian pangan & energi': '🌾',
     };
-    function getDeptIcon(jabatan) {
-      return DEPT_ICONS[normalize(jabatan)] || '📋';
+    const getDeptIcon = jabatan => DEPT_ICONS[norm(jabatan)] || '📋';
+
+    function nodeHTML(p, variant = 'default', showAvatar = true) {
+      if (!p) return '';
+      const badge = variant === 'ketua' ? '<span class="node__badge">Ketua Umum</span>' : '';
+      const avatar = showAvatar && variant !== 'advisor' ? `<div class="node__avatar">${getInitials(p.nama)}</div>` : '';
+      return `
+        <div class="node node--${variant}">
+          ${badge}
+          ${avatar}
+          <p class="node__name">${escapeHtml(p.nama)}</p>
+          <p class="node__role">${escapeHtml(p.jabatan)}</p>
+        </div>
+      `;
     }
 
-    function nodeHTML(person, variant = 'default') {
-      if (!person) return '';
-      const badge = variant === 'ketua' ? '<span class="oc__badge">Ketua Umum</span>' : '';
+    function dewanPanelHTML(title, people) {
       return `
-        <div class="oc oc--${variant}">
-          ${badge}
-          <div class="oc__avatar">${getInitials(person.nama)}</div>
-          <p class="oc__name">${escapeHtml(person.nama)}</p>
-          <p class="oc__role">${escapeHtml(person.jabatan)}</p>
+        <div class="dewan-panel">
+          <span class="dewan-panel__title">${title}</span>
+          <div class="dewan-panel__list">
+            ${people.map(p => nodeHTML(p, 'advisor', false)).join('')}
+          </div>
         </div>
       `;
     }
-    function advisorCard(p) {
-      return `
-        <div class="oc oc--advisor">
-          <p class="oc__name">${escapeHtml(p.nama)}</p>
-          <p class="oc__role">${escapeHtml(p.jabatan)}</p>
-        </div>
-      `;
-    }
-    function deptCard(p) {
+
+    function deptCardHTML(p) {
       return `
         <div class="dept-card">
           <span class="dept-card__icon">${getDeptIcon(p.jabatan)}</span>
@@ -576,122 +697,137 @@
       `;
     }
 
-    function renderMindMap(container, data) {
-      const { pengawas, penasehat, ketuaUmum, ketuaHarian, sekjen, wakilSek, bendahara, wakilBend, departemen } = data;
-      container.innerHTML = `
-        <div class="org-tier-1">
-          <div class="advisor-col">
-            <div class="advisor-col__label">Dewan Pengawas</div>
-            <div class="advisor-col__cards">
-              ${pengawas.map(advisorCard).join('')}
+    // ============================================================
+    // MIND MAP
+    // ============================================================
+    function renderMindMap(el, d) {
+      el.innerHTML = `
+        <!-- LEVEL 1: Dewan Pengawas & Penasehat -->
+        <div class="level-dewan">
+          ${dewanPanelHTML('Dewan Pengawas', d.pengawas)}
+          ${dewanPanelHTML('Dewan Penasehat', d.penasehat)}
+        </div>
+
+        <!-- CONVERGE -->
+        <div class="converge">
+          <span class="converge__bar"></span>
+          <span class="converge__stem"></span>
+        </div>
+
+        <!-- KETUA UMUM -->
+        <div>${nodeHTML(d.ketuaUmum, 'ketua')}</div>
+
+        <div class="stem"></div>
+
+        <!-- KETUA HARIAN -->
+        <div>${nodeHTML(d.ketuaHarian, 'deputy')}</div>
+
+        <div class="stem"></div>
+
+        <!-- FORK: Sekjen & Bendahara -->
+        <div class="fork">
+          <div class="fork__stem"></div>
+          <div class="fork__bar"></div>
+          <div class="fork__children">
+            <div class="fork__child">
+              ${nodeHTML(d.sekjen, 'default')}
+              <div class="stem stem--short"></div>
+              ${nodeHTML(d.wakilSek, 'sub')}
+            </div>
+            <div class="fork__child">
+              ${nodeHTML(d.bendahara, 'default')}
+              <div class="stem stem--short"></div>
+              ${nodeHTML(d.wakilBend, 'sub')}
             </div>
           </div>
-          <div>${nodeHTML(ketuaUmum, 'ketua')}</div>
-          <div class="advisor-col">
-            <div class="advisor-col__label">Dewan Penasehat</div>
-            <div class="advisor-col__cards">
-              ${penasehat.map(advisorCard).join('')}
-            </div>
-          </div>
         </div>
 
-        <div class="org-connector"></div>
-        <div>${nodeHTML(ketuaHarian, 'deputy')}</div>
-        <div class="org-connector" style="height:16px;"></div>
-
-        <div class="org-fork">
-          <span class="org-fork__stem org-fork__stem--left"></span>
-          <span class="org-fork__stem org-fork__stem--right"></span>
-        </div>
-
-        <div class="org-tier-3">
-          <div class="org-column">
-            <div class="org-column__label">Sekretariat</div>
-            ${nodeHTML(sekjen, 'main')}
-            <div class="org-mini-connector"></div>
-            ${nodeHTML(wakilSek, 'sub')}
-          </div>
-          <div class="org-column">
-            <div class="org-column__label">Bendahara</div>
-            ${nodeHTML(bendahara, 'main')}
-            <div class="org-mini-connector"></div>
-            ${nodeHTML(wakilBend, 'sub')}
-          </div>
-        </div>
-
-        <div class="org-divider"></div>
-
-        <div style="width:100%;">
-          <div class="org-dept-header">
+        <!-- DEPARTEMEN -->
+        <div class="dept-section">
+          <div class="dept-header">
             <h3>Departemen-Departemen</h3>
-            <p>${departemen.length} bidang kerja di bawah koordinasi DPP LKP</p>
+            <p>${d.departemen.length} bidang kerja di bawah koordinasi DPP LKP</p>
           </div>
           <div class="dept-grid">
-            ${departemen.map(deptCard).join('')}
+            ${d.departemen.map(deptCardHTML).join('')}
           </div>
         </div>
       `;
     }
 
-    function renderListSection(title, people) {
+    // ============================================================
+    // LIST SECTION
+    // ============================================================
+    function pcardHTML(p, featured = false) {
+      return `
+        <article class="pcard ${featured ? 'pcard--featured' : ''}">
+          <div class="pcard__avatar">${getInitials(p.nama)}</div>
+          <p class="pcard__name">${escapeHtml(p.nama)}</p>
+          <p class="pcard__role">${escapeHtml(p.jabatan)}</p>
+        </article>
+      `;
+    }
+
+    function groupHTML(title, people, cols = 4) {
       if (!people.length) return '';
       return `
-        <section class="struktur-block">
-          <div class="struktur-block__header"><h3>${title}</h3></div>
-          <div class="struktur-grid">
-            ${people.map(p => `
-              <article class="person-card">
-                <div class="person-card__photo">${getInitials(p.nama)}</div>
-                <h4 class="person-card__name">${escapeHtml(p.nama)}</h4>
-                <p class="person-card__role">${escapeHtml(p.jabatan)}</p>
-              </article>
-            `).join('')}
+        <div class="grp">
+          <div class="grp__title">
+            <h3>${title} <span class="count">${people.length}</span></h3>
           </div>
-        </section>
+          <div class="pgrid pgrid--${cols}">
+            ${people.map(p => pcardHTML(p)).join('')}
+          </div>
+        </div>
       `;
     }
 
-    function renderList(container, data) {
-      const { pengawas, penasehat, ketuaUmum, harianLain, departemen } = data;
-      container.innerHTML = `
-        ${ketuaUmum ? `
-          <div class="ketua-umum-wrap">
-            <article class="person-card person-card--featured">
-              <div class="person-card__photo">${getInitials(ketuaUmum.nama)}</div>
-              <h4 class="person-card__name">${escapeHtml(ketuaUmum.nama)}</h4>
-              <p class="person-card__role">${escapeHtml(ketuaUmum.jabatan)}</p>
-            </article>
+    function renderList(el, d) {
+      el.innerHTML = `
+        ${d.ketuaUmum ? `
+          <div style="display:flex;justify-content:center;">
+            ${pcardHTML(d.ketuaUmum, true)}
           </div>
         ` : ''}
-        ${renderListSection('Dewan Pengawas', pengawas)}
-        ${renderListSection('Dewan Penasehat', penasehat)}
-        ${renderListSection('Pengurus Harian', harianLain)}
-        ${renderListSection('Departemen-Departemen', departemen)}
+
+        ${groupHTML('Dewan Pengawas', d.pengawas, 2)}
+        ${groupHTML('Dewan Penasehat', d.penasehat, 2)}
+        ${groupHTML('Pengurus Harian', d.harianLain, 3)}
+        ${groupHTML('Departemen-Departemen', d.departemen, 5)}
       `;
     }
 
+    // ============================================================
+    // INIT
+    // ============================================================
     async function init() {
-      const mindMapContainer = document.getElementById('orgChart');
-      const listContainer = document.getElementById('listChart');
+      const mindMapEl = document.getElementById('orgChart');
+      const listEl = document.getElementById('listChart');
 
       try {
         const all = await fetchPengurus();
-        const aktif = all.filter(p => normalize(p.aktif) === 'ya');
+        const aktif = all.filter(p => norm(p.aktif) === 'ya');
 
-        const pengawas   = aktif.filter(p => pMatch(p, 'pengawas'));
-        const penasehat  = aktif.filter(p => pMatch(p, 'penasehat'));
-        const harian     = aktif.filter(p => normalize(p.tingkat) === 'harian');
-        const departemen = aktif.filter(p => normalize(p.tingkat) === 'departemen');
+        // Pengawas & Penasehat: cek dari 'tingkat' ATAU 'jabatan'
+        const pengawas = aktif.filter(p =>
+          norm(p.tingkat) === 'pengawas' || norm(p.jabatan).includes('pengawas')
+        );
+        const penasehat = aktif.filter(p =>
+          norm(p.tingkat) === 'penasehat' || norm(p.jabatan).includes('penasehat')
+        );
+        const harian = aktif.filter(p => norm(p.tingkat) === 'harian');
+        const departemen = aktif.filter(p => norm(p.tingkat) === 'departemen');
 
-        const ketuaUmum   = harian.find(p => normalize(p.jabatan) === 'ketua umum');
-        const ketuaHarian = harian.find(p => normalize(p.jabatan) === 'ketua harian');
-        const sekjen      = harian.find(p => normalize(p.jabatan) === 'sekretaris jenderal');
-        const wakilSek    = harian.find(p => normalize(p.jabatan) === 'wakil sekretaris');
-        const bendahara   = harian.find(p => normalize(p.jabatan) === 'bendahara umum');
-        const wakilBend   = harian.find(p => normalize(p.jabatan) === 'wakil bendahara');
-        const harianLain  = harian.filter(p => ![
-          ketuaUmum, ketuaHarian, sekjen, wakilSek, bendahara, wakilBend
-        ].includes(p));
+        const findHarian = j => harian.find(p => norm(p.jabatan) === j);
+        const ketuaUmum   = findHarian('ketua umum');
+        const ketuaHarian = findHarian('ketua harian');
+        const sekjen      = findHarian('sekretaris jenderal');
+        const wakilSek    = findHarian('wakil sekretaris');
+        const bendahara   = findHarian('bendahara umum');
+        const wakilBend   = findHarian('wakil bendahara');
+
+        const excludeSet = new Set([ketuaUmum, ketuaHarian, sekjen, wakilSek, bendahara, wakilBend]);
+        const harianLain = harian.filter(p => !excludeSet.has(p));
 
         const data = {
           pengawas, penasehat,
@@ -700,18 +836,18 @@
           harianLain, departemen,
         };
 
-        renderMindMap(mindMapContainer, data);
-        renderList(listContainer, data);
+        renderMindMap(mindMapEl, data);
+        renderList(listEl, data);
 
       } catch (err) {
         const errHTML = `
-          <div class="org-loading">
-            <h3>Gagal memuat data</h3>
+          <div class="loading-block">
+            <h3>Gagal memuat data pengurus</h3>
             <p>${escapeHtml(err.message)}</p>
           </div>
         `;
-        mindMapContainer.innerHTML = errHTML;
-        listContainer.innerHTML = errHTML;
+        mindMapEl.innerHTML = errHTML;
+        listEl.innerHTML = errHTML;
       }
     }
 
