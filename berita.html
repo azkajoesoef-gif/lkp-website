@@ -13,26 +13,74 @@
   <link rel="stylesheet" href="assets/css/pages.css">
 
   <style>
-    .empty-state {
-      text-align: center;
-      padding: var(--space-16) var(--space-6);
+    .berita-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-6);
+    }
+    .berita-card {
       background: #fff;
       border-radius: var(--radius-md);
+      overflow: hidden;
       box-shadow: var(--shadow-sm);
-      max-width: 640px;
-      margin: 0 auto;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
     }
-    .empty-state__icon {
-      font-size: 3.5rem;
+    .berita-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .berita-card__img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--color-bg-alt);
+    }
+    .berita-card__body {
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .berita-card__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+      font-size: var(--fs-xs);
+      color: var(--color-text-soft);
+    }
+    .berita-card__kategori {
+      background: var(--color-bg-alt);
+      color: var(--color-primary);
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .berita-card__judul {
+      font-size: var(--fs-lg);
+      margin-bottom: var(--space-3);
+      line-height: 1.3;
+      color: var(--color-primary);
+    }
+    .berita-card__ringkasan {
+      color: var(--color-text-soft);
+      font-size: var(--fs-sm);
+      flex: 1;
       margin-bottom: var(--space-4);
     }
-    .empty-state h2 {
-      font-size: var(--fs-xl);
-      margin-bottom: var(--space-3);
+    .berita-card__link {
+      color: var(--color-cta);
+      font-weight: 600;
+      font-size: var(--fs-sm);
     }
-    .empty-state p {
+    .loading, .empty-state {
+      text-align: center;
+      padding: var(--space-16) var(--space-6);
       color: var(--color-text-soft);
-      margin-bottom: var(--space-6);
     }
   </style>
 </head>
@@ -50,18 +98,59 @@
 
   <section class="section">
     <div class="container">
-      <div class="empty-state">
-        <div class="empty-state__icon">📰</div>
-        <h2>Berita Segera Hadir</h2>
-        <p>
-          Halaman ini sedang disiapkan. Berita kegiatan, rilis pers, dan
-          informasi terkini dari LKP akan ditampilkan di sini.
-        </p>
-        <a href="hubungi-kami.html" class="btn btn--primary">Hubungi Kami</a>
+      <div id="beritaContainer" class="berita-grid">
+        <div class="loading" style="grid-column:1/-1;">Memuat berita...</div>
       </div>
     </div>
   </section>
 
-  <script type="module" src="assets/js/components.js"></script>
+  <script type="module">
+    import './assets/js/components.js';
+    import { fetchBerita, formatTanggal, escapeHtml } from './assets/js/api.js';
+
+    const container = document.getElementById('beritaContainer');
+
+    async function renderBerita() {
+      try {
+        const berita = await fetchBerita();
+
+        if (!berita.length) {
+          container.innerHTML = `
+            <div class="empty-state" style="grid-column:1/-1;">
+              <h3>Belum ada berita</h3>
+              <p>Berita akan muncul di sini setelah ditambahkan oleh pengurus.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = berita.map(b => `
+          <a href="berita-detail.html?slug=${encodeURIComponent(b.slug)}" class="berita-card">
+            <img class="berita-card__img" src="${escapeHtml(b.thumbnail)}" alt="${escapeHtml(b.judul)}" loading="lazy"
+                 onerror="this.src='https://picsum.photos/seed/fallback/800x500'">
+            <div class="berita-card__body">
+              <div class="berita-card__meta">
+                <span class="berita-card__kategori">${escapeHtml(b.kategori || 'Umum')}</span>
+                <span>${formatTanggal(b.tanggal)}</span>
+              </div>
+              <h3 class="berita-card__judul">${escapeHtml(b.judul)}</h3>
+              <p class="berita-card__ringkasan">${escapeHtml(b.ringkasan || '')}</p>
+              <span class="berita-card__link">Baca selengkapnya →</span>
+            </div>
+          </a>
+        `).join('');
+
+      } catch (err) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column:1/-1;">
+            <h3>Gagal memuat berita</h3>
+            <p>${escapeHtml(err.message)}</p>
+          </div>
+        `;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderBerita);
+  </script>
 </body>
 </html>
