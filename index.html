@@ -4,119 +4,780 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lingkar Peduli Anak Negeri — Penggerak Kepedulian Bangsa</title>
-  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) adalah organisasi kemasyarakatan yang bergerak di bidang sosial, edukasi, konsultasi, ekonomi, dan bantuan hukum untuk kesejahteraan rakyat Indonesia.">
+  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) — Ormas penggerak kepedulian terhadap NKRI. Program sosial, edukasi, ekonomi, dan bantuan hukum untuk masyarakat Indonesia.">
   <meta property="og:title" content="Lingkar Peduli Anak Negeri">
   <meta property="og:description" content="Penggerak terdepan kepedulian terhadap NKRI.">
   <meta property="og:image" content="assets/img/logo-lkp.png">
-  <meta property="og:type" content="website">
-
+  <link rel="icon" type="image/png" href="assets/img/logo-lkp.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
+  <style>
+    /* ===== HERO ===== */
+    .hero-new {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(201,162,75,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(192,57,43,0.15) 0%, transparent 50%),
+        linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+      color: #fff;
+      padding: 100px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-new::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-new__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .hero-new__grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-new { padding: 60px 0 80px; }
+    }
+    .hero-new__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,162,75,0.15);
+      border: 1px solid rgba(201,162,75,0.3);
+      color: var(--color-accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero-new__badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-new h1 {
+      color: #fff;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    .hero-new h1 span {
+      color: var(--color-accent);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-new h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 6px; left: 0; right: 0;
+      height: 8px;
+      background: rgba(192,57,43,0.4);
+      z-index: -1;
+    }
+    .hero-new__lead {
+      color: rgba(255,255,255,0.85);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 560px;
+    }
+    @media (max-width: 900px) { .hero-new__lead { margin: 0 auto 32px; } }
+    .hero-new__actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 900px) { .hero-new__actions { justify-content: center; } }
+
+    /* Hero visual */
+    .hero-new__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-new__logo-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-new__logo-wrap::before,
+    .hero-new__logo-wrap::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,162,75,0.25);
+      animation: ripple 4s ease-out infinite;
+    }
+    .hero-new__logo-wrap::before { inset: 10%; }
+    .hero-new__logo-wrap::after { inset: 0; animation-delay: 1s; }
+    @keyframes ripple {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(1.15); opacity: 0; }
+    }
+    .hero-new__logo-wrap img {
+      max-width: 70%;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+    }
+
+    /* ===== STATS BAND ===== */
+    .stats-band {
+      background: #fff;
+      margin-top: -60px;
+      position: relative;
+      z-index: 2;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(11,37,69,0.15);
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 700px) {
+      .stats-band { grid-template-columns: 1fr 1fr; padding: 30px 16px; }
+    }
+    .stat-item { text-align: center; padding: 0 10px; }
+    .stat-item__num {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--color-navy);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-item__num span { color: var(--color-accent); }
+    .stat-item__label {
+      font-size: 12.5px;
+      color: var(--color-text-soft);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* ===== SECTION GENERAL ===== */
+    .sec { padding: 72px 0; }
+    .sec--alt { background: var(--color-bg-alt); }
+    .sec-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 48px;
+    }
+    .sec-head__eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .sec-head h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      margin-bottom: 12px;
+      color: var(--color-primary);
+    }
+    .sec-head p {
+      color: var(--color-text-soft);
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== PROGRAM / 5 PILAR ===== */
+    .pilar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .pilar-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: left;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
+      border-bottom: 4px solid var(--color-accent);
+      transition: all 280ms cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .pilar-card::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(201,162,75,0.08) 0%, transparent 70%);
+      transition: transform 400ms ease;
+    }
+    .pilar-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(11,37,69,0.14);
+      border-bottom-color: var(--color-cta);
+    }
+    .pilar-card:hover::before { transform: scale(1.5); }
+    .pilar-card__icon {
+      width: 60px; height: 60px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(11,37,69,0.15);
+    }
+    .pilar-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: var(--color-primary);
+    }
+    .pilar-card p {
+      color: var(--color-text-soft);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== BERITA PREVIEW ===== */
+    .berita-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .berita-preview { grid-template-columns: 1fr; } }
+    .berita-prev {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
+      transition: all 280ms ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .berita-prev:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(11,37,69,0.14);
+    }
+    .berita-prev__img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--color-bg-alt);
+    }
+    .berita-prev__body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .berita-prev__meta {
+      display: flex; gap: 10px; align-items: center;
+      font-size: 11.5px; color: var(--color-text-soft);
+      margin-bottom: 10px;
+    }
+    .berita-prev__kat {
+      background: rgba(201,162,75,0.15);
+      color: var(--color-primary);
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .berita-prev__judul {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0 0 10px;
+      line-height: 1.35;
+      font-family: var(--font-heading);
+    }
+    .berita-prev__ringkas {
+      color: var(--color-text-soft);
+      font-size: 13px;
+      line-height: 1.6;
+      flex: 1;
+      margin: 0 0 14px;
+    }
+    .berita-prev__cta {
+      color: var(--color-cta);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* ===== GALERI PREVIEW ===== */
+    .galeri-prev {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 700px) { .galeri-prev { grid-template-columns: 1fr 1fr; } }
+    .galeri-prev__item {
+      aspect-ratio: 4/3;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.08);
+      transition: all 280ms ease;
+    }
+    .galeri-prev__item:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 36px rgba(11,37,69,0.18);
+    }
+    .galeri-prev__item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+    .galeri-prev__item:hover img { transform: scale(1.1); }
+    .galeri-prev__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(11,37,69,0.9) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 16px;
+      color: #fff;
+    }
+    .galeri-prev__title {
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+      margin: 0;
+      line-height: 1.3;
+      color: #fff;
+    }
+    .galeri-prev__date {
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      margin: 4px 0 0;
+    }
+
+    /* ===== MITRA STRIP ===== */
+    .mitra-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      padding: 20px 0;
+    }
+    .mitra-strip__item {
+      background: #fff;
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(11,37,69,0.06);
+      transition: all 200ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 80px;
+    }
+    .mitra-strip__item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(11,37,69,0.12);
+    }
+    .mitra-strip__item img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* ===== QUOTE ===== */
+    .quote-band {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
+      color: #fff;
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-band::before {
+      content: '"';
+      position: absolute;
+      top: -60px; left: 40px;
+      font-size: 320px;
+      font-family: Georgia, serif;
+      color: rgba(201,162,75,0.08);
+      line-height: 1;
+    }
+    .quote-band__inner {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .quote-band__text {
+      font-family: var(--font-heading);
+      font-size: clamp(20px, 3vw, 28px);
+      line-height: 1.5;
+      color: #fff;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    .quote-band__author {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(201,162,75,0.3);
+    }
+    .quote-band__avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .quote-band__name {
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      text-align: left;
+    }
+    .quote-band__role {
+      font-size: 12px;
+      color: var(--color-accent);
+      text-align: left;
+    }
+
+    /* ===== CTA FINAL ===== */
+    .cta-final {
+      padding: 80px 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(201,162,75,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(192,57,43,0.1) 0%, transparent 50%),
+        var(--color-bg-alt);
+    }
+    .cta-final__box {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      color: #fff;
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 30px 80px rgba(11,37,69,0.25);
+    }
+    .cta-final__box::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,162,75,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-final__box h2 {
+      color: #fff;
+      font-size: clamp(24px, 3vw, 34px);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-final__box p {
+      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .cta-final__actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .loading-mini {
+      text-align: center;
+      padding: 40px;
+      color: var(--color-text-soft);
+      grid-column: 1/-1;
+    }
+  </style>
 </head>
 <body>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero-new">
     <div class="container">
-      <p style="color:var(--color-accent);font-weight:600;letter-spacing:1px;text-transform:uppercase;font-size:var(--fs-sm);margin-bottom:var(--space-3);">
-        Ormas Resmi — SK AHU-0004737.AH.01.07.TAHUN 2022
-      </p>
-      <h1>Penggerak Terdepan Kepedulian terhadap NKRI</h1>
-      <p style="max-width:640px;font-size:var(--fs-lg);">
-        Lingkar Peduli Anak Negeri hadir untuk membangun daerah, mencerdaskan
-        masyarakat, dan menjaga persatuan bangsa — dari Sabang sampai Merauke.
-      </p>
-      <p style="margin-top:var(--space-8);display:flex;gap:var(--space-4);flex-wrap:wrap;">
-        <a href="gabung.html" class="btn btn--primary">Gabung Sekarang</a>
-        <a href="tentang-kami.html" class="btn" style="border-color:var(--color-accent);color:var(--color-accent);">Kenali Kami</a>
-      </p>
+      <div class="hero-new__grid">
+        <div>
+          <span class="hero-new__badge">Ormas Resmi — SK AHU-0004737.AH.01.07.TAHUN 2022</span>
+          <h1>Bersama Membangun <span>Anak Negeri</span></h1>
+          <p class="hero-new__lead">
+            Lingkar Peduli Anak Negeri hadir untuk membangun daerah, mencerdaskan
+            masyarakat, dan menjaga persatuan bangsa — dari Sabang sampai Merauke.
+          </p>
+          <div class="hero-new__actions">
+            <a href="gabung.html" class="btn btn--primary">Gabung Sekarang →</a>
+            <a href="tentang-kami.html" class="btn btn--outline">Kenali Kami</a>
+          </div>
+        </div>
+        <div class="hero-new__visual">
+          <div class="hero-new__logo-wrap">
+            <img src="assets/img/logo-lkp.png" alt="Logo LKP" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- STATS BAND -->
+  <div class="container" style="padding:0 24px;">
+    <div class="stats-band">
+      <div class="stat-item">
+        <div class="stat-item__num">2022</div>
+        <div class="stat-item__label">Tahun Berdiri</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">5</div>
+        <div class="stat-item__label">Pilar Kerja</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">20<span>+</span></div>
+        <div class="stat-item__label">Pengurus DPP</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-item__num">34</div>
+        <div class="stat-item__label">Target Provinsi</div>
+      </div>
+    </div>
+  </div>
 
   <!-- 5 PILAR -->
-  <section class="section">
+  <section class="sec">
     <div class="container">
-      <header class="section__header">
-        <h2>5 Pilar Ruang Lingkup Kerja</h2>
-        <p>Fondasi gerakan kami untuk masyarakat Indonesia</p>
-      </header>
-
-      <div class="grid grid--3">
-        <article class="card">
-          <div class="card__icon">🤝</div>
-          <h3 class="card__title">Sosial Kemasyarakatan</h3>
-          <p class="card__text">Bakti sosial, pemberdayaan komunitas, dan respons cepat terhadap kebutuhan sosial masyarakat.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">📚</div>
-          <h3 class="card__title">Edukasi &amp; Pelatihan</h3>
-          <p class="card__text">Program edukasi dan pelatihan keterampilan untuk membangun SDM unggul Indonesia.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">💼</div>
-          <h3 class="card__title">Konsultasi</h3>
-          <p class="card__text">Layanan konsultasi strategis untuk masyarakat, lembaga, maupun mitra kerja.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">📈</div>
-          <h3 class="card__title">Ekonomi &amp; Bisnis</h3>
-          <p class="card__text">Pengembangan UMKM dan ekonomi kreatif untuk kesejahteraan rakyat.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">⚖️</div>
-          <h3 class="card__title">Bantuan Hukum &amp; Politik</h3>
-          <p class="card__text">Pendampingan, advokasi, bantuan hukum, dan masukan kebijakan publik.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">🌱</div>
-          <h3 class="card__title">Pemberdayaan Anak &amp; Perempuan</h3>
-          <p class="card__text">Program perlindungan dan pemberdayaan perempuan serta anak Indonesia.</p>
-        </article>
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Ruang Lingkup Kerja</span>
+        <h2>5 Pilar Gerakan LKP</h2>
+        <p>Fondasi kami untuk membangun Indonesia yang lebih sejahtera dan berkeadilan.</p>
+      </div>
+      <div class="pilar-grid">
+        <div class="pilar-card">
+          <div class="pilar-card__icon">🤝</div>
+          <h3>Sosial Kemasyarakatan</h3>
+          <p>Bakti sosial, pemberdayaan komunitas, dan respons cepat terhadap kebutuhan masyarakat.</p>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-card__icon">📚</div>
+          <h3>Edukasi &amp; Pelatihan</h3>
+          <p>Program edukasi dan pelatihan keterampilan untuk membangun SDM unggul Indonesia.</p>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-card__icon">💼</div>
+          <h3>Konsultasi</h3>
+          <p>Layanan konsultasi strategis untuk masyarakat, lembaga, dan mitra kerja.</p>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-card__icon">📈</div>
+          <h3>Ekonomi &amp; Bisnis</h3>
+          <p>Pengembangan UMKM dan ekonomi kreatif untuk kesejahteraan rakyat.</p>
+        </div>
+        <div class="pilar-card">
+          <div class="pilar-card__icon">⚖️</div>
+          <h3>Bantuan Hukum &amp; Politik</h3>
+          <p>Pendampingan, advokasi, bantuan hukum, dan masukan kebijakan publik.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="program-kerja.html" class="btn btn--gold">Lihat Semua Program →</a>
       </div>
     </div>
   </section>
 
-  <!-- SEKILAS LKP -->
-  <section class="section section--alt">
+  <!-- BERITA PREVIEW -->
+  <section class="sec sec--alt">
     <div class="container">
-      <header class="section__header">
-        <h2>Sekilas LKP</h2>
-        <p>Fakta singkat tentang organisasi kami</p>
-      </header>
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Informasi Terkini</span>
+        <h2>Berita Terbaru</h2>
+        <p>Update kegiatan, rilis pers, dan informasi terkini dari LKP.</p>
+      </div>
+      <div class="berita-preview" id="beritaPreview">
+        <div class="loading-mini">Memuat berita...</div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="berita.html" class="btn btn--primary">Semua Berita →</a>
+      </div>
+    </div>
+  </section>
 
-      <div class="grid grid--3" style="text-align:center;">
-        <div class="card">
-          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">2022</div>
-          <p class="card__text" style="margin-top:var(--space-3);">Tahun Berdiri</p>
-        </div>
-        <div class="card">
-          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">5</div>
-          <p class="card__text" style="margin-top:var(--space-3);">Pilar Ruang Lingkup Kerja</p>
-        </div>
-        <div class="card">
-          <div style="font-family:var(--font-heading);font-size:var(--fs-4xl);color:var(--color-accent);font-weight:800;line-height:1;">38</div>
-          <p class="card__text" style="margin-top:var(--space-3);">Target Provinsi (DPD)</p>
+  <!-- QUOTE BAND -->
+  <section class="quote-band">
+    <div class="container">
+      <div class="quote-band__inner">
+        <p class="quote-band__text">
+          "Kepedulian bukan sekadar kata, tetapi tindakan nyata untuk negeri.
+          Bersama LKP, kita wujudkan Indonesia yang lebih peduli."
+        </p>
+        <div class="quote-band__author">
+          <div class="quote-band__avatar">AM</div>
+          <div>
+            <div class="quote-band__name">Andre Milko Pelavi</div>
+            <div class="quote-band__role">Ketua Umum DPP LKP 2025–2030</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section">
+  <!-- GALERI PREVIEW -->
+  <section class="sec">
     <div class="container">
-      <div class="cta-join">
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Dokumentasi</span>
+        <h2>Galeri Kegiatan</h2>
+        <p>Momen-momen nyata aksi LKP untuk masyarakat Indonesia.</p>
+      </div>
+      <div class="galeri-prev" id="galeriPreview">
+        <div class="loading-mini">Memuat galeri...</div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="galeri.html" class="btn btn--gold">Lihat Semua Galeri →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MITRA STRIP -->
+  <section class="sec sec--alt">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Kemitraan Strategis</span>
+        <h2>Mitra Kami</h2>
+        <p>Bersama membangun bangsa — kolaborasi dengan instansi dan lembaga nasional.</p>
+      </div>
+      <div class="mitra-strip" id="mitraStrip">
+        <div class="loading-mini">Memuat mitra...</div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="kemitraan.html" class="btn btn--primary">Lihat Semua Mitra →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="container">
+      <div class="cta-final__box">
         <h2>Siap Berkontribusi untuk Negeri?</h2>
         <p>Bergabunglah bersama ribuan anak bangsa yang peduli. Terbuka untuk seluruh Warga Negara Indonesia.</p>
-        <a href="gabung.html" class="btn btn--primary">Daftar Anggota</a>
+        <div class="cta-final__actions">
+          <a href="gabung.html" class="btn btn--primary">Daftar Anggota →</a>
+          <a href="cek-status.html" class="btn btn--outline">Cek Status Keanggotaan</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <script type="module" src="assets/js/components.js"></script>
+  <script type="module">
+    import './assets/js/components.js';
+    import { fetchBerita, fetchGaleri, fetchMitra, formatTanggal, escapeHtml } from './assets/js/api.js';
+
+    // ===== BERITA PREVIEW (3 terbaru) =====
+    (async () => {
+      const el = document.getElementById('beritaPreview');
+      try {
+        const list = await fetchBerita();
+        const top3 = list.slice(0, 3);
+        if (!top3.length) { el.innerHTML = '<div class="loading-mini">Belum ada berita.</div>'; return; }
+        el.innerHTML = top3.map(b => `
+          <a href="berita-detail.html?slug=${encodeURIComponent(b.slug)}" class="berita-prev">
+            <img class="berita-prev__img" src="${escapeHtml(b.thumbnail)}" alt="${escapeHtml(b.judul)}" loading="lazy"
+                 onerror="this.src='https://placehold.co/800x500/0B2545/C9A24B?text=Berita'">
+            <div class="berita-prev__body">
+              <div class="berita-prev__meta">
+                <span class="berita-prev__kat">${escapeHtml(b.kategori || 'Umum')}</span>
+                <span>${formatTanggal(b.tanggal)}</span>
+              </div>
+              <h3 class="berita-prev__judul">${escapeHtml(b.judul)}</h3>
+              <p class="berita-prev__ringkas">${escapeHtml((b.ringkasan || '').substring(0, 110))}${(b.ringkasan || '').length > 110 ? '...' : ''}</p>
+              <span class="berita-prev__cta">Baca selengkapnya →</span>
+            </div>
+          </a>
+        `).join('');
+      } catch (err) {
+        el.innerHTML = `<div class="loading-mini">Gagal memuat berita.</div>`;
+      }
+    })();
+
+    // ===== GALERI PREVIEW (6 terbaru) =====
+    (async () => {
+      const el = document.getElementById('galeriPreview');
+      try {
+        const list = await fetchGaleri();
+        const top6 = list.slice(0, 6);
+        if (!top6.length) { el.innerHTML = '<div class="loading-mini">Belum ada foto.</div>'; return; }
+        el.innerHTML = top6.map(g => `
+          <a href="galeri.html" class="galeri-prev__item">
+            <img src="${escapeHtml(g.foto_url)}" alt="${escapeHtml(g.judul)}" loading="lazy"
+                 onerror="this.src='https://placehold.co/800x600/0B2545/C9A24B?text=Galeri'">
+            <div class="galeri-prev__overlay">
+              <h4 class="galeri-prev__title">${escapeHtml(g.judul)}</h4>
+              <p class="galeri-prev__date">${formatTanggal(g.tanggal)}</p>
+            </div>
+          </a>
+        `).join('');
+      } catch (err) {
+        el.innerHTML = `<div class="loading-mini">Gagal memuat galeri.</div>`;
+      }
+    })();
+
+    // ===== MITRA STRIP (semua aktif) =====
+    (async () => {
+      const el = document.getElementById('mitraStrip');
+      try {
+        const list = await fetchMitra();
+        const aktif = list.filter(m => String(m.aktif).toUpperCase() === 'YA');
+        if (!aktif.length) { el.innerHTML = '<div class="loading-mini">Belum ada mitra.</div>'; return; }
+        el.innerHTML = aktif.map(m => `
+          <a href="${escapeHtml(m.website || '#')}" target="_blank" rel="noopener" class="mitra-strip__item" title="${escapeHtml(m.nama)}">
+            <img src="${escapeHtml(m.logo_url)}" alt="${escapeHtml(m.nama)}" loading="lazy"
+                 onerror="this.src='https://placehold.co/300x300/0B2545/C9A24B?text=Mitra'">
+          </a>
+        `).join('');
+      } catch (err) {
+        el.innerHTML = `<div class="loading-mini">Gagal memuat mitra.</div>`;
+      }
+    })();
+  </script>
 </body>
 </html>
