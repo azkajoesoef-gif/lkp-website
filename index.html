@@ -277,6 +277,69 @@
       margin: 0;
     }
 
+    /* ===== NILAI-NILAI ===== */
+    .nilai-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .nilai-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .nilai-grid { grid-template-columns: 1fr; } }
+    .nilai-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 24px 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(11,37,69,0.06);
+      transition: all 300ms cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(226,232,240,0.6);
+    }
+    .nilai-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-cta));
+      border-radius: 0 0 4px 4px;
+      transition: width 400ms ease;
+    }
+    .nilai-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(11,37,69,0.15);
+    }
+    .nilai-card:hover::after { width: 100%; }
+    .nilai-card__icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(201,162,75,0.15) 0%, rgba(192,57,43,0.1) 100%);
+      border: 2px solid rgba(201,162,75,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 18px;
+      transition: all 300ms ease;
+    }
+    .nilai-card:hover .nilai-card__icon {
+      transform: scale(1.1) rotate(-6deg);
+      border-color: var(--color-accent);
+    }
+    .nilai-card h3 {
+      font-size: 17px;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .nilai-card p {
+      color: var(--color-text-soft);
+      font-size: 13.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
     /* ===== BERITA PREVIEW ===== */
     .berita-preview {
       display: grid;
@@ -487,94 +550,110 @@
       text-align: left;
     }
 
-    /* ===== ORG SLIDER ===== */
+    /* ===== ORG SLIDER (REVISED) ===== */
     .os-wrap {
       position: relative;
-      max-width: 880px;
+      max-width: 900px;
       margin: 0 auto;
     }
     .os-viewport {
       overflow: hidden;
       border-radius: 20px;
-      background: #fff;
-      box-shadow: 0 10px 40px rgba(11,37,69,0.08);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(201,162,75,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(192,57,43,0.05) 0%, transparent 50%),
+        #fff;
+      box-shadow: 0 16px 50px rgba(11,37,69,0.10);
+      border: 1px solid rgba(226,232,240,0.8);
+      transition: height 500ms cubic-bezier(.4,0,.2,1);
+      position: relative;
     }
     .os-track {
       display: flex;
-      transition: transform 420ms cubic-bezier(.4,0,.2,1);
+      align-items: flex-start;
+      transition: transform 500ms cubic-bezier(.4,0,.2,1);
     }
     .os-slide {
       flex: 0 0 100%;
-      padding: 48px 32px;
+      width: 100%;
+      padding: 48px 40px;
+      box-sizing: border-box;
     }
     @media (max-width: 600px) {
       .os-slide { padding: 32px 20px; }
     }
+
+    /* Nav buttons */
     .os-nav {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 48px; height: 48px;
+      width: 52px; height: 52px;
       border-radius: 50%;
       background: var(--color-navy);
       color: #fff;
       border: 2px solid var(--color-accent);
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 200ms ease;
-      z-index: 2;
-      box-shadow: 0 8px 20px rgba(11,37,69,0.25);
+      transition: all 220ms ease;
+      z-index: 5;
+      box-shadow: 0 10px 28px rgba(11,37,69,0.28);
       line-height: 1;
       padding: 0;
-      padding-bottom: 3px;
     }
     .os-nav:hover:not(:disabled) {
       background: var(--color-accent);
       color: var(--color-navy);
-      transform: translateY(-50%) scale(1.08);
+      transform: translateY(-50%) scale(1.1);
     }
     .os-nav:disabled {
-      opacity: 0.3;
+      opacity: 0.28;
       cursor: not-allowed;
     }
-    .os-nav--prev { left: -24px; }
-    .os-nav--next { right: -24px; }
+    .os-nav--prev { left: -26px; }
+    .os-nav--next { right: -26px; }
     @media (max-width: 1000px) {
       .os-nav--prev { left: 8px; }
       .os-nav--next { right: 8px; }
     }
+
+    /* Progress dots */
     .os-dots {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 10px;
-      margin-top: 24px;
+      margin-top: 26px;
     }
     .os-dot {
       width: 10px; height: 10px;
       border-radius: 50%;
       border: none;
-      background: rgba(11,37,69,0.2);
+      background: rgba(11,37,69,0.18);
       cursor: pointer;
-      transition: all 220ms ease;
+      transition: all 260ms cubic-bezier(.4,0,.2,1);
       padding: 0;
     }
     .os-dot.is-active {
       background: var(--color-accent);
-      width: 32px;
+      width: 36px;
       border-radius: 999px;
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.15);
     }
     .os-hint {
       text-align: center;
       margin-top: 12px;
       font-size: 12px;
       color: var(--color-text-soft);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
     }
+
+    /* SLIDE 1: DEWAN */
     .os-dewan {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -582,37 +661,53 @@
     }
     @media (max-width: 700px) { .os-dewan { grid-template-columns: 1fr; } }
     .os-panel {
-      background: #FFFDF7;
+      background: linear-gradient(180deg, #FFFDF7 0%, #fff 100%);
       border: 2px dashed var(--color-accent);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 18px;
+      padding: 24px 22px;
+      position: relative;
+    }
+    .os-panel__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px dashed rgba(201,162,75,0.4);
+    }
+    .os-panel__icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
     }
     .os-panel__label {
-      display: block;
-      text-align: center;
       font-family: var(--font-heading);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--color-primary);
-      padding-bottom: 12px;
-      margin-bottom: 16px;
-      border-bottom: 1px dashed rgba(201,162,75,0.4);
     }
     .os-panel__list { display: flex; flex-direction: column; gap: 10px; }
     .os-pcard {
       background: #fff;
-      border: 1.5px solid rgba(201,162,75,0.3);
-      border-radius: 10px;
+      border: 1.5px solid rgba(201,162,75,0.25);
+      border-radius: 12px;
       padding: 14px 16px;
       text-align: center;
-      transition: all 200ms ease;
+      transition: all 220ms ease;
+      position: relative;
     }
     .os-pcard:hover {
       border-color: var(--color-accent);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(11,37,69,0.08);
+      box-shadow: 0 8px 20px rgba(11,37,69,0.08);
     }
     .os-pcard__name {
       font-family: var(--font-heading);
@@ -629,20 +724,22 @@
       margin: 0;
       letter-spacing: 0.3px;
     }
+
+    /* SLIDE 2: BPH */
     .os-bph {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
+      gap: 0;
     }
     .os-hero {
       background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
       border: 3px solid var(--color-accent);
-      border-radius: 16px;
-      padding: 24px 32px;
+      border-radius: 18px;
+      padding: 26px 40px;
       text-align: center;
-      min-width: 280px;
-      box-shadow: 0 12px 32px rgba(11,37,69,0.25);
+      min-width: 300px;
+      box-shadow: 0 16px 40px rgba(11,37,69,0.28), 0 0 0 6px rgba(201,162,75,0.08);
       position: relative;
     }
     .os-hero__badge {
@@ -652,14 +749,14 @@
       font-family: var(--font-heading);
       font-weight: 800;
       font-size: 10px;
-      letter-spacing: 1.5px;
-      padding: 4px 14px;
+      letter-spacing: 1.8px;
+      padding: 4px 16px;
       border-radius: 999px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       text-transform: uppercase;
     }
     .os-hero__avatar {
-      width: 72px; height: 72px;
+      width: 76px; height: 76px;
       border-radius: 50%;
       background: var(--color-accent);
       color: var(--color-navy);
@@ -668,13 +765,13 @@
       justify-content: center;
       font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 22px;
+      font-size: 24px;
       margin: 0 auto 12px;
       box-shadow: 0 0 0 5px rgba(201,162,75,0.25);
     }
     .os-hero__name {
       font-family: var(--font-heading);
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
       color: #fff;
       margin: 0 0 4px;
@@ -687,21 +784,24 @@
       text-transform: uppercase;
       margin: 0;
     }
+
     .os-mini {
       background: #fff;
       border: 2px solid var(--color-navy-soft);
-      border-radius: 12px;
-      padding: 16px 24px;
+      border-radius: 14px;
+      padding: 16px 28px;
       text-align: center;
-      min-width: 220px;
-      transition: all 200ms ease;
+      min-width: 240px;
+      transition: all 220ms ease;
+      box-shadow: 0 4px 14px rgba(11,37,69,0.06);
     }
     .os-mini:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(11,37,69,0.12);
+      box-shadow: 0 12px 28px rgba(11,37,69,0.14);
+      border-color: var(--color-accent);
     }
     .os-mini__avatar {
-      width: 52px; height: 52px;
+      width: 54px; height: 54px;
       border-radius: 50%;
       background: var(--color-navy-soft);
       color: var(--color-accent);
@@ -726,23 +826,78 @@
       font-weight: 600;
       margin: 0;
     }
+
+    /* Connector lines */
+    .os-connector {
+      width: 2px;
+      height: 20px;
+      background: linear-gradient(180deg, var(--color-accent), rgba(201,162,75,0.3));
+      position: relative;
+    }
+    .os-connector::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--color-accent);
+    }
+
+    /* Fork */
     .os-fork {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
       width: 100%;
-      max-width: 640px;
-      margin-top: 8px;
+      max-width: 680px;
+      margin-top: 20px;
+      position: relative;
+      padding-top: 20px;
+    }
+    .os-fork::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 25%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(201,162,75,0.3), var(--color-accent), rgba(201,162,75,0.3));
+    }
+    .os-fork::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: var(--color-accent);
     }
     @media (max-width: 600px) {
       .os-fork { grid-template-columns: 1fr; gap: 20px; }
+      .os-fork::before, .os-fork::after { display: none; }
     }
     .os-fork__col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      position: relative;
+      padding-top: 12px;
     }
+    .os-fork__col::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 12px;
+      background: var(--color-accent);
+    }
+    @media (max-width: 600px) { .os-fork__col::before { display: none; } }
     .os-fork__label {
       display: inline-block;
       font-family: var(--font-heading);
@@ -752,9 +907,9 @@
       text-transform: uppercase;
       color: var(--color-primary);
       background: rgba(201,162,75,0.18);
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 999px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     /* ===== CTA FINAL ===== */
@@ -907,8 +1062,41 @@
     </div>
   </section>
 
-  <!-- BERITA PREVIEW -->
+  <!-- NILAI-NILAI LKP -->
   <section class="sec sec--alt">
+    <div class="container">
+      <div class="sec-head">
+        <span class="sec-head__eyebrow">Filosofi Kerja</span>
+        <h2>Nilai-Nilai LKP</h2>
+        <p>Empat prinsip yang menjadi fondasi setiap langkah kami untuk negeri.</p>
+      </div>
+      <div class="nilai-grid">
+        <div class="nilai-card">
+          <div class="nilai-card__icon">🎯</div>
+          <h3>Integritas</h3>
+          <p>Setiap tindakan dilandasi kejujuran, transparansi, dan tanggung jawab kepada masyarakat.</p>
+        </div>
+        <div class="nilai-card">
+          <div class="nilai-card__icon">🤝</div>
+          <h3>Kolaborasi</h3>
+          <p>Bersinergi dengan semua elemen bangsa — pemerintah, swasta, dan masyarakat sipil.</p>
+        </div>
+        <div class="nilai-card">
+          <div class="nilai-card__icon">❤️</div>
+          <h3>Kepedulian</h3>
+          <p>Hadir di tengah masyarakat dengan empati dan aksi nyata, bukan sekadar wacana.</p>
+        </div>
+        <div class="nilai-card">
+          <div class="nilai-card__icon">⚡</div>
+          <h3>Aksi Nyata</h3>
+          <p>Setiap program dirancang untuk dampak terukur dan berkelanjutan bagi masyarakat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BERITA PREVIEW -->
+  <section class="sec">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Informasi Terkini</span>
@@ -944,7 +1132,7 @@
   </section>
 
   <!-- STRUKTUR ORGANISASI SLIDER -->
-  <section class="sec">
+  <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Kepengurusan</span>
@@ -956,20 +1144,26 @@
         <button class="os-nav os-nav--prev" id="osPrev" aria-label="Sebelumnya" disabled>‹</button>
         <button class="os-nav os-nav--next" id="osNext" aria-label="Berikutnya">›</button>
 
-        <div class="os-viewport">
+        <div class="os-viewport" id="osViewport">
           <div class="os-track" id="osTrack">
 
             <!-- SLIDE 1: DEWAN -->
             <div class="os-slide">
               <div class="os-dewan">
                 <div class="os-panel">
-                  <span class="os-panel__label">Dewan Pengawas</span>
+                  <div class="os-panel__header">
+                    <span class="os-panel__icon">🛡️</span>
+                    <span class="os-panel__label">Dewan Pengawas</span>
+                  </div>
                   <div class="os-panel__list" id="osPengawas">
                     <div class="loading-mini">Memuat...</div>
                   </div>
                 </div>
                 <div class="os-panel">
-                  <span class="os-panel__label">Dewan Penasehat</span>
+                  <div class="os-panel__header">
+                    <span class="os-panel__icon">💡</span>
+                    <span class="os-panel__label">Dewan Penasehat</span>
+                  </div>
                   <div class="os-panel__list" id="osPenasehat">
                     <div class="loading-mini">Memuat...</div>
                   </div>
@@ -981,6 +1175,7 @@
             <div class="os-slide">
               <div class="os-bph">
                 <div id="osKetuaUmum"></div>
+                <div class="os-connector"></div>
                 <div id="osKetuaHarian"></div>
                 <div class="os-fork">
                   <div class="os-fork__col">
@@ -1007,7 +1202,7 @@
   </section>
 
   <!-- GALERI PREVIEW -->
-  <section class="sec sec--alt">
+  <section class="sec">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Dokumentasi</span>
@@ -1024,7 +1219,7 @@
   </section>
 
   <!-- MITRA STRIP -->
-  <section class="sec">
+  <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Kemitraan Strategis</span>
@@ -1058,7 +1253,7 @@
     import './assets/js/components.js';
     import { fetchBerita, fetchGaleri, fetchMitra, fetchPengurus, formatTanggal, escapeHtml } from './assets/js/api.js';
 
-    // ===== BERITA PREVIEW (3 terbaru) =====
+    // ===== BERITA PREVIEW =====
     (async () => {
       const el = document.getElementById('beritaPreview');
       try {
@@ -1085,7 +1280,7 @@
       }
     })();
 
-    // ===== GALERI PREVIEW (6 terbaru) =====
+    // ===== GALERI PREVIEW =====
     (async () => {
       const el = document.getElementById('galeriPreview');
       try {
@@ -1125,15 +1320,15 @@
       }
     })();
 
-    // ===== ORG SLIDER (Struktur DPP) =====
+    // ===== ORG SLIDER =====
     let osCurrent = 0;
     const osTotal = 2;
+    let osInitialized = false;
 
     function getInitialsOrg(nama) {
       return nama.split(' ').filter(w => w.length > 1)
         .slice(0, 2).map(w => w[0].toUpperCase()).join('');
     }
-
     function renderPcard(p) {
       return `
         <div class="os-pcard">
@@ -1142,7 +1337,6 @@
         </div>
       `;
     }
-
     function renderMiniCard(p) {
       if (!p) return '';
       return `
@@ -1153,7 +1347,6 @@
         </div>
       `;
     }
-
     function renderHeroCard(p) {
       if (!p) return '';
       return `
@@ -1166,21 +1359,39 @@
       `;
     }
 
+    function resizeViewport() {
+      const viewport = document.getElementById('osViewport');
+      const slides = document.querySelectorAll('.os-slide');
+      if (viewport && slides[osCurrent]) {
+        // Reset height to auto temporarily to measure correctly
+        viewport.style.height = 'auto';
+        const h = slides[osCurrent].offsetHeight;
+        viewport.style.height = h + 'px';
+      }
+    }
+
     function goToSlide(idx) {
       osCurrent = Math.max(0, Math.min(osTotal - 1, idx));
       const track = document.getElementById('osTrack');
       if (!track) return;
+
       track.style.transform = `translateX(-${osCurrent * 100}%)`;
 
       document.querySelectorAll('.os-dot').forEach((d, i) => {
         d.classList.toggle('is-active', i === osCurrent);
       });
 
-      document.getElementById('osPrev').disabled = osCurrent === 0;
-      document.getElementById('osNext').disabled = osCurrent === osTotal - 1;
+      const prevBtn = document.getElementById('osPrev');
+      const nextBtn = document.getElementById('osNext');
+      if (prevBtn) prevBtn.disabled = osCurrent === 0;
+      if (nextBtn) nextBtn.disabled = osCurrent === osTotal - 1;
 
       const labels = ['Dewan Pengawas & Penasehat', 'Badan Pengurus Harian'];
-      document.getElementById('osHint').textContent = `Slide ${osCurrent + 1} dari ${osTotal} — ${labels[osCurrent]}`;
+      const hintEl = document.getElementById('osHint');
+      if (hintEl) hintEl.textContent = `Slide ${osCurrent + 1} dari ${osTotal} — ${labels[osCurrent]}`;
+
+      // Smoothly resize viewport to active slide height
+      setTimeout(resizeViewport, 50);
     }
 
     (async () => {
@@ -1191,14 +1402,12 @@
         const pengawas = aktif.filter(p => p.tingkat === 'Pengawas' || String(p.jabatan).toLowerCase().includes('pengawas'));
         const penasehat = aktif.filter(p => p.tingkat === 'Penasehat' || String(p.jabatan).toLowerCase().includes('penasehat'));
         const harian = aktif.filter(p => p.tingkat === 'Harian');
-
         const findH = j => harian.find(p => String(p.jabatan).toLowerCase() === j);
 
         document.getElementById('osPengawas').innerHTML =
           pengawas.length ? pengawas.map(renderPcard).join('') : '<div class="loading-mini">Belum ada data.</div>';
         document.getElementById('osPenasehat').innerHTML =
           penasehat.length ? penasehat.map(renderPcard).join('') : '<div class="loading-mini">Belum ada data.</div>';
-
         document.getElementById('osKetuaUmum').innerHTML = renderHeroCard(findH('ketua umum'));
         document.getElementById('osKetuaHarian').innerHTML = renderMiniCard(findH('ketua harian'));
         document.getElementById('osSekjen').innerHTML = renderMiniCard(findH('sekretaris jenderal'));
@@ -1227,7 +1436,13 @@
           }
         }, { passive: true });
 
-        goToSlide(0);
+        // Init after DOM settled
+        setTimeout(() => { goToSlide(0); osInitialized = true; }, 100);
+
+        // Re-measure on resize (responsive)
+        window.addEventListener('resize', () => {
+          if (osInitialized) resizeViewport();
+        });
 
       } catch (err) {
         console.warn('Org slider error:', err);
