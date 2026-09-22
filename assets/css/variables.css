@@ -1,0 +1,61 @@
+:root {
+  /* ==== BRAND COLORS LKP ==== */
+  --color-navy:      #0B2545;
+  --color-navy-dark: #071A33;
+  --color-navy-soft: #1B3A5F;
+
+  --color-gold:      #C9A24B;
+  --color-gold-soft: #E6C878;
+
+  --color-merah:     #C0392B;
+  --color-merah-dark:#962D22;
+
+  --color-hijau:     #2E7D32;
+
+  /* ==== NETRAL ==== */
+  --color-bg:        #FFFFFF;
+  --color-bg-alt:    #F7F9FC;
+  --color-text:      #1A1A1A;
+  --color-text-soft: #4A5568;
+  --color-border:    #E2E8F0;
+
+  /* ==== SEMANTIK ==== */
+  --color-primary:   var(--color-navy);
+  --color-accent:    var(--color-gold);
+  --color-cta:       var(--color-merah);
+
+  /* ==== TIPOGRAFI ==== */
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --fs-xs:   0.75rem;
+  --fs-sm:   0.875rem;
+  --fs-base: 1rem;
+  --fs-lg:   1.125rem;
+  --fs-xl:   1.5rem;
+  --fs-2xl:  2rem;
+  --fs-3xl:  2.75rem;
+  --fs-4xl:  3.5rem;
+
+  /* ==== SPACING ==== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ==== LAYOUT ==== */
+  --container-max: 1200px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 1px 3px rgba(11,37,69,0.08);
+  --shadow-md: 0 4px 16px rgba(11,37,69,0.10);
+  --shadow-lg: 0 12px 32px rgba(11,37,69,0.14);
+
+  --transition: 200ms ease;
+}
