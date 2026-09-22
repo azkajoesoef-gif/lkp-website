@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cek Status Keanggotaan — Lingkar Peduli Anak Negeri</title>
+  <meta name="description" content="Cek status keanggotaan Anda di Lingkar Peduli Anak Negeri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <style>
+    .cek-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 30px rgba(11,37,69,0.10);
+      border-top: 5px solid var(--color-accent);
+    }
+    .cek-box h2 { margin-bottom: 8px; }
+    .cek-box > p { color: var(--color-text-soft); margin-bottom: 24px; }
+    .cek-input-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 500px) {
+      .cek-input-group { flex-direction: column; }
+      .cek-box { padding: 24px 20px; }
+    }
+    .cek-input-group input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 2px solid var(--color-border);
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: var(--font-body);
+    }
+    .cek-input-group input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
+    }
+    .cek-hint {
+      font-size: 12px;
+      color: var(--color-text-soft);
+      margin-top: 10px;
+    }
+    .cek-result { margin-top: 24px; }
+
+    .result-card {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      color: #fff;
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+      background: var(--color-accent);
+    }
+    .result-card__label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .result-card__name {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .result-card__nik {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .result-card__info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .result-card__info > div { font-size: 13px; }
+    .result-card__info dt {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .result-card__info dd {
+      color: #fff;
+      font-weight: 600;
+      margin: 0;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .status-badge--pending {
+      background: rgba(255,193,7,0.2);
+      color: #FFC107;
+      border: 1px solid rgba(255,193,7,0.4);
+    }
+    .status-badge--active {
+      background: rgba(46,125,50,0.25);
+      color: #66BB6A;
+      border: 1px solid rgba(46,125,50,0.5);
+    }
+    .status-badge--rejected {
+      background: rgba(192,57,43,0.25);
+      color: #EF5350;
+      border: 1px solid rgba(192,57,43,0.5);
+    }
+
+    .not-found {
+      background: #FFF3CD;
+      border: 2px solid #FFC107;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      color: #856404;
+    }
+    .not-found h4 { color: #856404; margin-bottom: 8px; }
+    .not-found p { margin: 0; font-size: 14px; }
+
+    .cek-loading {
+      text-align: center;
+      padding: 30px;
+      color: var(--color-text-soft);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <p class="page-header__eyebrow">Portal Anggota</p>
+      <h1>Cek Status Keanggotaan</h1>
+      <p class="page-header__lead">
+        Masukkan NIK atau nama lengkap Anda untuk melihat status pendaftaran.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="cek-box">
+        <h2>Cek Status Anda</h2>
+        <p>Masukkan NIK (16 digit) atau nama lengkap yang Anda daftarkan.</p>
+
+        <form id="cekForm">
+          <div class="cek-input-group">
+            <input type="text" id="query" placeholder="NIK atau Nama Lengkap" required>
+            <button type="submit" class="btn btn--primary" id="cekBtn">Cek Status</button>
+          </div>
+          <p class="cek-hint">Contoh: 3174012345678901 atau Budi Santoso</p>
+        </form>
+
+        <div class="cek-result" id="cekResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <script type="module">
+    import './assets/js/components.js';
+    import { cekStatus, formatTanggal, escapeHtml } from './assets/js/api.js';
+
+    const form = document.getElementById('cekForm');
+    const btn = document.getElementById('cekBtn');
+    const resultBox = document.getElementById('cekResult');
+
+    function badgeClass(status) {
+      const s = String(status || '').toLowerCase();
+      if (s.includes('aktif')) return 'status-badge--active';
+      if (s.includes('tolak') || s.includes('reject')) return 'status-badge--rejected';
+      return 'status-badge--pending';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = document.getElementById('query').value.trim();
+      if (!q) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Mencari...';
+      resultBox.innerHTML = '<div class="cek-loading">Mencari data...</div>';
+
+      try {
+        const res = await cekStatus(q);
+
+        if (!res.success || !res.data || !res.data.length) {
+          resultBox.innerHTML = `
+            <div class="not-found">
+              <h4>Data Tidak Ditemukan</h4>
+              <p>NIK atau nama tidak terdaftar. Pastikan penulisan sudah benar,
+                 atau daftar dulu di <a href="gabung.html" style="color:#856404;text-decoration:underline;">halaman pendaftaran</a>.</p>
+            </div>
+          `;
+          btn.disabled = false;
+          btn.textContent = 'Cek Status';
+          return;
+        }
+
+        resultBox.innerHTML = res.data.map(p => `
+          <div class="result-card" style="margin-bottom:16px;">
+            <div class="result-card__label">Anggota LKP</div>
+            <div class="result-card__name">${escapeHtml(p.nama)}</div>
+            <div class="result-card__nik">NIK: ${escapeHtml(p.nik || '-')}</div>
+            <dl class="result-card__info">
+              <div>
+                <dt>Provinsi</dt>
+                <dd>${escapeHtml(p.provinsi || '-')}</dd>
+              </div>
+              <div>
+                <dt>Kab/Kota</dt>
+                <dd>${escapeHtml(p.kabkota || '-')}</dd>
+              </div>
+              <div>
+                <dt>Tanggal Daftar</dt>
+                <dd>${formatTanggal(p.tanggal_daftar)}</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd><span class="status-badge ${badgeClass(p.status)}">${escapeHtml(p.status)}</span></dd>
+              </div>
+            </dl>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        resultBox.innerHTML = `<div class="not-found"><h4>Terjadi Kesalahan</h4><p>${escapeHtml(err.message)}</p></div>`;
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Cek Status';
+    });
+  </script>
+</body>
+</html>
