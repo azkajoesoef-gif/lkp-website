@@ -6,11 +6,476 @@
   <title>Struktur Organisasi — Lingkar Peduli Anak Negeri</title>
   <meta name="description" content="Susunan Dewan Pimpinan Pusat Lingkar Peduli Anak Negeri masa bakti 2025–2030.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
+
+  <style>
+    /* ============================================================
+       ORG CHART — Mind Map + Jalur Komando
+       ============================================================ */
+    .org-chart-section {
+      background: linear-gradient(180deg, var(--color-bg-alt) 0%, #fff 100%);
+      padding: var(--space-12) 0 var(--space-16);
+      overflow-x: auto;
+    }
+
+    .org-chart {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+    }
+
+    /* ===== LEVEL 0: TOP TIER (Advisor | Ketua Umum | Advisor) ===== */
+    .org-top {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: var(--space-8);
+      align-items: start;
+      margin-bottom: var(--space-4);
+    }
+
+    .org-advisor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-3);
+      padding-top: var(--space-4);
+    }
+
+    .org-advisor__label {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      color: var(--color-primary);
+      background: #fff;
+      border: 2px dashed var(--color-accent);
+      padding: 6px 16px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .org-advisor__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      width: 100%;
+      max-width: 240px;
+    }
+
+    /* ===== NODE CARDS ===== */
+    .org-node {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 16px rgba(11,37,69,0.08);
+      text-align: center;
+      transition: all 200ms ease;
+      border: 2px solid transparent;
+    }
+
+    .org-node:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(11,37,69,0.15);
+    }
+
+    /* Advisor mini card */
+    .org-node--advisor {
+      border: 2px dashed var(--color-accent);
+      background: #FFFDF7;
+      padding: 12px 16px;
+    }
+
+    .org-node--advisor:hover {
+      border-style: solid;
+      background: #fff;
+    }
+
+    .org-node--advisor .org-node__name {
+      font-size: var(--fs-sm);
+      margin-bottom: 4px;
+    }
+
+    .org-node--advisor .org-node__role {
+      font-size: var(--fs-xs);
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* Ketua Umum — prominent */
+    .org-node--ketua {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      border: 3px solid var(--color-accent);
+      padding: 28px 32px;
+      min-width: 280px;
+      box-shadow: 0 20px 60px rgba(11,37,69,0.25), 0 0 0 8px rgba(201,162,75,0.1);
+      position: relative;
+      animation: ketuaGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes ketuaGlow {
+      0%, 100% { box-shadow: 0 20px 60px rgba(11,37,69,0.25), 0 0 0 8px rgba(201,162,75,0.1); }
+      50%      { box-shadow: 0 20px 60px rgba(11,37,69,0.35), 0 0 0 12px rgba(201,162,75,0.18); }
+    }
+
+    .org-node--ketua:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .org-node--ketua .org-node__badge {
+      display: inline-block;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .org-node--ketua .org-node__avatar {
+      width: 72px;
+      height: 72px;
+      font-size: 1.75rem;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      margin: 0 auto 12px;
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.3);
+    }
+
+    .org-node--ketua .org-node__name {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-family: var(--font-heading);
+    }
+
+    .org-node--ketua .org-node__role {
+      color: var(--color-accent);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Avatar circle */
+    .org-node__avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 auto 10px;
+    }
+
+    .org-node__name {
+      font-family: var(--font-heading);
+      font-size: var(--fs-sm);
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .org-node__role {
+      font-size: var(--fs-xs);
+      color: var(--color-text-soft);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* ===== CONNECTOR LINES ===== */
+    .org-line-v {
+      width: 2px;
+      height: 32px;
+      background: var(--color-accent);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .org-line-v::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--color-accent);
+    }
+
+    /* Ketua Harian — slightly smaller than Ketua Umum */
+    .org-node--deputy {
+      background: #fff;
+      border: 2px solid var(--color-navy-soft);
+      padding: 20px 24px;
+      min-width: 240px;
+      box-shadow: 0 8px 24px rgba(11,37,69,0.10);
+    }
+
+    .org-node--deputy .org-node__avatar {
+      width: 60px;
+      height: 60px;
+      background: var(--color-navy-soft);
+      font-size: 1.15rem;
+    }
+
+    .org-node--deputy .org-node__name {
+      font-size: var(--fs-base);
+    }
+
+    /* ===== BRANCH (2 parallel children) ===== */
+    .org-branch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .org-branch__children {
+      display: flex;
+      gap: 80px;
+      padding-top: 40px;
+      position: relative;
+      justify-content: center;
+    }
+
+    /* Horizontal bar connecting the two children */
+    .org-branch__children::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 25%;
+      height: 2px;
+      background: var(--color-accent);
+    }
+
+    /* Vertical stems from horizontal bar to each child */
+    .org-branch__child {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 260px;
+    }
+
+    .org-branch__child::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: var(--color-accent);
+      transform: translateX(-50%);
+    }
+
+    /* Sekjen/Bendahara headers */
+    .org-branch__section {
+      text-align: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .org-branch__section h4 {
+      font-family: var(--font-heading);
+      font-size: var(--fs-sm);
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 6px 14px;
+      background: rgba(201,162,75,0.15);
+      border-radius: 999px;
+      display: inline-block;
+      margin: 0 0 var(--space-3);
+    }
+
+    .org-node--sekretaris {
+      border: 2px solid var(--color-navy-soft);
+      margin-bottom: var(--space-3);
+    }
+
+    .org-node--wakil {
+      border: 2px solid var(--color-border);
+      background: var(--color-bg-alt);
+      padding: 14px;
+    }
+
+    .org-node--wakil .org-node__avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--color-text-soft);
+      font-size: 0.9rem;
+    }
+
+    .org-node--wakil .org-node__name { font-size: var(--fs-xs); }
+    .org-node--wakil .org-node__role { font-size: 11px; }
+
+    /* Vertical connector inside sekjen/bendahara column */
+    .org-line-v-sm {
+      width: 2px;
+      height: 20px;
+      background: var(--color-border);
+      margin: 0 auto;
+    }
+
+    /* ===== DEPARTMENTS ===== */
+    .org-departments {
+      margin-top: var(--space-16);
+      padding-top: var(--space-12);
+      border-top: 2px dashed var(--color-border);
+      position: relative;
+    }
+
+    .org-departments::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    .org-departments__header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .org-departments__header h2 {
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .org-departments__header p {
+      color: var(--color-text-soft);
+      font-size: var(--fs-sm);
+      margin: 0;
+    }
+
+    .dept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .dept-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(11,37,69,0.06);
+      border: 2px solid transparent;
+      transition: all 200ms ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dept-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 300ms ease;
+    }
+
+    .dept-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(11,37,69,0.15);
+      border-color: var(--color-accent);
+    }
+
+    .dept-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .dept-card__icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .dept-card__name {
+      font-family: var(--font-heading);
+      font-size: var(--fs-sm);
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: var(--space-1);
+      line-height: 1.3;
+    }
+
+    .dept-card__ketua {
+      font-size: var(--fs-xs);
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 900px) {
+      .org-top {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      .org-advisor__list {
+        flex-direction: row;
+        max-width: 100%;
+        justify-content: center;
+      }
+
+      .org-advisor__list .org-node {
+        flex: 1;
+        max-width: 220px;
+      }
+
+      .org-branch__children {
+        flex-direction: column;
+        gap: var(--space-8);
+        padding-top: 20px;
+      }
+
+      .org-branch__children::before {
+        display: none;
+      }
+
+      .org-branch__child::before {
+        top: -20px;
+        height: 20px;
+      }
+
+      .dept-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+    }
+
+    /* Loading state */
+    .org-loading {
+      text-align: center;
+      padding: var(--space-16);
+      color: var(--color-text-soft);
+    }
+  </style>
 </head>
 <body>
 
@@ -25,10 +490,10 @@
     </div>
   </header>
 
-  <section class="section">
-    <div class="container" id="strukturContainer">
-      <div style="text-align:center;padding:3rem;color:var(--color-text-soft);">
-        Memuat data pengurus...
+  <section class="org-chart-section">
+    <div class="container">
+      <div id="orgChart" class="org-chart">
+        <div class="org-loading">Memuat struktur organisasi...</div>
       </div>
     </div>
   </section>
@@ -42,35 +507,57 @@
         .slice(0, 2).map(w => w[0].toUpperCase()).join('');
     }
 
-    function renderPersonCard(p, featured = false) {
+    // ===== ICON MAP untuk departemen =====
+    const DEPT_ICONS = {
+      'Organisasi dan SDM': '👥',
+      'Politik, Ideologi dan Hubungan Pemerintahan': '🏛️',
+      'Hukum dan HAM': '⚖️',
+      'Pemberdayaan Perempuan dan Perlindungan Anak': '👨‍👩‍👧',
+      'Lingkungan Hidup dan Penanggulangan Bencana': '🌿',
+      'UMKM, Ekonomi Kreatif dan Digital': '💼',
+      'Komunikasi, Publikasi dan Pelayanan Publik': '📢',
+      'Kesehatan dan Sosial': '⚕️',
+      'Seni Budaya dan Pariwisata': '🎨',
+      'Pertanian Pangan & Energi': '🌾',
+    };
+
+    function nodeHTML(person, variant = 'default') {
+      if (!person) return '';
+      const avatarClass = variant === 'ketua' ? 'org-node__avatar org-node__avatar--lg' : 'org-node__avatar';
+      const badge = variant === 'ketua' ? '<span class="org-node__badge">Ketua Umum</span>' : '';
       return `
-        <article class="person-card${featured ? ' person-card--featured' : ''}">
-          <div class="person-card__photo${featured ? ' person-card__photo--lg' : ''}">
-            ${getInitials(p.nama)}
-          </div>
-          <h3 class="person-card__name">${escapeHtml(p.nama)}</h3>
-          <p class="person-card__role">${escapeHtml(p.jabatan)}</p>
-        </article>
+        <div class="org-node org-node--${variant}">
+          ${badge}
+          <div class="${avatarClass}">${getInitials(person.nama)}</div>
+          <p class="org-node__name">${escapeHtml(person.nama)}</p>
+          <p class="org-node__role">${escapeHtml(person.jabatan)}</p>
+        </div>
       `;
     }
 
-    function renderSection(title, subtitle, people) {
-      if (!people.length) return '';
+    function advisorCardHTML(person) {
+      if (!person) return '';
       return `
-        <section class="struktur-section">
-          <header class="struktur-section__header">
-            <h2>${title}</h2>
-            ${subtitle ? `<p>${subtitle}</p>` : ''}
-          </header>
-          <div class="struktur-grid">
-            ${people.map(p => renderPersonCard(p)).join('')}
-          </div>
-        </section>
+        <div class="org-node org-node--advisor">
+          <p class="org-node__name">${escapeHtml(person.nama)}</p>
+          <p class="org-node__role">${escapeHtml(person.jabatan)}</p>
+        </div>
+      `;
+    }
+
+    function deptCardHTML(person) {
+      const icon = DEPT_ICONS[person.jabatan] || '📋';
+      return `
+        <div class="dept-card">
+          <span class="dept-card__icon">${icon}</span>
+          <p class="dept-card__name">${escapeHtml(person.jabatan)}</p>
+          <p class="dept-card__ketua">${escapeHtml(person.nama)}</p>
+        </div>
       `;
     }
 
     async function renderStruktur() {
-      const container = document.getElementById('strukturContainer');
+      const container = document.getElementById('orgChart');
 
       try {
         const all = await fetchPengurus();
@@ -81,22 +568,90 @@
         const harian     = aktif.filter(p => p.tingkat === 'Harian');
         const departemen = aktif.filter(p => p.tingkat === 'Departemen');
 
-        const ketua = harian.find(p => p.jabatan === 'Ketua Umum');
-        const harianLain = harian.filter(p => p.jabatan !== 'Ketua Umum');
+        const ketuaUmum     = harian.find(p => p.jabatan === 'Ketua Umum');
+        const ketuaHarian   = harian.find(p => p.jabatan === 'Ketua Harian');
+        const sekjen        = harian.find(p => p.jabatan === 'Sekretaris Jenderal');
+        const wakilSek      = harian.find(p => p.jabatan === 'Wakil Sekretaris');
+        const bendahara     = harian.find(p => p.jabatan === 'Bendahara Umum');
+        const wakilBend     = harian.find(p => p.jabatan === 'Wakil Bendahara');
 
         container.innerHTML = `
-          ${ketua ? `<div class="ketua-umum">${renderPersonCard(ketua, true)}</div>` : ''}
-          ${renderSection('Dewan Pengawas', '', pengawas)}
-          ${renderSection('Dewan Penasehat', '', penasehat)}
-          ${renderSection('Pengurus Harian', '', harianLain)}
-          ${renderSection('Departemen-Departemen', 'Bidang kerja DPP LKP', departemen)}
+          <!-- ===== TOP TIER ===== -->
+          <div class="org-top">
+            <!-- Dewan Pengawas (kiri) -->
+            <div class="org-advisor">
+              <div class="org-advisor__label">Dewan Pengawas</div>
+              <div class="org-advisor__list">
+                ${pengawas.map(p => advisorCardHTML(p)).join('')}
+              </div>
+            </div>
+
+            <!-- Ketua Umum (tengah) -->
+            <div>${nodeHTML(ketuaUmum, 'ketua')}</div>
+
+            <!-- Dewan Penasehat (kanan) -->
+            <div class="org-advisor">
+              <div class="org-advisor__label">Dewan Penasehat</div>
+              <div class="org-advisor__list">
+                ${penasehat.map(p => advisorCardHTML(p)).join('')}
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== JALUR KOMANDO ===== -->
+          <!-- Garis turun dari Ketua Umum -->
+          <div class="org-line-v"></div>
+
+          <!-- Ketua Harian -->
+          <div style="display:flex;justify-content:center;">
+            ${nodeHTML(ketuaHarian, 'deputy')}
+          </div>
+
+          <!-- Garis turun dari Ketua Harian ke cabang -->
+          <div class="org-line-v"></div>
+
+          <!-- Cabang: Sekjen (kiri) & Bendahara (kanan) -->
+          <div class="org-branch">
+            <div class="org-branch__children">
+              <!-- Sekjen + Wakil -->
+              <div class="org-branch__child">
+                <div class="org-branch__section">
+                  <h4>Sekretariat</h4>
+                </div>
+                ${nodeHTML(sekjen, 'sekretaris')}
+                <div class="org-line-v-sm"></div>
+                ${nodeHTML(wakilSek, 'wakil')}
+              </div>
+
+              <!-- Bendahara + Wakil -->
+              <div class="org-branch__child">
+                <div class="org-branch__section">
+                  <h4>Bendahara</h4>
+                </div>
+                ${nodeHTML(bendahara, 'sekretaris')}
+                <div class="org-line-v-sm"></div>
+                ${nodeHTML(wakilBend, 'wakil')}
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== DEPARTEMEN ===== -->
+          <div class="org-departments">
+            <div class="org-departments__header">
+              <h2>Departemen-Departemen</h2>
+              <p>${departemen.length} bidang kerja di bawah koordinasi DPP LKP</p>
+            </div>
+            <div class="dept-grid">
+              ${departemen.map(p => deptCardHTML(p)).join('')}
+            </div>
+          </div>
         `;
 
       } catch (err) {
         container.innerHTML = `
-          <div style="text-align:center;padding:3rem;">
+          <div class="org-loading">
             <h3>Gagal memuat data pengurus</h3>
-            <p style="color:var(--color-text-soft);">${escapeHtml(err.message)}</p>
+            <p>${escapeHtml(err.message)}</p>
           </div>
         `;
       }
