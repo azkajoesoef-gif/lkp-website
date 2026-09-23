@@ -5,82 +5,251 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Berita — Lingkar Peduli Anak Negeri</title>
   <meta name="description" content="Berita, kegiatan, dan rilis pers Lingkar Peduli Anak Negeri.">
+  <link rel="canonical" href="https://lingkarpedulianaknegeri.id/berita.html">
+  <meta property="og:url" content="https://lingkarpedulianaknegeri.id/berita.html">
+  <link rel="icon" type="image/png" href="assets/img/logo-lkp.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/variables.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
-
   <style>
-    .berita-grid {
+    /* Toolbar: Search + Filter */
+    .bt-toolbar {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: var(--space-6);
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      margin-bottom: 32px;
+      align-items: center;
     }
-    .berita-card {
+    @media (max-width: 700px) {
+      .bt-toolbar { grid-template-columns: 1fr; }
+    }
+    .bt-search {
+      position: relative;
+    }
+    .bt-search input {
+      width: 100%;
+      padding: 14px 48px 14px 48px;
+      border: 2px solid var(--color-border);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: var(--font-body);
       background: #fff;
-      border-radius: var(--radius-md);
+      transition: all 200ms ease;
+    }
+    .bt-search input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.12);
+    }
+    .bt-search__icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-soft);
+      font-size: 17px;
+      pointer-events: none;
+    }
+    .bt-search__clear {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--color-bg-alt);
+      border: none;
+      color: var(--color-text-soft);
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 180ms ease;
+    }
+    .bt-search__clear:hover {
+      background: var(--color-cta);
+      color: #fff;
+    }
+    .bt-search.has-text .bt-search__clear { display: flex; }
+
+    .bt-cats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .bt-cat {
+      background: #fff;
+      border: 2px solid var(--color-border);
+      color: var(--color-text-soft);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 180ms ease;
+      white-space: nowrap;
+    }
+    .bt-cat:hover {
+      border-color: var(--color-accent);
+      color: var(--color-primary);
+    }
+    .bt-cat.is-active {
+      background: var(--color-navy);
+      border-color: var(--color-navy);
+      color: #fff;
+    }
+
+    /* Result info */
+    .bt-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--color-text-soft);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .bt-info strong { color: var(--color-primary); font-weight: 700; }
+
+    /* Grid berita */
+    .bt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .bt-card {
+      background: #fff;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: all var(--transition);
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
+      transition: all 260ms cubic-bezier(.4,0,.2,1);
       display: flex;
       flex-direction: column;
       text-decoration: none;
       color: inherit;
+      position: relative;
     }
-    .berita-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
+    .bt-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(11,37,69,0.14);
     }
-    .berita-card__img {
+    .bt-card__img {
       width: 100%;
-      height: 200px;
+      height: 190px;
       object-fit: cover;
       background: var(--color-bg-alt);
+      transition: transform 400ms ease;
     }
-    .berita-card__body {
-      padding: var(--space-6);
+    .bt-card:hover .bt-card__img { transform: scale(1.06); }
+    .bt-card__img-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .bt-card__body {
+      padding: 22px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
-    .berita-card__meta {
+    .bt-card__meta {
       display: flex;
       align-items: center;
-      gap: var(--space-3);
-      margin-bottom: var(--space-3);
-      font-size: var(--fs-xs);
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 11.5px;
       color: var(--color-text-soft);
+      flex-wrap: wrap;
     }
-    .berita-card__kategori {
-      background: var(--color-bg-alt);
+    .bt-card__kat {
+      background: rgba(201,162,75,0.15);
       color: var(--color-primary);
-      padding: 2px 10px;
+      padding: 3px 10px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
-    .berita-card__judul {
-      font-size: var(--fs-lg);
-      margin-bottom: var(--space-3);
-      line-height: 1.3;
+    .bt-card__judul {
+      font-size: 16px;
+      margin: 0 0 10px;
+      line-height: 1.35;
       color: var(--color-primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
     }
-    .berita-card__ringkasan {
+    .bt-card__judul mark {
+      background: rgba(201,162,75,0.35);
+      color: var(--color-primary);
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+    .bt-card__ringkas {
       color: var(--color-text-soft);
-      font-size: var(--fs-sm);
+      font-size: 13px;
+      line-height: 1.6;
       flex: 1;
-      margin-bottom: var(--space-4);
+      margin: 0 0 14px;
     }
-    .berita-card__link {
+    .bt-card__cta {
       color: var(--color-cta);
-      font-weight: 600;
-      font-size: var(--fs-sm);
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
-    .loading, .empty-state {
+
+    /* Empty state */
+    .bt-empty {
       text-align: center;
-      padding: var(--space-16) var(--space-6);
-      color: var(--color-text-soft);
+      padding: 80px 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
+      grid-column: 1/-1;
+    }
+    .bt-empty__icon {
+      font-size: 56px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+    .bt-empty h3 { color: var(--color-primary); margin-bottom: 8px; }
+    .bt-empty p { color: var(--color-text-soft); font-size: 14px; margin: 0; }
+
+    /* Skeleton loading */
+    .bt-skeleton {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
+    }
+    .bt-skeleton__img {
+      height: 190px;
+      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    .bt-skeleton__body { padding: 22px; }
+    .bt-skeleton__line {
+      height: 12px;
+      background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .bt-skeleton__line--short { width: 60%; }
+    .bt-skeleton__line--title { height: 18px; width: 90%; margin-bottom: 14px; }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
   </style>
 </head>
@@ -98,9 +267,42 @@
 
   <section class="section">
     <div class="container">
-      <div id="beritaContainer" class="berita-grid">
-        <div class="loading" style="grid-column:1/-1;">Memuat berita...</div>
+
+      <!-- TOOLBAR -->
+      <div class="bt-toolbar">
+        <div class="bt-search" id="searchWrap">
+          <span class="bt-search__icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Cari berita... (judul, ringkasan, atau kategori)">
+          <button class="bt-search__clear" id="searchClear" aria-label="Hapus pencarian">✕</button>
+        </div>
+        <div class="bt-cats" id="catFilter"></div>
       </div>
+
+      <!-- INFO -->
+      <div class="bt-info" id="resultInfo"></div>
+
+      <!-- GRID -->
+      <div class="bt-grid" id="beritaGrid">
+        <div class="bt-skeleton"><div class="bt-skeleton__img"></div><div class="bt-skeleton__body">
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--title"></div>
+          <div class="bt-skeleton__line"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+        </div></div>
+        <div class="bt-skeleton"><div class="bt-skeleton__img"></div><div class="bt-skeleton__body">
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--title"></div>
+          <div class="bt-skeleton__line"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+        </div></div>
+        <div class="bt-skeleton"><div class="bt-skeleton__img"></div><div class="bt-skeleton__body">
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--title"></div>
+          <div class="bt-skeleton__line"></div>
+          <div class="bt-skeleton__line bt-skeleton__line--short"></div>
+        </div></div>
+      </div>
+
     </div>
   </section>
 
@@ -108,49 +310,127 @@
     import './assets/js/components.js';
     import { fetchBerita, formatTanggal, escapeHtml } from './assets/js/api.js';
 
-    const container = document.getElementById('beritaContainer');
+    let allBerita = [];
+    let activeCat = 'Semua';
+    let searchQuery = '';
 
-    async function renderBerita() {
-      try {
-        const berita = await fetchBerita();
+    const grid = document.getElementById('beritaGrid');
+    const searchInput = document.getElementById('searchInput');
+    const searchWrap = document.getElementById('searchWrap');
+    const searchClear = document.getElementById('searchClear');
+    const catFilter = document.getElementById('catFilter');
+    const resultInfo = document.getElementById('resultInfo');
 
-        if (!berita.length) {
-          container.innerHTML = `
-            <div class="empty-state" style="grid-column:1/-1;">
-              <h3>Belum ada berita</h3>
-              <p>Berita akan muncul di sini setelah ditambahkan oleh pengurus.</p>
-            </div>
-          `;
-          return;
-        }
-
-        container.innerHTML = berita.map(b => `
-          <a href="berita-detail.html?slug=${encodeURIComponent(b.slug)}" class="berita-card">
-            <img class="berita-card__img" src="${escapeHtml(b.thumbnail)}" alt="${escapeHtml(b.judul)}" loading="lazy"
-                 onerror="this.src='https://picsum.photos/seed/fallback/800x500'">
-            <div class="berita-card__body">
-              <div class="berita-card__meta">
-                <span class="berita-card__kategori">${escapeHtml(b.kategori || 'Umum')}</span>
-                <span>${formatTanggal(b.tanggal)}</span>
-              </div>
-              <h3 class="berita-card__judul">${escapeHtml(b.judul)}</h3>
-              <p class="berita-card__ringkasan">${escapeHtml(b.ringkasan || '')}</p>
-              <span class="berita-card__link">Baca selengkapnya →</span>
-            </div>
-          </a>
-        `).join('');
-
-      } catch (err) {
-        container.innerHTML = `
-          <div class="empty-state" style="grid-column:1/-1;">
-            <h3>Gagal memuat berita</h3>
-            <p>${escapeHtml(err.message)}</p>
-          </div>
-        `;
-      }
+    // Highlight keyword di text
+    function highlight(text, q) {
+      if (!q) return escapeHtml(text);
+      const safe = escapeHtml(text);
+      const regex = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return safe.replace(regex, '<mark>$1</mark>');
     }
 
-    document.addEventListener('DOMContentLoaded', renderBerita);
+    function renderCats() {
+      const cats = ['Semua', ...new Set(allBerita.map(b => b.kategori).filter(Boolean))];
+      catFilter.innerHTML = cats.map(c => `
+        <button class="bt-cat ${c === activeCat ? 'is-active' : ''}" data-cat="${escapeHtml(c)}">
+          ${escapeHtml(c)}
+        </button>
+      `).join('');
+      catFilter.querySelectorAll('.bt-cat').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeCat = btn.dataset.cat;
+          renderCats();
+          renderGrid();
+        });
+      });
+    }
+
+    function filterData() {
+      let data = [...allBerita];
+      if (activeCat !== 'Semua') {
+        data = data.filter(b => b.kategori === activeCat);
+      }
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        data = data.filter(b =>
+          String(b.judul || '').toLowerCase().includes(q) ||
+          String(b.ringkasan || '').toLowerCase().includes(q) ||
+          String(b.kategori || '').toLowerCase().includes(q)
+        );
+      }
+      return data;
+    }
+
+    function renderGrid() {
+      const data = filterData();
+
+      // Info
+      const total = allBerita.length;
+      const shown = data.length;
+      if (shown === 0) {
+        resultInfo.innerHTML = `<span>Tidak ada berita yang cocok</span>`;
+      } else if (shown === total && activeCat === 'Semua' && !searchQuery) {
+        resultInfo.innerHTML = `<span>Menampilkan <strong>${shown}</strong> berita</span>`;
+      } else {
+        resultInfo.innerHTML = `<span>Menampilkan <strong>${shown}</strong> dari <strong>${total}</strong> berita</span>`;
+      }
+
+      if (!data.length) {
+        grid.innerHTML = `
+          <div class="bt-empty">
+            <div class="bt-empty__icon">🔍</div>
+            <h3>Tidak Ada Hasil</h3>
+            <p>Coba ubah kata kunci atau pilih kategori lain.</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = data.map(b => `
+        <a href="berita-detail.html?slug=${encodeURIComponent(b.slug)}" class="bt-card">
+          <div class="bt-card__img-wrap">
+            <img class="bt-card__img" src="${escapeHtml(b.thumbnail)}" alt="${escapeHtml(b.judul)}" loading="lazy"
+                 onerror="this.src='https://placehold.co/800x500/0B2545/C9A24B?text=Berita'">
+          </div>
+          <div class="bt-card__body">
+            <div class="bt-card__meta">
+              <span class="bt-card__kat">${escapeHtml(b.kategori || 'Umum')}</span>
+              <span>${formatTanggal(b.tanggal)}</span>
+            </div>
+            <h3 class="bt-card__judul">${highlight(b.judul, searchQuery)}</h3>
+            <p class="bt-card__ringkas">${highlight((b.ringkasan || '').substring(0, 140), searchQuery)}${(b.ringkasan || '').length > 140 ? '...' : ''}</p>
+            <span class="bt-card__cta">Baca selengkapnya →</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Search dengan debounce
+    let searchTimer;
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      searchWrap.classList.toggle('has-text', !!searchQuery);
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(renderGrid, 200);
+    });
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      searchWrap.classList.remove('has-text');
+      renderGrid();
+      searchInput.focus();
+    });
+
+    async function init() {
+      try {
+        allBerita = await fetchBerita();
+        renderCats();
+        renderGrid();
+      } catch (err) {
+        grid.innerHTML = `<div class="bt-empty"><h3>Gagal memuat</h3><p>${escapeHtml(err.message)}</p></div>`;
+      }
+    }
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
