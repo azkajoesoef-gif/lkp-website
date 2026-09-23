@@ -42,7 +42,6 @@ const NAV_ITEMS = [
 
 export function renderNavbar() {
   const current = location.pathname.split('/').pop() || 'index.html';
-
   const isActive = (href) => current === href.split('#')[0];
 
   const renderItem = (item) => {
@@ -97,18 +96,15 @@ export function renderNavbar() {
     toggle.textContent = open ? '✕' : '☰';
   });
 
-  // Mobile: accordion dropdown
   document.querySelectorAll('[data-dropdown] > .navbar__link').forEach(link => {
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 1024) {
         e.preventDefault();
-        const parent = link.parentElement;
-        parent.classList.toggle('is-open');
+        link.parentElement.classList.toggle('is-open');
       }
     });
   });
 
-  // Close menu on link click (mobile)
   menu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       if (window.innerWidth <= 1024 && !a.classList.contains('navbar__link')) {
@@ -161,12 +157,8 @@ export function renderFooter() {
         </div>
       </div>
       <style>
-        @media (max-width: 900px) {
-          .footer-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 500px) {
-          .footer-grid { grid-template-columns: 1fr !important; }
-        }
+        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr !important; } }
       </style>
     </footer>
   `;
