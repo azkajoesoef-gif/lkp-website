@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://lingkarpedulianaknegeri.id/">
   <meta property="og:url" content="https://lingkarpedulianaknegeri.id/">
   <meta property="og:type" content="website">
-  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) — Ormas penggerak kepedulian terhadap NKRI. Program sosial, edukasi, ekonomi, dan bantuan hukum untuk masyarakat Indonesia.">
+  <meta name="description" content="Lingkar Peduli Anak Negeri (LKP) — Ormas penggerak kepedulian terhadap NKRI.">
   <meta property="og:title" content="Lingkar Peduli Anak Negeri">
   <meta property="og:description" content="Penggerak terdepan kepedulian terhadap NKRI.">
   <meta property="og:image" content="https://lingkarpedulianaknegeri.id/assets/img/logo-lkp.png">
@@ -19,14 +19,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
   <style>
-    .navbar__brand-text {
-      color: #fff;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.3px;
-      white-space: nowrap;
-    }
+    .navbar__brand-text { color: #fff; font-family: var(--font-heading); font-weight: 700; font-size: 14px; letter-spacing: 0.3px; white-space: nowrap; }
 
     /* ===== HERO ===== */
     .hero-new {
@@ -34,689 +27,321 @@
         radial-gradient(circle at 20% 20%, rgba(201,162,75,0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(192,57,43,0.15) 0%, transparent 50%),
         linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
-      color: #fff;
-      padding: 100px 0 120px;
-      position: relative;
-      overflow: hidden;
+      color: #fff; padding: 100px 0 120px; position: relative; overflow: hidden;
     }
     .hero-new::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
     }
-    .hero-new__grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    @media (max-width: 900px) {
-      .hero-new__grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-new { padding: 60px 0 80px; }
-    }
+    .hero-new__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+    @media (max-width: 900px) { .hero-new__grid { grid-template-columns: 1fr; text-align: center; } .hero-new { padding: 60px 0 80px; } }
     .hero-new__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(201,162,75,0.15);
-      border: 1px solid rgba(201,162,75,0.3);
-      color: var(--color-accent);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 999px;
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,162,75,0.15); border: 1px solid rgba(201,162,75,0.3);
+      color: var(--color-accent); font-size: 12px; font-weight: 600;
+      padding: 6px 16px; border-radius: 999px; margin-bottom: 20px; letter-spacing: 0.5px;
     }
-    .hero-new__badge::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .hero-new h1 {
-      color: #fff;
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.15;
-      margin-bottom: 20px;
-      font-weight: 800;
-    }
-    .hero-new h1 span {
-      color: var(--color-accent);
-      position: relative;
-      display: inline-block;
-    }
-    .hero-new h1 span::after {
-      content: '';
-      position: absolute;
-      bottom: 6px; left: 0; right: 0;
-      height: 8px;
-      background: rgba(192,57,43,0.4);
-      z-index: -1;
-    }
-    .hero-new__lead {
-      color: rgba(255,255,255,0.85);
-      font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 560px;
-    }
+    .hero-new__badge::before { content: ''; width: 6px; height: 6px; background: var(--color-accent); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero-new h1 { color: #fff; font-size: clamp(32px, 5vw, 52px); line-height: 1.15; margin-bottom: 20px; font-weight: 800; }
+    .hero-new h1 span { color: var(--color-accent); position: relative; display: inline-block; }
+    .hero-new h1 span::after { content: ''; position: absolute; bottom: 6px; left: 0; right: 0; height: 8px; background: rgba(192,57,43,0.4); z-index: -1; }
+    .hero-new__lead { color: rgba(255,255,255,0.85); font-size: 17px; line-height: 1.7; margin-bottom: 32px; max-width: 560px; }
     @media (max-width: 900px) { .hero-new__lead { margin: 0 auto 32px; } }
     .hero-new__actions { display: flex; gap: 12px; flex-wrap: wrap; }
     @media (max-width: 900px) { .hero-new__actions { justify-content: center; } }
-
     .hero-new__visual { display: flex; justify-content: center; align-items: center; position: relative; }
-    .hero-new__logo-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-new__logo-wrap::before,
-    .hero-new__logo-wrap::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(201,162,75,0.3);
-      animation: ripple 4s ease-out infinite;
-    }
+    .hero-new__logo-wrap { position: relative; width: 100%; max-width: 420px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+    .hero-new__logo-wrap::before, .hero-new__logo-wrap::after { content: ''; position: absolute; border-radius: 50%; border: 1px solid rgba(201,162,75,0.3); animation: ripple 4s ease-out infinite; }
     .hero-new__logo-wrap::before { inset: 10%; }
     .hero-new__logo-wrap::after { inset: 0; animation-delay: 1s; }
-    @keyframes ripple {
-      0% { transform: scale(0.9); opacity: 0.6; }
-      100% { transform: scale(1.2); opacity: 0; }
-    }
-    .hero-new__logo-wrap img {
-      max-width: 85%;
-      position: relative;
-      z-index: 1;
-      filter:
-        drop-shadow(0 24px 50px rgba(0,0,0,0.5))
-        drop-shadow(0 0 60px rgba(201,162,75,0.35));
-      animation: logoFloat 6s ease-in-out infinite;
-    }
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    @keyframes ripple { 0% { transform: scale(0.9); opacity: 0.6; } 100% { transform: scale(1.2); opacity: 0; } }
+    .hero-new__logo-wrap img { max-width: 85%; position: relative; z-index: 1; filter: drop-shadow(0 24px 50px rgba(0,0,0,0.5)) drop-shadow(0 0 60px rgba(201,162,75,0.35)); animation: logoFloat 6s ease-in-out infinite; }
+    @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
     /* ===== STATS BAND ===== */
     .stats-band {
-      background: #fff;
-      margin-top: -60px;
-      position: relative;
-      z-index: 2;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(11,37,69,0.15);
-      padding: 40px 20px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
+      background: #fff; margin-top: -60px; position: relative; z-index: 2;
+      border-radius: 20px; box-shadow: 0 20px 60px rgba(11,37,69,0.15);
+      padding: 40px 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+      max-width: 1000px; margin-left: auto; margin-right: auto;
     }
-    @media (max-width: 700px) {
-      .stats-band { grid-template-columns: 1fr 1fr; padding: 30px 16px; }
-    }
+    @media (max-width: 700px) { .stats-band { grid-template-columns: 1fr 1fr; padding: 30px 16px; } }
     .stat-item { text-align: center; padding: 0 10px; }
-    .stat-item__num {
-      font-family: var(--font-heading);
-      font-size: 40px;
-      font-weight: 800;
-      color: var(--color-navy);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
+    .stat-item__num { font-family: var(--font-heading); font-size: 40px; font-weight: 800; color: var(--color-navy); line-height: 1; margin-bottom: 8px; }
     .stat-item__num span { color: var(--color-accent); }
-    .stat-item__label {
-      font-size: 12.5px;
-      color: var(--color-text-soft);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
+    .stat-item__label { font-size: 12.5px; color: var(--color-text-soft); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
-    /* ===== SECTION GENERAL ===== */
+    /* ===== SECTION ===== */
     .sec { padding: 72px 0; }
     .sec--alt { background: var(--color-bg-alt); }
     .sec-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
-    .sec-head__eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--color-accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
+    .sec-head__eyebrow { display: inline-block; font-size: 12px; font-weight: 700; color: var(--color-accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
     .sec-head h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 12px; color: var(--color-primary); }
     .sec-head p { color: var(--color-text-soft); font-size: 15px; line-height: 1.6; margin: 0; }
 
-    /* ===== STRUKTUR DPP (STATIS) ===== */
-    .dpp-block { margin-bottom: 64px; }
+    /* ============================================================
+       STRUKTUR DPP — MIND MAP
+       ============================================================ */
+    .dpp-block { margin-bottom: 72px; }
     .dpp-block:last-child { margin-bottom: 0; }
-    .dpp-block__head {
-      text-align: center;
-      margin-bottom: 32px;
-      position: relative;
-      padding-bottom: 16px;
-    }
-    .dpp-block__head::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: var(--color-accent);
-      border-radius: 2px;
-    }
-    .dpp-block__head h3 {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      color: var(--color-primary);
-      margin: 0 0 6px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 800;
-    }
+    .dpp-block__head { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 18px; }
+    .dpp-block__head::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--color-accent); border-radius: 2px; }
+    .dpp-block__head h3 { font-family: var(--font-heading); font-size: 20px; color: var(--color-primary); margin: 0 0 6px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
     .dpp-block__head p { color: var(--color-text-soft); font-size: 13px; margin: 0; }
 
-    /* Dewan Pengawas — 1 kartu featured */
-    .dpp-pengawas-wrap { max-width: 560px; margin: 0 auto; }
-    .dpp-card-featured {
-      background: #fff;
-      border-radius: 20px;
-      padding: 28px 32px;
-      box-shadow: 0 12px 40px rgba(11,37,69,0.10);
-      border-top: 5px solid var(--color-accent);
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      transition: all 300ms ease;
-    }
-    @media (max-width: 600px) {
-      .dpp-card-featured { flex-direction: column; text-align: center; padding: 24px; }
-    }
-    .dpp-card-featured:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(11,37,69,0.15);
-    }
-    .dpp-photo-xl {
-      width: 130px; height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px rgba(201,162,75,0.2);
-      background: var(--color-bg-alt);
-    }
-    .dpp-initial-xl {
-      width: 130px; height: 130px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 40px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px rgba(201,162,75,0.2);
-    }
-    .dpp-card-featured__text { flex: 1; min-width: 0; }
-    .dpp-card-featured__name {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0 0 8px;
-      line-height: 1.3;
-    }
-    .dpp-card-featured__role {
-      display: inline-block;
-      background: rgba(201,162,75,0.15);
-      color: var(--color-accent);
-      padding: 5px 16px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-    }
-
-    /* Dewan Penasehat — 3 kartu horizontal */
-    .dpp-penasehat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    @media (max-width: 700px) { .dpp-penasehat-grid { grid-template-columns: 1fr; max-width: 400px; } }
-    .dpp-card-mini {
+    /* Base card (untuk semua) */
+    .dpp-card {
       background: #fff;
       border-radius: 16px;
-      padding: 24px 16px;
+      padding: 22px 18px;
       text-align: center;
-      box-shadow: 0 4px 16px rgba(11,37,69,0.06);
-      border-top: 3px solid var(--color-navy-soft);
-      transition: all 250ms ease;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      transition: all 260ms cubic-bezier(.4,0,.2,1);
+      position: relative;
+      width: 100%;
     }
-    .dpp-card-mini:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(11,37,69,0.12);
-      border-top-color: var(--color-accent);
-    }
-    .dpp-initial-sm {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--color-navy-soft);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 20px;
-    }
-    .dpp-card-mini__name {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0;
-      line-height: 1.35;
-    }
-    .dpp-card-mini__role { font-size: 11px; color: var(--color-text-soft); margin: 0; letter-spacing: 0.3px; }
+    .dpp-card:hover { transform: translateY(-5px); }
 
-    /* BPH */
-    .dpp-bph {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    .dpp-hero-card {
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
-      border: 3px solid var(--color-accent);
-      border-radius: 20px;
-      padding: 28px 40px;
-      display: flex;
-      align-items: center;
+    /* Photo styles */
+    .dpp-photo-xl { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(201,162,75,0.2); background: var(--color-bg-alt); }
+    .dpp-photo-lg { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(201,162,75,0.3); background: var(--color-bg-alt); }
+    .dpp-photo-md { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(201,162,75,0.25); background: var(--color-bg-alt); }
+    .dpp-photo-vice { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(148,163,184,0.25); background: var(--color-bg-alt); }
+
+    .dpp-initial-xl { width: 130px; height: 130px; border-radius: 50%; background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 40px; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(201,162,75,0.2); }
+    .dpp-initial-lg { width: 100px; height: 100px; border-radius: 50%; background: var(--color-accent); color: var(--color-navy); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 30px; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(201,162,75,0.3); }
+    .dpp-initial-md { width: 84px; height: 84px; border-radius: 50%; background: var(--color-navy-soft); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 24px; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(201,162,75,0.25); }
+    .dpp-initial-vice { width: 56px; height: 56px; border-radius: 50%; background: #94A3B8; color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px; flex-shrink: 0; }
+
+    /* Card name & role */
+    .dpp-name { font-family: var(--font-heading); font-weight: 700; color: var(--color-primary); margin: 0; line-height: 1.35; }
+    .dpp-role { font-weight: 700; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; }
+    .dpp-tier { display: inline-block; font-size: 9px; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 4px; }
+    .dpp-tier--lead { background: var(--color-accent); color: var(--color-navy); }
+    .dpp-tier--exec { background: rgba(201,162,75,0.2); color: var(--color-accent); }
+    .dpp-tier--sup { background: #E2E8F0; color: #64748B; }
+
+    /* Dewan Pengawas — featured */
+    .dpp-pengawas-wrap { max-width: 560px; margin: 0 auto; }
+    .dpp-card--featured {
+      background: linear-gradient(180deg, #FFFDF7 0%, #fff 100%);
+      border: 2px solid rgba(201,162,75,0.3);
+      box-shadow: 0 12px 40px rgba(11,37,69,0.10);
+      padding: 28px 32px;
+      flex-direction: row;
       gap: 24px;
-      box-shadow: 0 16px 40px rgba(11,37,69,0.25), 0 0 0 6px rgba(201,162,75,0.08);
-      min-width: 420px;
+      text-align: left;
     }
-    @media (max-width: 600px) {
-      .dpp-hero-card { flex-direction: column; text-align: center; min-width: 0; padding: 24px; width: 100%; }
+    @media (max-width: 600px) { .dpp-card--featured { flex-direction: column; text-align: center; padding: 24px; } }
+    .dpp-card--featured:hover { box-shadow: 0 20px 50px rgba(11,37,69,0.15); }
+    .dpp-card--featured .dpp-name { font-size: 20px; margin-bottom: 6px; }
+    .dpp-card--featured .dpp-role { color: var(--color-accent); font-size: 11px; letter-spacing: 1.2px; }
+
+    /* Dewan Penasehat — 3 kolom */
+    .dpp-penasehat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+    @media (max-width: 700px) { .dpp-penasehat-grid { grid-template-columns: 1fr; max-width: 400px; } }
+    .dpp-card--penasehat {
+      border: 2px solid rgba(201,162,75,0.25);
+      padding: 24px 16px;
+      box-shadow: 0 4px 16px rgba(11,37,69,0.06);
     }
-    .dpp-photo-lg {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px rgba(201,162,75,0.3);
-      background: var(--color-bg-alt);
-    }
-    .dpp-initial-lg {
-      width: 110px; height: 110px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      color: var(--color-navy);
+    .dpp-card--penasehat:hover { border-color: var(--color-accent); box-shadow: 0 14px 32px rgba(11,37,69,0.12); }
+    .dpp-card--penasehat .dpp-name { font-size: 14px; }
+    .dpp-card--penasehat .dpp-role { color: var(--color-accent); font-size: 10.5px; }
+
+    /* ============================================================
+       BPH TREE — MIND MAP CONNECTED
+       ============================================================ */
+    .bph-tree {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 32px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 5px rgba(201,162,75,0.3);
-    }
-    .dpp-hero-card__text { flex: 1; }
-    .dpp-hero-card__badge {
-      display: inline-block;
-      background: var(--color-accent);
-      color: var(--color-navy);
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 10px;
-      letter-spacing: 1.8px;
-      padding: 4px 14px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-    .dpp-hero-card__name {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      margin: 0 0 6px;
-    }
-    .dpp-hero-card__role {
-      font-size: 11px;
-      color: var(--color-accent);
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin: 0;
+      width: 100%;
     }
 
-    .dpp-connector {
+    /* Ketua Umum — Hero card */
+    .bph-hero {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      border: 2px solid var(--color-accent);
+      border-radius: 20px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 14px 36px rgba(11,37,69,0.22), 0 0 0 6px rgba(201,162,75,0.06);
+      min-width: 400px;
+      transition: all 260ms ease;
+    }
+    @media (max-width: 600px) { .bph-hero { flex-direction: column; text-align: center; min-width: 0; padding: 24px; } }
+    .bph-hero:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(11,37,69,0.28), 0 0 0 6px rgba(201,162,75,0.1); }
+    .bph-hero__text { flex: 1; min-width: 0; }
+    .bph-hero__name { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #fff; margin: 6px 0 6px; line-height: 1.25; }
+    .bph-hero__role { font-size: 11px; color: var(--color-accent); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
+
+    /* Vertical line from Ketua Umum */
+    .bph-line-v {
       width: 2px;
-      height: 28px;
+      height: 36px;
       background: var(--color-accent);
       position: relative;
     }
-    .dpp-connector::after {
+    .bph-line-v::after {
       content: '';
       position: absolute;
       bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
+      width: 0; height: 0;
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
-      border-top: 6px solid var(--color-accent);
+      border-top: 7px solid var(--color-accent);
     }
 
-    .dpp-deputy-card {
-      background: #fff;
-      border: 2px solid var(--color-navy-soft);
-      border-radius: 18px;
-      padding: 24px 32px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      box-shadow: 0 8px 24px rgba(11,37,69,0.10);
-      min-width: 380px;
-    }
-    @media (max-width: 600px) {
-      .dpp-deputy-card { flex-direction: column; text-align: center; min-width: 0; width: 100%; }
-    }
-    .dpp-photo-md {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.2);
-      background: var(--color-bg-alt);
-    }
-    .dpp-initial-md {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      background: var(--color-navy-soft);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 26px;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.2);
-    }
-    .dpp-deputy-card__name {
-      font-family: var(--font-heading);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0 0 4px;
-    }
-    .dpp-deputy-card__role {
-      font-size: 11px;
-      color: var(--color-accent);
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      margin: 0;
-    }
-
-    .dpp-fork {
+    /* Row dengan 3 kolom */
+    .bph-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
       width: 100%;
-      max-width: 640px;
-      margin-top: 28px;
+      max-width: 900px;
       position: relative;
-      padding-top: 32px;
+      padding-top: 40px;
     }
-    .dpp-fork::before {
+    /* Horizontal bar */
+    .bph-row::before {
       content: '';
       position: absolute;
       top: 0;
-      left: 25%;
-      right: 25%;
+      left: calc(16.666% - 8px);
+      right: calc(16.666% - 8px);
       height: 2px;
       background: var(--color-accent);
     }
-    .dpp-fork::after {
-      content: '';
-      position: absolute;
-      top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 28px;
-      background: var(--color-accent);
+    @media (max-width: 700px) {
+      .bph-row { grid-template-columns: 1fr; gap: 40px; padding-top: 0; max-width: 400px; }
+      .bph-row::before { display: none; }
     }
-    @media (max-width: 600px) {
-      .dpp-fork { grid-template-columns: 1fr; gap: 24px; padding-top: 0; }
-      .dpp-fork::before, .dpp-fork::after { display: none; }
-    }
-    .dpp-fork__col {
+
+    .bph-col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
-      padding-top: 16px;
+      gap: 14px;
       position: relative;
     }
-    .dpp-fork__col::before {
+    /* Vertical drop from horizontal bar to card */
+    .bph-col::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -40px;
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
-      height: 16px;
+      height: 40px;
       background: var(--color-accent);
     }
-    @media (max-width: 600px) { .dpp-fork__col::before { display: none; } }
-    .dpp-fork__label {
-      display: inline-block;
-      font-family: var(--font-heading);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      background: rgba(201,162,75,0.18);
-      padding: 6px 18px;
-      border-radius: 999px;
-      margin-bottom: 8px;
-    }
-    .dpp-mini-card {
+    @media (max-width: 700px) { .bph-col::before { display: none; } }
+
+    /* Trio card — Eksekutif */
+    .bph-card {
       background: #fff;
-      border: 2px solid var(--color-border);
-      border-radius: 14px;
-      padding: 16px 20px;
+      border: 2px solid rgba(201,162,75,0.3);
+      border-radius: 16px;
+      padding: 22px 16px;
       text-align: center;
       width: 100%;
-      max-width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: all 240ms ease;
+      box-shadow: 0 4px 14px rgba(11,37,69,0.06);
+      position: relative;
+    }
+    .bph-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(11,37,69,0.14);
+      border-color: var(--color-accent);
+    }
+    .bph-card .dpp-name { font-size: 14px; }
+    .bph-card .dpp-role { color: var(--color-accent); font-size: 10.5px; }
+
+    /* Vertical line between card and vice */
+    .bph-line-v-sm {
+      width: 2px;
+      height: 20px;
+      background: rgba(201,162,75,0.4);
+      position: relative;
+    }
+    .bph-line-v-sm::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid rgba(201,162,75,0.4);
+    }
+
+    /* Vice card */
+    .bph-vice {
+      background: var(--color-bg-alt);
+      border: 1.5px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: center;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       transition: all 220ms ease;
     }
-    .dpp-mini-card:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(11,37,69,0.08);
-    }
-    .dpp-initial-xs {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--color-navy-soft);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 16px;
-    }
-    .dpp-photo-xs {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(201,162,75,0.2);
-      background: var(--color-bg-alt);
-    }
-    .dpp-mini-card--photo {
-      border-color: rgba(201,162,75,0.35);
-      background: linear-gradient(180deg, #FFFDF7 0%, #fff 100%);
-    }
-    .dpp-mini-card__name {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0;
-      line-height: 1.35;
-    }
-    .dpp-mini-card__role {
-      font-size: 10.5px;
-      color: var(--color-accent);
-      font-weight: 600;
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
+    .bph-vice:hover { border-color: var(--color-accent); background: #FFFDF7; }
+    .bph-vice .dpp-name { font-size: 12px; }
+    .bph-vice .dpp-role { color: #64748B; font-size: 9.5px; letter-spacing: 0.5px; }
 
-    .dpp-dept-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      max-width: 1080px;
-      margin: 0 auto;
-    }
+    /* ===== DEPARTEMEN ===== */
+    .dpp-dept-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; max-width: 1080px; margin: 0 auto; }
     @media (max-width: 900px) { .dpp-dept-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 600px) { .dpp-dept-grid { grid-template-columns: repeat(2, 1fr); } }
     .dpp-dept-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 20px 14px;
-      text-align: center;
+      background: #fff; border-radius: 14px; padding: 20px 14px; text-align: center;
       box-shadow: 0 3px 12px rgba(11,37,69,0.06);
       border-top: 3px solid var(--color-accent);
       transition: all 250ms ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      min-height: 180px;
+      display: flex; flex-direction: column; align-items: center; gap: 10px; min-height: 180px;
     }
-    .dpp-dept-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 32px rgba(11,37,69,0.12);
-    }
+    .dpp-dept-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(11,37,69,0.12); }
     .dpp-dept-card__icon { font-size: 30px; line-height: 1; }
-    .dpp-dept-card__name {
-      font-family: var(--font-heading);
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0;
-      line-height: 1.35;
-      flex: 1;
-    }
-    .dpp-dept-card__ketua {
-      font-size: 10.5px;
-      color: var(--color-accent);
-      font-weight: 600;
-      margin: 0;
-      padding-top: 8px;
-      border-top: 1px dashed var(--color-border);
-      width: 100%;
-      letter-spacing: 0.3px;
-    }
+    .dpp-dept-card__name { font-family: var(--font-heading); font-size: 12px; font-weight: 700; color: var(--color-primary); margin: 0; line-height: 1.35; flex: 1; }
+    .dpp-dept-card__ketua { font-size: 10.5px; color: var(--color-accent); font-weight: 600; margin: 0; padding-top: 8px; border-top: 1px dashed var(--color-border); width: 100%; letter-spacing: 0.3px; }
 
     /* ===== 5 PILAR ===== */
-    .pilar-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 24px;
-    }
+    .pilar-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
     .pilar-card { grid-column: span 2; }
     .pilar-card:nth-child(4) { grid-column: 2 / span 2; }
     .pilar-card:nth-child(5) { grid-column: 4 / span 2; }
-    @media (max-width: 900px) {
-      .pilar-grid { grid-template-columns: repeat(2, 1fr); }
-      .pilar-card, .pilar-card:nth-child(4), .pilar-card:nth-child(5) { grid-column: auto; }
-    }
+    @media (max-width: 900px) { .pilar-grid { grid-template-columns: repeat(2, 1fr); } .pilar-card, .pilar-card:nth-child(4), .pilar-card:nth-child(5) { grid-column: auto; } }
     @media (max-width: 600px) { .pilar-grid { grid-template-columns: 1fr; } }
     .pilar-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px 24px;
+      background: #fff; border-radius: 16px; padding: 32px 24px;
       box-shadow: 0 3px 14px rgba(11,37,69,0.06);
       border-bottom: 4px solid var(--color-accent);
       transition: all 280ms cubic-bezier(.4,0,.2,1);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-    .pilar-card::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 120px; height: 120px;
-      background: radial-gradient(circle, rgba(201,162,75,0.08) 0%, transparent 70%);
-      transition: transform 400ms ease;
-    }
-    .pilar-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(11,37,69,0.14);
-      border-bottom-color: var(--color-cta);
-    }
+    .pilar-card::before { content: ''; position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(201,162,75,0.08) 0%, transparent 70%); transition: transform 400ms ease; }
+    .pilar-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(11,37,69,0.14); border-bottom-color: var(--color-cta); }
     .pilar-card:hover::before { transform: scale(1.5); }
-    .pilar-card__icon {
-      width: 60px; height: 60px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 20px rgba(11,37,69,0.15);
-    }
+    .pilar-card__icon { width: 60px; height: 60px; border-radius: 14px; background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; box-shadow: 0 8px 20px rgba(11,37,69,0.15); }
     .pilar-card h3 { font-size: 17px; margin-bottom: 10px; color: var(--color-primary); }
     .pilar-card p { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
@@ -724,110 +349,31 @@
     .nilai-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 900px) { .nilai-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 500px) { .nilai-grid { grid-template-columns: 1fr; } }
-    .nilai-card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 36px 24px 28px;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(11,37,69,0.06);
-      transition: all 300ms cubic-bezier(.4,0,.2,1);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(226,232,240,0.6);
-    }
-    .nilai-card::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 60px; height: 4px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-cta));
-      border-radius: 0 0 4px 4px;
-      transition: width 400ms ease;
-    }
+    .nilai-card { background: #fff; border-radius: 20px; padding: 36px 24px 28px; text-align: center; box-shadow: 0 4px 20px rgba(11,37,69,0.06); transition: all 300ms cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; border: 1px solid rgba(226,232,240,0.6); }
+    .nilai-card::after { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: linear-gradient(90deg, var(--color-accent), var(--color-cta)); border-radius: 0 0 4px 4px; transition: width 400ms ease; }
     .nilai-card:hover { transform: translateY(-8px); box-shadow: 0 24px 50px rgba(11,37,69,0.15); }
     .nilai-card:hover::after { width: 100%; }
-    .nilai-card__icon {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(201,162,75,0.15) 0%, rgba(192,57,43,0.1) 100%);
-      border: 2px solid rgba(201,162,75,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      margin: 0 auto 18px;
-      transition: all 300ms ease;
-    }
+    .nilai-card__icon { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, rgba(201,162,75,0.15) 0%, rgba(192,57,43,0.1) 100%); border: 2px solid rgba(201,162,75,0.3); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 18px; transition: all 300ms ease; }
     .nilai-card:hover .nilai-card__icon { transform: scale(1.1) rotate(-6deg); border-color: var(--color-accent); }
     .nilai-card h3 { font-size: 17px; color: var(--color-primary); margin-bottom: 10px; font-weight: 700; }
     .nilai-card p { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
     /* ===== TIMELINE ===== */
-    .timeline-new {
-      position: relative;
-      max-width: 780px;
-      margin: 0 auto;
-      padding-left: 60px;
-    }
-    .timeline-new::before {
-      content: '';
-      position: absolute;
-      left: 20px; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--color-accent), rgba(201,162,75,0.15));
-      border-radius: 2px;
-    }
-    @media (max-width: 600px) {
-      .timeline-new { padding-left: 40px; }
-      .timeline-new::before { left: 12px; }
-    }
+    .timeline-new { position: relative; max-width: 780px; margin: 0 auto; padding-left: 60px; }
+    .timeline-new::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--color-accent), rgba(201,162,75,0.15)); border-radius: 2px; }
+    @media (max-width: 600px) { .timeline-new { padding-left: 40px; } .timeline-new::before { left: 12px; } }
     .tl-item { position: relative; padding-bottom: 40px; }
     .tl-item:last-child { padding-bottom: 0; }
-    .tl-item::before {
-      content: '';
-      position: absolute;
-      left: -48px;
-      top: 8px;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: var(--color-navy);
-      border: 4px solid var(--color-accent);
-      box-shadow: 0 0 0 6px rgba(201,162,75,0.15);
-      z-index: 1;
-    }
+    .tl-item::before { content: ''; position: absolute; left: -48px; top: 8px; width: 22px; height: 22px; border-radius: 50%; background: var(--color-navy); border: 4px solid var(--color-accent); box-shadow: 0 0 0 6px rgba(201,162,75,0.15); z-index: 1; }
     @media (max-width: 600px) { .tl-item::before { left: -34px; width: 18px; height: 18px; border-width: 3px; } }
-    .tl-item__year {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 28px;
-      color: var(--color-accent);
-      margin-bottom: 4px;
-      line-height: 1;
-    }
-    .tl-item__title {
-      font-family: var(--font-heading);
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin: 0 0 8px;
-    }
+    .tl-item__year { font-family: var(--font-heading); font-weight: 800; font-size: 28px; color: var(--color-accent); margin-bottom: 4px; line-height: 1; }
+    .tl-item__title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--color-primary); margin: 0 0 8px; }
     .tl-item__desc { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
     /* ===== BERITA ===== */
     .berita-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     @media (max-width: 900px) { .berita-preview { grid-template-columns: 1fr; } }
-    .berita-prev {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
-      transition: all 280ms ease;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-    }
+    .berita-prev { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 3px 14px rgba(11,37,69,0.06); transition: all 280ms ease; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
     .berita-prev:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(11,37,69,0.14); }
     .berita-prev__img { width: 100%; height: 200px; object-fit: cover; background: var(--color-bg-alt); }
     .berita-prev__body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
@@ -840,127 +386,35 @@
     /* ===== GALERI ===== */
     .galeri-prev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     @media (max-width: 700px) { .galeri-prev { grid-template-columns: 1fr 1fr; } }
-    .galeri-prev__item {
-      aspect-ratio: 4/3;
-      border-radius: 14px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 3px 14px rgba(11,37,69,0.08);
-      transition: all 280ms ease;
-      text-decoration: none;
-      color: inherit;
-    }
+    .galeri-prev__item { aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; position: relative; box-shadow: 0 3px 14px rgba(11,37,69,0.08); transition: all 280ms ease; text-decoration: none; color: inherit; }
     .galeri-prev__item:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 16px 36px rgba(11,37,69,0.18); }
     .galeri-prev__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
     .galeri-prev__item:hover img { transform: scale(1.1); }
-    .galeri-prev__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(11,37,69,0.9) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 16px;
-      color: #fff;
-    }
+    .galeri-prev__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(11,37,69,0.9) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: #fff; }
     .galeri-prev__title { font-size: 13px; font-weight: 700; font-family: var(--font-heading); margin: 0; line-height: 1.3; color: #fff; }
     .galeri-prev__date { font-size: 11px; color: rgba(255,255,255,0.75); margin: 4px 0 0; }
 
     /* ===== MITRA ===== */
     .mitra-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; padding: 20px 0; }
-    .mitra-strip__item {
-      background: #fff;
-      padding: 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(11,37,69,0.06);
-      transition: all 200ms ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 140px;
-      height: 80px;
-    }
+    .mitra-strip__item { background: #fff; padding: 16px 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(11,37,69,0.06); transition: all 200ms ease; display: flex; align-items: center; justify-content: center; width: 140px; height: 80px; }
     .mitra-strip__item:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(11,37,69,0.12); }
     .mitra-strip__item img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
     /* ===== QUOTE ===== */
-    .quote-band {
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%);
-      color: #fff;
-      padding: 72px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .quote-band::before {
-      content: '"';
-      position: absolute;
-      top: -60px; left: 40px;
-      font-size: 320px;
-      font-family: Georgia, serif;
-      color: rgba(201,162,75,0.08);
-      line-height: 1;
-    }
+    .quote-band { background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-dark) 100%); color: #fff; padding: 72px 0; position: relative; overflow: hidden; }
+    .quote-band::before { content: '"'; position: absolute; top: -60px; left: 40px; font-size: 320px; font-family: Georgia, serif; color: rgba(201,162,75,0.08); line-height: 1; }
     .quote-band__inner { max-width: 780px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-    .quote-band__text {
-      font-family: var(--font-heading);
-      font-size: clamp(20px, 3vw, 28px);
-      line-height: 1.5;
-      color: #fff;
-      margin-bottom: 24px;
-      font-weight: 600;
-    }
-    .quote-band__author {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding-top: 20px;
-      border-top: 2px solid rgba(201,162,75,0.3);
-    }
-    .quote-band__avatar {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      color: var(--color-navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 18px;
-      overflow: hidden;
-    }
+    .quote-band__text { font-family: var(--font-heading); font-size: clamp(20px, 3vw, 28px); line-height: 1.5; color: #fff; margin-bottom: 24px; font-weight: 600; }
+    .quote-band__author { display: inline-flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 2px solid rgba(201,162,75,0.3); }
+    .quote-band__avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--color-accent); color: var(--color-navy); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 18px; overflow: hidden; }
     .quote-band__avatar img { width: 100%; height: 100%; object-fit: cover; }
     .quote-band__name { font-weight: 700; font-size: 14px; color: #fff; text-align: left; }
     .quote-band__role { font-size: 12px; color: var(--color-accent); text-align: left; }
 
     /* ===== CTA FINAL ===== */
-    .cta-final {
-      padding: 80px 0;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(201,162,75,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(192,57,43,0.1) 0%, transparent 50%),
-        var(--color-bg-alt);
-    }
-    .cta-final__box {
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
-      color: #fff;
-      border-radius: 24px;
-      padding: 60px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      max-width: 900px;
-      margin: 0 auto;
-      box-shadow: 0 30px 80px rgba(11,37,69,0.25);
-    }
-    .cta-final__box::before {
-      content: '';
-      position: absolute;
-      top: -50%; right: -20%;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(201,162,75,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-    }
+    .cta-final { padding: 80px 0; background: radial-gradient(circle at 10% 20%, rgba(201,162,75,0.1) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(192,57,43,0.1) 0%, transparent 50%), var(--color-bg-alt); }
+    .cta-final__box { background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%); color: #fff; border-radius: 24px; padding: 60px 40px; text-align: center; position: relative; overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: 0 30px 80px rgba(11,37,69,0.25); }
+    .cta-final__box::before { content: ''; position: absolute; top: -50%; right: -20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,162,75,0.2) 0%, transparent 70%); border-radius: 50%; }
     .cta-final__box h2 { color: #fff; font-size: clamp(24px, 3vw, 34px); margin-bottom: 16px; position: relative; z-index: 1; }
     .cta-final__box p { color: rgba(255,255,255,0.85); font-size: 15px; max-width: 560px; margin: 0 auto 32px; position: relative; z-index: 1; }
     .cta-final__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
@@ -977,7 +431,6 @@
     "url": "https://lingkarpedulianaknegeri.id",
     "logo": "https://lingkarpedulianaknegeri.id/assets/img/logo-lkp.png",
     "foundingDate": "2022-04-21",
-    "description": "Organisasi Kemasyarakatan penggerak kepedulian terhadap NKRI.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Balai Pustaka Barat No.337",
@@ -985,11 +438,7 @@
       "addressRegion": "DKI Jakarta",
       "addressCountry": "ID"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+62-877-8098-6660",
-      "contactType": "customer service"
-    },
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+62-877-8098-6660", "contactType": "customer service" },
     "sameAs": ["https://instagram.com/lingkarpedulianaknegeri"],
     "identifier": "AHU-0004737.AH.01.07.TAHUN 2022"
   }
@@ -997,7 +446,6 @@
 </head>
 <body>
 
-  <!-- HERO -->
   <section class="hero-new">
     <div class="container">
       <div class="hero-new__grid">
@@ -1022,7 +470,6 @@
     </div>
   </section>
 
-  <!-- STATS BAND -->
   <div class="container" style="padding:0 24px;">
     <div class="stats-band">
       <div class="stat-item">
@@ -1074,21 +521,13 @@
           <h3>Badan Pengurus Harian</h3>
           <p>Pimpinan eksekutif harian DPP LKP</p>
         </div>
-        <div class="dpp-bph">
-          <div id="dppKetuaUmum"></div>
-          <div class="dpp-connector"></div>
-          <div id="dppKetuaHarian"></div>
-          <div class="dpp-fork">
-            <div class="dpp-fork__col">
-              <span class="dpp-fork__label">Sekretariat</span>
-              <div id="dppSekjen"></div>
-              <div id="dppWakilSekjen"></div>
-            </div>
-            <div class="dpp-fork__col">
-              <span class="dpp-fork__label">Bendahara</span>
-              <div id="dppBendahara"></div>
-              <div id="dppWakilBendahara"></div>
-            </div>
+        <div class="bph-tree">
+          <div id="bphKetuaUmum"></div>
+          <div class="bph-line-v"></div>
+          <div class="bph-row">
+            <div class="bph-col" id="bphKetuaHarianCol"></div>
+            <div class="bph-col" id="bphSekjenCol"></div>
+            <div class="bph-col" id="bphBendaharaCol"></div>
           </div>
         </div>
       </div>
@@ -1104,7 +543,6 @@
     </div>
   </section>
 
-  <!-- QUOTE BAND -->
   <section class="quote-band">
     <div class="container">
       <div class="quote-band__inner">
@@ -1123,7 +561,6 @@
     </div>
   </section>
 
-  <!-- 5 PILAR -->
   <section class="sec">
     <div class="container">
       <div class="sec-head">
@@ -1164,7 +601,6 @@
     </div>
   </section>
 
-  <!-- NILAI-NILAI -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -1197,7 +633,6 @@
     </div>
   </section>
 
-  <!-- TIMELINE -->
   <section class="sec">
     <div class="container">
       <div class="sec-head">
@@ -1230,7 +665,6 @@
     </div>
   </section>
 
-  <!-- BERITA -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -1247,7 +681,6 @@
     </div>
   </section>
 
-  <!-- GALERI -->
   <section class="sec">
     <div class="container">
       <div class="sec-head">
@@ -1264,7 +697,6 @@
     </div>
   </section>
 
-  <!-- MITRA -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -1281,7 +713,6 @@
     </div>
   </section>
 
-  <!-- CTA FINAL -->
   <section class="cta-final">
     <div class="container">
       <div class="cta-final__box">
@@ -1318,19 +749,16 @@
     };
     const getDeptIcon = (jabatan) => DEPT_ICONS[String(jabatan || '').trim().toLowerCase()] || '📋';
 
-    // ===== STATS COUNTER =====
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          const nums = document.querySelectorAll('.stat-item__num');
-          nums.forEach(el => {
+          document.querySelectorAll('.stat-item__num').forEach(el => {
             const target = parseInt(el.dataset.count);
             if (!target) return;
             const hasPlus = el.querySelector('span') !== null;
-            const duration = 1500;
             const start = performance.now();
             function tick(now) {
-              const p = Math.min((now - start) / duration, 1);
+              const p = Math.min((now - start) / 1500, 1);
               const eased = 1 - Math.pow(1 - p, 3);
               const cur = Math.floor(eased * target);
               el.innerHTML = hasPlus ? `${cur}<span>+</span>` : cur;
@@ -1349,7 +777,6 @@
       if (band) statsObserver.observe(band);
     });
 
-    // ===== PHOTO HELPER =====
     function renderPhoto(p, size) {
       const hasPhoto = p.foto && String(p.foto).trim();
       if (hasPhoto) {
@@ -1359,7 +786,6 @@
       return `<div class="dpp-initial-${size}">${getInitials(p.nama)}</div>`;
     }
 
-    // ===== STRUKTUR DPP =====
     async function renderStrukturDPP() {
       try {
         const all = await fetchPengurus();
@@ -1369,39 +795,40 @@
         const penasehat = aktif.filter(p => p.tingkat === 'Penasehat' || String(p.jabatan).toLowerCase().includes('penasehat'));
         const harian = aktif.filter(p => p.tingkat === 'Harian');
         const departemen = aktif.filter(p => p.tingkat === 'Departemen');
-
         const findH = j => harian.find(p => String(p.jabatan).toLowerCase() === j);
 
-        // Dewan Pengawas — featured
+        // ===== DEWAN PENGAWAS =====
         document.getElementById('dppPengawas').innerHTML = pengawas.map(p => `
-          <div class="dpp-card-featured">
+          <div class="dpp-card dpp-card--featured">
             ${renderPhoto(p, 'xl')}
-            <div class="dpp-card-featured__text">
-              <h4 class="dpp-card-featured__name">${escapeHtml(p.nama)}</h4>
-              <span class="dpp-card-featured__role">${escapeHtml(p.jabatan)}</span>
+            <div style="flex:1;min-width:0;">
+              <span class="dpp-tier dpp-tier--lead">Pengawas</span>
+              <h4 class="dpp-name">${escapeHtml(p.nama)}</h4>
+              <p class="dpp-role">${escapeHtml(p.jabatan)}</p>
             </div>
           </div>
         `).join('');
 
-        // Dewan Penasehat — inisial
+        // ===== DEWAN PENASEHAT =====
         document.getElementById('dppPenasehat').innerHTML = penasehat.map(p => `
-          <div class="dpp-card-mini">
-            <div class="dpp-initial-sm">${getInitials(p.nama)}</div>
-            <p class="dpp-card-mini__name">${escapeHtml(p.nama)}</p>
-            <p class="dpp-card-mini__role">${escapeHtml(p.jabatan)}</p>
+          <div class="dpp-card dpp-card--penasehat">
+            <div class="dpp-initial-md">${getInitials(p.nama)}</div>
+            <span class="dpp-tier dpp-tier--exec">Penasehat</span>
+            <p class="dpp-name">${escapeHtml(p.nama)}</p>
+            <p class="dpp-role">${escapeHtml(p.jabatan)}</p>
           </div>
         `).join('');
 
-        // Ketua Umum — foto
+        // ===== BPH — KETUA UMUM =====
         const ketuaUmum = findH('ketua umum');
         if (ketuaUmum) {
-          document.getElementById('dppKetuaUmum').innerHTML = `
-            <div class="dpp-hero-card">
+          document.getElementById('bphKetuaUmum').innerHTML = `
+            <div class="bph-hero">
               ${renderPhoto(ketuaUmum, 'lg')}
-              <div class="dpp-hero-card__text">
-                <span class="dpp-hero-card__badge">Ketua Umum</span>
-                <h4 class="dpp-hero-card__name">${escapeHtml(ketuaUmum.nama)}</h4>
-                <p class="dpp-hero-card__role">Ketua Umum</p>
+              <div class="bph-hero__text">
+                <span class="dpp-tier dpp-tier--lead">Ketua Umum</span>
+                <h4 class="bph-hero__name">${escapeHtml(ketuaUmum.nama)}</h4>
+                <p class="bph-hero__role">Ketua Umum</p>
               </div>
             </div>
           `;
@@ -1411,50 +838,57 @@
           }
         }
 
-        // Ketua Harian — foto
-        const ketuaHarian = findH('ketua harian');
-        if (ketuaHarian) {
-          document.getElementById('dppKetuaHarian').innerHTML = `
-            <div class="dpp-deputy-card">
-              ${renderPhoto(ketuaHarian, 'md')}
-              <div>
-                <h4 class="dpp-deputy-card__name">${escapeHtml(ketuaHarian.nama)}</h4>
-                <p class="dpp-deputy-card__role">Ketua Harian</p>
-              </div>
+        // ===== BPH — KETUA HARIAN (tanpa wakil) =====
+        document.getElementById('bphKetuaHarianCol').innerHTML = `
+          <div class="bph-card">
+            ${renderPhoto(findH('ketua harian'), 'md')}
+            <span class="dpp-tier dpp-tier--exec">Eksekutif</span>
+            <p class="dpp-name">${escapeHtml(findH('ketua harian')?.nama || '-')}</p>
+            <p class="dpp-role">${escapeHtml(findH('ketua harian')?.jabatan || 'Ketua Harian')}</p>
+          </div>
+        `;
+
+        // ===== BPH — SEKRETARIAT (Sekjen + Wakil) =====
+        const sekjen = findH('sekretaris jenderal');
+        const wakilSek = findH('wakil sekretaris');
+        document.getElementById('bphSekjenCol').innerHTML = `
+          <div class="bph-card">
+            ${renderPhoto(sekjen, 'md')}
+            <span class="dpp-tier dpp-tier--exec">Eksekutif</span>
+            <p class="dpp-name">${escapeHtml(sekjen?.nama || '-')}</p>
+            <p class="dpp-role">${escapeHtml(sekjen?.jabatan || 'Sekretaris Jenderal')}</p>
+          </div>
+          ${wakilSek ? `
+            <div class="bph-line-v-sm"></div>
+            <div class="bph-vice">
+              <div class="dpp-initial-vice">${getInitials(wakilSek.nama)}</div>
+              <p class="dpp-name">${escapeHtml(wakilSek.nama)}</p>
+              <p class="dpp-role">${escapeHtml(wakilSek.jabatan)}</p>
             </div>
-          `;
-        }
+          ` : ''}
+        `;
 
-        // Sekjen & Bendahara — FOTO
-        const renderPhotoCard = (p) => {
-          if (!p) return '';
-          return `
-            <div class="dpp-mini-card dpp-mini-card--photo">
-              ${renderPhoto(p, 'xs')}
-              <p class="dpp-mini-card__name">${escapeHtml(p.nama)}</p>
-              <p class="dpp-mini-card__role">${escapeHtml(p.jabatan)}</p>
+        // ===== BPH — BENDAHARA (Bendahara + Wakil) =====
+        const bendahara = findH('bendahara umum');
+        const wakilBend = findH('wakil bendahara');
+        document.getElementById('bphBendaharaCol').innerHTML = `
+          <div class="bph-card">
+            ${renderPhoto(bendahara, 'md')}
+            <span class="dpp-tier dpp-tier--exec">Eksekutif</span>
+            <p class="dpp-name">${escapeHtml(bendahara?.nama || '-')}</p>
+            <p class="dpp-role">${escapeHtml(bendahara?.jabatan || 'Bendahara Umum')}</p>
+          </div>
+          ${wakilBend ? `
+            <div class="bph-line-v-sm"></div>
+            <div class="bph-vice">
+              <div class="dpp-initial-vice">${getInitials(wakilBend.nama)}</div>
+              <p class="dpp-name">${escapeHtml(wakilBend.nama)}</p>
+              <p class="dpp-role">${escapeHtml(wakilBend.jabatan)}</p>
             </div>
-          `;
-        };
+          ` : ''}
+        `;
 
-        // Wakil — inisial saja
-        const renderInitialCard = (p) => {
-          if (!p) return '';
-          return `
-            <div class="dpp-mini-card">
-              <div class="dpp-initial-xs">${getInitials(p.nama)}</div>
-              <p class="dpp-mini-card__name">${escapeHtml(p.nama)}</p>
-              <p class="dpp-mini-card__role">${escapeHtml(p.jabatan)}</p>
-            </div>
-          `;
-        };
-
-        document.getElementById('dppSekjen').innerHTML = renderPhotoCard(findH('sekretaris jenderal'));
-        document.getElementById('dppWakilSekjen').innerHTML = renderInitialCard(findH('wakil sekretaris'));
-        document.getElementById('dppBendahara').innerHTML = renderPhotoCard(findH('bendahara umum'));
-        document.getElementById('dppWakilBendahara').innerHTML = renderInitialCard(findH('wakil bendahara'));
-
-        // Departemen
+        // ===== DEPARTEMEN =====
         document.getElementById('dppDepartemen').innerHTML = departemen.map(p => `
           <div class="dpp-dept-card">
             <div class="dpp-dept-card__icon">${getDeptIcon(p.jabatan)}</div>
@@ -1468,7 +902,6 @@
       }
     }
 
-    // ===== BERITA =====
     (async () => {
       const el = document.getElementById('beritaPreview');
       try {
@@ -1490,12 +923,9 @@
             </div>
           </a>
         `).join('');
-      } catch (err) {
-        el.innerHTML = '<div class="loading-mini">Gagal memuat berita.</div>';
-      }
+      } catch (err) { el.innerHTML = '<div class="loading-mini">Gagal memuat berita.</div>'; }
     })();
 
-    // ===== GALERI =====
     (async () => {
       const el = document.getElementById('galeriPreview');
       try {
@@ -1512,12 +942,9 @@
             </div>
           </a>
         `).join('');
-      } catch (err) {
-        el.innerHTML = '<div class="loading-mini">Gagal memuat galeri.</div>';
-      }
+      } catch (err) { el.innerHTML = '<div class="loading-mini">Gagal memuat galeri.</div>'; }
     })();
 
-    // ===== MITRA =====
     (async () => {
       const el = document.getElementById('mitraStrip');
       try {
@@ -1530,9 +957,7 @@
                  onerror="this.src='https://placehold.co/300x300/0B2545/C9A24B?text=Mitra'">
           </a>
         `).join('');
-      } catch (err) {
-        el.innerHTML = '<div class="loading-mini">Gagal memuat mitra.</div>';
-      }
+      } catch (err) { el.innerHTML = '<div class="loading-mini">Gagal memuat mitra.</div>'; }
     })();
 
     document.addEventListener('DOMContentLoaded', renderStrukturDPP);
