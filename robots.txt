@@ -1,4 +1,12 @@
+# robots.txt — Lingkar Peduli Anak Negeri
+# Domain: https://lingkarpedulianaknegeri.id
+
 User-agent: *
 Allow: /
 
+# Blokir halaman internal (kalau ada nanti)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
 Sitemap: https://lingkarpedulianaknegeri.id/sitemap.xml
