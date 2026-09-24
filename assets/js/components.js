@@ -74,7 +74,8 @@ export function renderNavbar() {
       <div class="container navbar__inner">
         <a href="index.html" class="navbar__brand">
           <img src="assets/img/logo-lkp.png" alt="Logo LKP" onerror="this.style.display='none'">
-          <span>LKP</span>
+          <span class="navbar__brand-text">Lingkar Peduli Anak Negeri</span>
+          <span class="navbar__brand-short">LKP</span>
         </a>
         <button class="navbar__toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
         <ul class="navbar__menu" id="navMenu">
@@ -157,6 +158,14 @@ export function renderFooter() {
         </div>
       </div>
       <style>
+        @media (max-width: 1100px) {
+          .navbar__brand-text { display: none !important; }
+          .navbar__brand-short { display: inline !important; }
+        }
+        @media (min-width: 1101px) {
+          .navbar__brand-text { display: inline; }
+          .navbar__brand-short { display: none; }
+        }
         @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr !important; } }
       </style>
