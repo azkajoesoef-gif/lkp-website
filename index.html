@@ -143,16 +143,25 @@
     .dpp-card--featured .dpp-role { color: var(--color-accent); font-size: 11px; letter-spacing: 1.2px; }
 
     /* Dewan Penasehat — 3 kolom */
-    .dpp-penasehat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .dpp-penasehat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 0 auto; }
     @media (max-width: 700px) { .dpp-penasehat-grid { grid-template-columns: 1fr; max-width: 400px; } }
     .dpp-card--penasehat {
-      border: 2px solid rgba(201,162,75,0.25);
-      padding: 24px 16px;
-      box-shadow: 0 4px 16px rgba(11,37,69,0.06);
+      border: 1.5px solid rgba(201,162,75,0.2);
+      padding: 18px 14px;
+      box-shadow: 0 3px 12px rgba(11,37,69,0.05);
+      gap: 8px;
+      background: #fff;
     }
-    .dpp-card--penasehat:hover { border-color: var(--color-accent); box-shadow: 0 14px 32px rgba(11,37,69,0.12); }
-    .dpp-card--penasehat .dpp-name { font-size: 14px; }
-    .dpp-card--penasehat .dpp-role { color: var(--color-accent); font-size: 10.5px; }
+    .dpp-card--penasehat:hover { border-color: var(--color-accent); box-shadow: 0 10px 24px rgba(11,37,69,0.10); }
+    .dpp-card--penasehat .dpp-initial-md {
+      width: 60px;
+      height: 60px;
+      font-size: 18px;
+      box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
+    }
+    .dpp-card--penasehat .dpp-name { font-size: 12.5px; }
+    .dpp-card--penasehat .dpp-role { color: var(--color-text-soft); font-size: 10px; }
+    .dpp-card--penasehat .dpp-tier { font-size: 8.5px; padding: 2px 8px; }
 
     /* ============================================================
        BPH TREE — MIND MAP CONNECTED
