@@ -19,9 +19,7 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
   <style>
-    /* ===== NAVBAR BRAND TEXT ===== */
-    .navbar__brand-text,
-    .navbar__brand-short {
+    .navbar__brand-text {
       color: #fff;
       font-family: var(--font-heading);
       font-weight: 700;
@@ -29,8 +27,6 @@
       letter-spacing: 0.3px;
       white-space: nowrap;
     }
-    .navbar__brand-text { display: inline; }
-    .navbar__brand-short { display: none; }
 
     /* ===== HERO ===== */
     .hero-new {
@@ -118,19 +114,10 @@
       max-width: 560px;
     }
     @media (max-width: 900px) { .hero-new__lead { margin: 0 auto 32px; } }
-    .hero-new__actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .hero-new__actions { display: flex; gap: 12px; flex-wrap: wrap; }
     @media (max-width: 900px) { .hero-new__actions { justify-content: center; } }
 
-    .hero-new__visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
+    .hero-new__visual { display: flex; justify-content: center; align-items: center; position: relative; }
     .hero-new__logo-wrap {
       position: relative;
       width: 100%;
@@ -208,11 +195,7 @@
     /* ===== SECTION GENERAL ===== */
     .sec { padding: 72px 0; }
     .sec--alt { background: var(--color-bg-alt); }
-    .sec-head {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 48px;
-    }
+    .sec-head { text-align: center; max-width: 640px; margin: 0 auto 48px; }
     .sec-head__eyebrow {
       display: inline-block;
       font-size: 12px;
@@ -222,257 +205,199 @@
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .sec-head h2 {
-      font-size: clamp(24px, 3vw, 36px);
-      margin-bottom: 12px;
-      color: var(--color-primary);
-    }
-    .sec-head p {
-      color: var(--color-text-soft);
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0;
-    }
+    .sec-head h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 12px; color: var(--color-primary); }
+    .sec-head p { color: var(--color-text-soft); font-size: 15px; line-height: 1.6; margin: 0; }
 
-    /* ===== ORG SLIDER (REVISED WITH PHOTOS) ===== */
-    .os-wrap { position: relative; max-width: 980px; margin: 0 auto; }
-    .os-viewport {
-      overflow: hidden;
-      border-radius: 20px;
-      background:
-        radial-gradient(circle at 100% 0%, rgba(201,162,75,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 0% 100%, rgba(192,57,43,0.05) 0%, transparent 50%),
-        #fff;
-      box-shadow: 0 16px 50px rgba(11,37,69,0.10);
-      border: 1px solid rgba(226,232,240,0.8);
-      transition: height 500ms cubic-bezier(.4,0,.2,1);
+    /* ===== STRUKTUR DPP (STATIS) ===== */
+    .dpp-block { margin-bottom: 64px; }
+    .dpp-block:last-child { margin-bottom: 0; }
+    .dpp-block__head {
+      text-align: center;
+      margin-bottom: 32px;
       position: relative;
+      padding-bottom: 16px;
     }
-    .os-track {
-      display: flex;
-      align-items: flex-start;
-      transition: transform 500ms cubic-bezier(.4,0,.2,1);
-    }
-    .os-slide {
-      flex: 0 0 100%;
-      width: 100%;
-      padding: 48px 40px;
-      box-sizing: border-box;
-    }
-    @media (max-width: 600px) { .os-slide { padding: 32px 20px; } }
-
-    .os-nav {
+    .dpp-block__head::after {
+      content: '';
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: var(--color-navy);
-      color: #fff;
-      border: 2px solid var(--color-accent);
-      font-size: 24px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 220ms ease;
-      z-index: 5;
-      box-shadow: 0 10px 28px rgba(11,37,69,0.28);
-      line-height: 1;
-      padding: 0;
-      padding-bottom: 3px;
-    }
-    .os-nav:hover:not(:disabled) {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
       background: var(--color-accent);
-      color: var(--color-navy);
-      transform: translateY(-50%) scale(1.1);
+      border-radius: 2px;
     }
-    .os-nav:disabled { opacity: 0.28; cursor: not-allowed; }
-    .os-nav--prev { left: -26px; }
-    .os-nav--next { right: -26px; }
-    @media (max-width: 1000px) {
-      .os-nav--prev { left: 8px; }
-      .os-nav--next { right: 8px; }
-    }
-
-    .os-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 26px;
-    }
-    .os-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(11,37,69,0.18);
-      cursor: pointer;
-      transition: all 260ms cubic-bezier(.4,0,.2,1);
-      padding: 0;
-    }
-    .os-dot.is-active {
-      background: var(--color-accent);
-      width: 36px;
-      border-radius: 999px;
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.15);
-    }
-    .os-hint {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--color-text-soft);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    /* Slide 1: Dewan */
-    .os-dewan {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 32px;
-      align-items: start;
-    }
-    @media (max-width: 700px) { .os-dewan { grid-template-columns: 1fr; } }
-    .os-panel {
-      background: linear-gradient(180deg, #FFFDF7 0%, #fff 100%);
-      border: 2px dashed var(--color-accent);
-      border-radius: 18px;
-      padding: 24px 22px;
-      height: 100%;
-      box-sizing: border-box;
-    }
-    .os-panel__header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-      padding-bottom: 14px;
-      margin-bottom: 18px;
-      border-bottom: 1px dashed rgba(201,162,75,0.4);
-    }
-    .os-panel__icon {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: var(--color-navy);
-      color: var(--color-accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-    }
-    .os-panel__label {
+    .dpp-block__head h3 {
       font-family: var(--font-heading);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      font-size: 20px;
       color: var(--color-primary);
+      margin: 0 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
     }
-    .os-panel__list { display: flex; flex-direction: column; gap: 12px; }
+    .dpp-block__head p { color: var(--color-text-soft); font-size: 13px; margin: 0; }
 
-    /* Person card with photo support */
-    .os-pcard {
+    /* Dewan Pengawas — 1 kartu featured */
+    .dpp-pengawas-wrap { max-width: 560px; margin: 0 auto; }
+    .dpp-card-featured {
       background: #fff;
-      border: 1.5px solid rgba(201,162,75,0.25);
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-      transition: all 220ms ease;
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: 0 12px 40px rgba(11,37,69,0.10);
+      border-top: 5px solid var(--color-accent);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 24px;
+      transition: all 300ms ease;
     }
-    .os-pcard:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(11,37,69,0.10);
+    @media (max-width: 600px) {
+      .dpp-card-featured { flex-direction: column; text-align: center; padding: 24px; }
     }
-    .os-pcard--featured { padding: 20px; }
-
-    .os-photo {
+    .dpp-card-featured:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(11,37,69,0.15);
+    }
+    .dpp-photo-xl {
+      width: 130px; height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      display: block;
       flex-shrink: 0;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.2);
       background: var(--color-bg-alt);
     }
-    .os-photo--sm { width: 56px; height: 56px; }
-    .os-photo--md { width: 72px; height: 72px; }
-    .os-photo--lg {
-      width: 100px; height: 100px;
-      box-shadow: 0 0 0 4px rgba(201,162,75,0.25);
-    }
-    .os-photo--xl {
+    .dpp-initial-xl {
       width: 130px; height: 130px;
-      box-shadow: 0 0 0 6px rgba(201,162,75,0.3), 0 12px 32px rgba(11,37,69,0.25);
-    }
-
-    .os-initial {
       border-radius: 50%;
-      background: var(--color-navy);
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
       color: var(--color-accent);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-heading);
-      font-weight: 700;
+      font-weight: 800;
+      font-size: 40px;
       flex-shrink: 0;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.2);
     }
-    .os-initial--sm { width: 56px; height: 56px; font-size: 16px; }
-    .os-initial--md { width: 72px; height: 72px; font-size: 20px; }
-    .os-initial--lg { width: 100px; height: 100px; font-size: 26px; background: var(--color-navy-soft); }
-    .os-initial--xl { width: 130px; height: 130px; font-size: 36px; background: var(--color-accent); color: var(--color-navy); }
-
-    .os-name {
+    .dpp-card-featured__text { flex: 1; min-width: 0; }
+    .dpp-card-featured__name {
       font-family: var(--font-heading);
+      font-size: 20px;
       font-weight: 700;
       color: var(--color-primary);
-      font-size: 13.5px;
-      line-height: 1.35;
-      margin: 0;
+      margin: 0 0 8px;
+      line-height: 1.3;
     }
-    .os-role {
-      font-size: 11.5px;
+    .dpp-card-featured__role {
+      display: inline-block;
+      background: rgba(201,162,75,0.15);
       color: var(--color-accent);
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      margin: 0;
+      padding: 5px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
     }
 
-    /* Slide 2: BPH */
-    .os-bph {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
+    /* Dewan Penasehat — 3 kartu horizontal */
+    .dpp-penasehat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .os-hero-card {
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
-      border: 3px solid var(--color-accent);
-      border-radius: 20px;
-      padding: 28px 40px;
+    @media (max-width: 700px) { .dpp-penasehat-grid { grid-template-columns: 1fr; max-width: 400px; } }
+    .dpp-card-mini {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 16px;
       text-align: center;
-      min-width: 320px;
-      box-shadow: 0 16px 40px rgba(11,37,69,0.28), 0 0 0 6px rgba(201,162,75,0.08);
+      box-shadow: 0 4px 16px rgba(11,37,69,0.06);
+      border-top: 3px solid var(--color-navy-soft);
+      transition: all 250ms ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 12px;
     }
-    .os-hero-card .os-name {
-      color: #fff;
-      font-size: 19px;
+    .dpp-card-mini:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(11,37,69,0.12);
+      border-top-color: var(--color-accent);
     }
-    .os-hero-card .os-role {
+    .dpp-initial-sm {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--color-navy-soft);
       color: var(--color-accent);
-      font-size: 11px;
-      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 20px;
     }
-    .os-hero-card .os-badge {
+    .dpp-card-mini__name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .dpp-card-mini__role { font-size: 11px; color: var(--color-text-soft); margin: 0; letter-spacing: 0.3px; }
+
+    /* BPH */
+    .dpp-bph {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .dpp-hero-card {
+      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
+      border: 3px solid var(--color-accent);
+      border-radius: 20px;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      box-shadow: 0 16px 40px rgba(11,37,69,0.25), 0 0 0 6px rgba(201,162,75,0.08);
+      min-width: 420px;
+    }
+    @media (max-width: 600px) {
+      .dpp-hero-card { flex-direction: column; text-align: center; min-width: 0; padding: 24px; width: 100%; }
+    }
+    .dpp-photo-lg {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.3);
+      background: var(--color-bg-alt);
+    }
+    .dpp-initial-lg {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 32px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 5px rgba(201,162,75,0.3);
+    }
+    .dpp-hero-card__text { flex: 1; }
+    .dpp-hero-card__badge {
       display: inline-block;
       background: var(--color-accent);
       color: var(--color-navy);
@@ -480,21 +405,37 @@
       font-weight: 800;
       font-size: 10px;
       letter-spacing: 1.8px;
-      padding: 4px 16px;
+      padding: 4px 14px;
       border-radius: 999px;
+      margin-bottom: 10px;
       text-transform: uppercase;
     }
+    .dpp-hero-card__name {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 6px;
+    }
+    .dpp-hero-card__role {
+      font-size: 11px;
+      color: var(--color-accent);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin: 0;
+    }
 
-    .os-connector {
+    .dpp-connector {
       width: 2px;
-      height: 24px;
-      background: linear-gradient(180deg, var(--color-accent), rgba(201,162,75,0.3));
+      height: 28px;
+      background: var(--color-accent);
       position: relative;
     }
-    .os-connector::after {
+    .dpp-connector::after {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: -5px;
       left: 50%;
       transform: translateX(-50%);
       border-left: 5px solid transparent;
@@ -502,79 +443,111 @@
       border-top: 6px solid var(--color-accent);
     }
 
-    .os-deputy-card {
+    .dpp-deputy-card {
       background: #fff;
       border: 2px solid var(--color-navy-soft);
-      border-radius: 16px;
-      padding: 20px 32px;
-      text-align: center;
-      min-width: 280px;
+      border-radius: 18px;
+      padding: 24px 32px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
       box-shadow: 0 8px 24px rgba(11,37,69,0.10);
-      transition: all 220ms ease;
+      min-width: 380px;
     }
-    .os-deputy-card:hover {
-      border-color: var(--color-accent);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(11,37,69,0.15);
+    @media (max-width: 600px) {
+      .dpp-deputy-card { flex-direction: column; text-align: center; min-width: 0; width: 100%; }
+    }
+    .dpp-photo-md {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.2);
+      background: var(--color-bg-alt);
+    }
+    .dpp-initial-md {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--color-navy-soft);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 26px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(201,162,75,0.2);
+    }
+    .dpp-deputy-card__name {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0 0 4px;
+    }
+    .dpp-deputy-card__role {
+      font-size: 11px;
+      color: var(--color-accent);
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin: 0;
     }
 
-    .os-fork {
+    .dpp-fork {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 48px;
       width: 100%;
-      max-width: 720px;
-      margin-top: 24px;
+      max-width: 640px;
+      margin-top: 28px;
       position: relative;
-      padding-top: 24px;
+      padding-top: 32px;
     }
-    .os-fork::before {
+    .dpp-fork::before {
       content: '';
       position: absolute;
       top: 0;
       left: 25%;
       right: 25%;
       height: 2px;
-      background: linear-gradient(90deg, rgba(201,162,75,0.3), var(--color-accent), rgba(201,162,75,0.3));
+      background: var(--color-accent);
     }
-    .os-fork::after {
+    .dpp-fork::after {
       content: '';
       position: absolute;
-      top: -24px;
+      top: -28px;
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
-      height: 24px;
+      height: 28px;
       background: var(--color-accent);
     }
     @media (max-width: 600px) {
-      .os-fork { grid-template-columns: 1fr; gap: 20px; padding-top: 0; }
-      .os-fork::before, .os-fork::after { display: none; }
+      .dpp-fork { grid-template-columns: 1fr; gap: 24px; padding-top: 0; }
+      .dpp-fork::before, .dpp-fork::after { display: none; }
     }
-    .os-fork__col {
+    .dpp-fork__col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      padding-top: 16px;
       position: relative;
-      padding-top: 14px;
     }
-    .os-fork__col::before {
+    .dpp-fork__col::before {
       content: '';
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 2px;
-      height: 14px;
+      height: 16px;
       background: var(--color-accent);
     }
-    @media (max-width: 600px) { .os-fork__col::before { display: none; } }
-    .os-fork__label {
+    @media (max-width: 600px) { .dpp-fork__col::before { display: none; } }
+    .dpp-fork__label {
       display: inline-block;
       font-family: var(--font-heading);
       font-size: 11px;
@@ -585,7 +558,114 @@
       background: rgba(201,162,75,0.18);
       padding: 6px 18px;
       border-radius: 999px;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .dpp-mini-card {
+      background: #fff;
+      border: 2px solid var(--color-border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: all 220ms ease;
+    }
+    .dpp-mini-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(11,37,69,0.08);
+    }
+    .dpp-initial-xs {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--color-navy-soft);
+      color: var(--color-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .dpp-photo-xs {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(201,162,75,0.2);
+      background: var(--color-bg-alt);
+    }
+    .dpp-mini-card--photo {
+      border-color: rgba(201,162,75,0.35);
+      background: linear-gradient(180deg, #FFFDF7 0%, #fff 100%);
+    }
+    .dpp-mini-card__name {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0;
+      line-height: 1.35;
+    }
+    .dpp-mini-card__role {
+      font-size: 10.5px;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .dpp-dept-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .dpp-dept-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .dpp-dept-grid { grid-template-columns: repeat(2, 1fr); } }
+    .dpp-dept-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 14px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(11,37,69,0.06);
+      border-top: 3px solid var(--color-accent);
+      transition: all 250ms ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      min-height: 180px;
+    }
+    .dpp-dept-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(11,37,69,0.12);
+    }
+    .dpp-dept-card__icon { font-size: 30px; line-height: 1; }
+    .dpp-dept-card__name {
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: 0;
+      line-height: 1.35;
+      flex: 1;
+    }
+    .dpp-dept-card__ketua {
+      font-size: 10.5px;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin: 0;
+      padding-top: 8px;
+      border-top: 1px dashed var(--color-border);
+      width: 100%;
+      letter-spacing: 0.3px;
     }
 
     /* ===== 5 PILAR ===== */
@@ -599,16 +679,13 @@
     .pilar-card:nth-child(5) { grid-column: 4 / span 2; }
     @media (max-width: 900px) {
       .pilar-grid { grid-template-columns: repeat(2, 1fr); }
-      .pilar-card,
-      .pilar-card:nth-child(4),
-      .pilar-card:nth-child(5) { grid-column: auto; }
+      .pilar-card, .pilar-card:nth-child(4), .pilar-card:nth-child(5) { grid-column: auto; }
     }
     @media (max-width: 600px) { .pilar-grid { grid-template-columns: 1fr; } }
     .pilar-card {
       background: #fff;
       border-radius: 16px;
       padding: 32px 24px;
-      text-align: left;
       box-shadow: 0 3px 14px rgba(11,37,69,0.06);
       border-bottom: 4px solid var(--color-accent);
       transition: all 280ms cubic-bezier(.4,0,.2,1);
@@ -643,12 +720,8 @@
     .pilar-card h3 { font-size: 17px; margin-bottom: 10px; color: var(--color-primary); }
     .pilar-card p { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
-    /* ===== NILAI-NILAI ===== */
-    .nilai-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
+    /* ===== NILAI ===== */
+    .nilai-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     @media (max-width: 900px) { .nilai-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 500px) { .nilai-grid { grid-template-columns: 1fr; } }
     .nilai-card {
@@ -690,7 +763,7 @@
     .nilai-card h3 { font-size: 17px; color: var(--color-primary); margin-bottom: 10px; font-weight: 700; }
     .nilai-card p { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
-    /* ===== TIMELINE SEJARAH ===== */
+    /* ===== TIMELINE ===== */
     .timeline-new {
       position: relative;
       max-width: 780px;
@@ -709,10 +782,7 @@
       .timeline-new { padding-left: 40px; }
       .timeline-new::before { left: 12px; }
     }
-    .tl-item {
-      position: relative;
-      padding-bottom: 40px;
-    }
+    .tl-item { position: relative; padding-bottom: 40px; }
     .tl-item:last-child { padding-bottom: 0; }
     .tl-item::before {
       content: '';
@@ -742,19 +812,10 @@
       color: var(--color-primary);
       margin: 0 0 8px;
     }
-    .tl-item__desc {
-      color: var(--color-text-soft);
-      font-size: 13.5px;
-      line-height: 1.6;
-      margin: 0;
-    }
+    .tl-item__desc { color: var(--color-text-soft); font-size: 13.5px; line-height: 1.6; margin: 0; }
 
-    /* ===== BERITA PREVIEW ===== */
-    .berita-preview {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+    /* ===== BERITA ===== */
+    .berita-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     @media (max-width: 900px) { .berita-preview { grid-template-columns: 1fr; } }
     .berita-prev {
       background: #fff;
@@ -776,7 +837,7 @@
     .berita-prev__ringkas { color: var(--color-text-soft); font-size: 13px; line-height: 1.6; flex: 1; margin: 0 0 14px; }
     .berita-prev__cta { color: var(--color-cta); font-weight: 600; font-size: 13px; }
 
-    /* ===== GALERI PREVIEW ===== */
+    /* ===== GALERI ===== */
     .galeri-prev { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     @media (max-width: 700px) { .galeri-prev { grid-template-columns: 1fr 1fr; } }
     .galeri-prev__item {
@@ -805,7 +866,7 @@
     .galeri-prev__title { font-size: 13px; font-weight: 700; font-family: var(--font-heading); margin: 0; line-height: 1.3; color: #fff; }
     .galeri-prev__date { font-size: 11px; color: rgba(255,255,255,0.75); margin: 4px 0 0; }
 
-    /* ===== MITRA STRIP ===== */
+    /* ===== MITRA ===== */
     .mitra-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center; padding: 20px 0; }
     .mitra-strip__item {
       background: #fff;
@@ -915,9 +976,8 @@
     "alternateName": "LKP",
     "url": "https://lingkarpedulianaknegeri.id",
     "logo": "https://lingkarpedulianaknegeri.id/assets/img/logo-lkp.png",
-    "image": "https://lingkarpedulianaknegeri.id/assets/img/logo-lkp.png",
     "foundingDate": "2022-04-21",
-    "description": "Organisasi Kemasyarakatan penggerak kepedulian terhadap NKRI. Bergerak di bidang sosial, edukasi, konsultasi, ekonomi, dan bantuan hukum untuk masyarakat Indonesia.",
+    "description": "Organisasi Kemasyarakatan penggerak kepedulian terhadap NKRI.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Jl. Balai Pustaka Barat No.337",
@@ -928,8 +988,7 @@
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+62-877-8098-6660",
-      "contactType": "customer service",
-      "availableLanguage": ["Indonesian", "id"]
+      "contactType": "customer service"
     },
     "sameAs": ["https://instagram.com/lingkarpedulianaknegeri"],
     "identifier": "AHU-0004737.AH.01.07.TAHUN 2022"
@@ -967,89 +1026,81 @@
   <div class="container" style="padding:0 24px;">
     <div class="stats-band">
       <div class="stat-item">
-        <div class="stat-item__num" data-count="2022">0</div>
+        <div class="stat-item__num" data-count="2022">2022</div>
         <div class="stat-item__label">Tahun Berdiri</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__num" data-count="5">0</div>
+        <div class="stat-item__num" data-count="5">5</div>
         <div class="stat-item__label">Pilar Kerja</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__num" data-count="20"><span>+</span></div>
+        <div class="stat-item__num" data-count="20">20<span>+</span></div>
         <div class="stat-item__label">Pengurus DPP</div>
       </div>
       <div class="stat-item">
-        <div class="stat-item__num" data-count="34">0</div>
+        <div class="stat-item__num" data-count="34">34</div>
         <div class="stat-item__label">Target Provinsi</div>
       </div>
     </div>
   </div>
 
-  <!-- STRUKTUR ORGANISASI SLIDER -->
-  <section class="sec">
+  <!-- STRUKTUR DPP -->
+  <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
         <span class="sec-head__eyebrow">Kepengurusan</span>
         <h2>Struktur DPP LKP</h2>
-        <p>Dewan Pengawas, Dewan Penasehat, dan Badan Pengurus Harian periode 2025–2030.</p>
+        <p>Susunan lengkap Dewan Pimpinan Pusat periode 2025–2030.</p>
       </div>
 
-      <div class="os-wrap">
-        <button class="os-nav os-nav--prev" id="osPrev" aria-label="Sebelumnya" disabled>‹</button>
-        <button class="os-nav os-nav--next" id="osNext" aria-label="Berikutnya">›</button>
+      <div class="dpp-block">
+        <div class="dpp-block__head">
+          <h3>Dewan Pengawas</h3>
+          <p>Pengawas internal organisasi</p>
+        </div>
+        <div class="dpp-pengawas-wrap" id="dppPengawas"></div>
+      </div>
 
-        <div class="os-viewport" id="osViewport">
-          <div class="os-track" id="osTrack">
+      <div class="dpp-block">
+        <div class="dpp-block__head">
+          <h3>Dewan Penasehat</h3>
+          <p>Pemberi pertimbangan strategis</p>
+        </div>
+        <div class="dpp-penasehat-grid" id="dppPenasehat"></div>
+      </div>
 
-            <div class="os-slide">
-              <div class="os-dewan">
-                <div class="os-panel">
-                  <div class="os-panel__header">
-                    <span class="os-panel__icon">🛡️</span>
-                    <span class="os-panel__label">Dewan Pengawas</span>
-                  </div>
-                  <div class="os-panel__list" id="osPengawas">
-                    <div class="loading-mini">Memuat...</div>
-                  </div>
-                </div>
-                <div class="os-panel">
-                  <div class="os-panel__header">
-                    <span class="os-panel__icon">💡</span>
-                    <span class="os-panel__label">Dewan Penasehat</span>
-                  </div>
-                  <div class="os-panel__list" id="osPenasehat">
-                    <div class="loading-mini">Memuat...</div>
-                  </div>
-                </div>
-              </div>
+      <div class="dpp-block">
+        <div class="dpp-block__head">
+          <h3>Badan Pengurus Harian</h3>
+          <p>Pimpinan eksekutif harian DPP LKP</p>
+        </div>
+        <div class="dpp-bph">
+          <div id="dppKetuaUmum"></div>
+          <div class="dpp-connector"></div>
+          <div id="dppKetuaHarian"></div>
+          <div class="dpp-fork">
+            <div class="dpp-fork__col">
+              <span class="dpp-fork__label">Sekretariat</span>
+              <div id="dppSekjen"></div>
+              <div id="dppWakilSekjen"></div>
             </div>
-
-            <div class="os-slide">
-              <div class="os-bph">
-                <div id="osKetuaUmum"></div>
-                <div class="os-connector"></div>
-                <div id="osKetuaHarian"></div>
-                <div class="os-fork">
-                  <div class="os-fork__col">
-                    <span class="os-fork__label">Sekretariat</span>
-                    <div id="osSekjen"></div>
-                    <div id="osWakilSekjen"></div>
-                  </div>
-                  <div class="os-fork__col">
-                    <span class="os-fork__label">Bendahara</span>
-                    <div id="osBendahara"></div>
-                    <div id="osWakilBendahara"></div>
-                  </div>
-                </div>
-              </div>
+            <div class="dpp-fork__col">
+              <span class="dpp-fork__label">Bendahara</span>
+              <div id="dppBendahara"></div>
+              <div id="dppWakilBendahara"></div>
             </div>
-
           </div>
         </div>
-
-        <div class="os-dots" id="osDots"></div>
-        <div class="os-hint" id="osHint"></div>
       </div>
+
+      <div class="dpp-block">
+        <div class="dpp-block__head">
+          <h3>Departemen-Departemen</h3>
+          <p>10 bidang kerja DPP LKP</p>
+        </div>
+        <div class="dpp-dept-grid" id="dppDepartemen"></div>
+      </div>
+
     </div>
   </section>
 
@@ -1146,7 +1197,7 @@
     </div>
   </section>
 
-  <!-- TIMELINE SEJARAH -->
+  <!-- TIMELINE -->
   <section class="sec">
     <div class="container">
       <div class="sec-head">
@@ -1154,48 +1205,32 @@
         <h2>Sejarah Singkat LKP</h2>
         <p>Jejak langkah Lingkar Peduli Anak Negeri dari 2022 hingga visi 2030.</p>
       </div>
-
       <div class="timeline-new">
         <div class="tl-item">
           <div class="tl-item__year">2022</div>
           <h3 class="tl-item__title">Lahirnya Lingkar Peduli Anak Negeri</h3>
-          <p class="tl-item__desc">
-            LKP resmi berdiri pada 21 April 2022, didirikan oleh lima pendiri visioner
-            dengan semangat kepedulian terhadap negeri. Terdaftar resmi di Kemenkumham RI
-            dengan SK AHU-0004737.AH.01.07.TAHUN 2022.
-          </p>
+          <p class="tl-item__desc">LKP resmi berdiri pada 21 April 2022, didirikan oleh lima pendiri visioner. Terdaftar resmi di Kemenkumham RI dengan SK AHU-0004737.AH.01.07.TAHUN 2022.</p>
         </div>
         <div class="tl-item">
           <div class="tl-item__year">2025</div>
           <h3 class="tl-item__title">Regenerasi Kepemimpinan</h3>
-          <p class="tl-item__desc">
-            Musyawarah pendiri pada 12 Oktober 2025 menetapkan DPP LKP periode 2025–2030
-            dengan struktur lengkap: Dewan Pengawas, Dewan Penasehat, Pengurus Harian,
-            dan 10 departemen. Deklarasi Nasional pengurus baru diselenggarakan di Jakarta.
-          </p>
+          <p class="tl-item__desc">Musyawarah pendiri 12 Oktober 2025 menetapkan DPP LKP periode 2025–2030 dengan struktur lengkap: Dewan Pengawas, Dewan Penasehat, Pengurus Harian, dan 10 departemen.</p>
         </div>
         <div class="tl-item">
           <div class="tl-item__year">2026</div>
           <h3 class="tl-item__title">Ekspansi Wilayah Nasional</h3>
-          <p class="tl-item__desc">
-            Target pembentukan DPD di seluruh provinsi Indonesia, DPC di kabupaten/kota,
-            serta konsolidasi program di bidang sosial, edukasi, ekonomi, dan bantuan hukum.
-          </p>
+          <p class="tl-item__desc">Target pembentukan DPD di seluruh provinsi Indonesia, DPC di kabupaten/kota, serta konsolidasi program di bidang sosial, edukasi, ekonomi, dan bantuan hukum.</p>
         </div>
         <div class="tl-item">
           <div class="tl-item__year">2030</div>
           <h3 class="tl-item__title">Menuju Indonesia Emas</h3>
-          <p class="tl-item__desc">
-            LKP menargetkan kontribusi nyata pada pilar bangsa: Ekonomi, Sosial, Budaya,
-            dan Politik. Bersinergi dengan Kementerian Pertahanan RI, TNI, dan Polri untuk
-            keutuhan NKRI.
-          </p>
+          <p class="tl-item__desc">LKP menargetkan kontribusi nyata pada pilar bangsa: Ekonomi, Sosial, Budaya, dan Politik. Bersinergi dengan Kementerian Pertahanan RI, TNI, dan Polri.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BERITA PREVIEW -->
+  <!-- BERITA -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -1212,7 +1247,7 @@
     </div>
   </section>
 
-  <!-- GALERI PREVIEW -->
+  <!-- GALERI -->
   <section class="sec">
     <div class="container">
       <div class="sec-head">
@@ -1229,7 +1264,7 @@
     </div>
   </section>
 
-  <!-- MITRA STRIP -->
+  <!-- MITRA -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -1264,42 +1299,46 @@
     import './assets/js/components.js';
     import { fetchBerita, fetchGaleri, fetchMitra, fetchPengurus, formatTanggal, escapeHtml } from './assets/js/api.js';
 
-    // ===== COUNTER ANIMATION =====
-    function animateCounters() {
-      const counters = document.querySelectorAll('.stat-item__num[data-count]');
-      counters.forEach(el => {
-        const target = parseInt(el.dataset.count);
-        const hasPlus = el.querySelector('span') !== null;
-        const duration = 1500;
-        const start = performance.now();
-        function tick(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(eased * target);
-          el.textContent = current;
-          if (hasPlus) {
-            const span = document.createElement('span');
-            span.textContent = '+';
-            el.appendChild(span);
-          }
-          if (progress < 1) requestAnimationFrame(tick);
-          else {
-            el.textContent = target;
-            if (hasPlus) {
-              const span = document.createElement('span');
-              span.textContent = '+';
-              el.appendChild(span);
-            }
-          }
-        }
-        requestAnimationFrame(tick);
-      });
-    }
+    const getInitials = (nama) => {
+      return nama.split(' ').filter(w => w.length > 1)
+        .slice(0, 2).map(w => w[0].toUpperCase()).join('');
+    };
 
+    const DEPT_ICONS = {
+      'organisasi dan sdm': '👥',
+      'politik, ideologi dan hubungan pemerintahan': '🏛️',
+      'hukum dan ham': '⚖️',
+      'pemberdayaan perempuan dan perlindungan anak': '👨‍👩‍👧',
+      'lingkungan hidup dan penanggulangan bencana': '🌿',
+      'umkm, ekonomi kreatif dan digital': '💼',
+      'komunikasi, publikasi dan pelayanan publik': '📢',
+      'kesehatan dan sosial': '⚕️',
+      'seni budaya dan pariwisata': '🎨',
+      'pertanian pangan & energi': '🌾',
+    };
+    const getDeptIcon = (jabatan) => DEPT_ICONS[String(jabatan || '').trim().toLowerCase()] || '📋';
+
+    // ===== STATS COUNTER =====
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          animateCounters();
+          const nums = document.querySelectorAll('.stat-item__num');
+          nums.forEach(el => {
+            const target = parseInt(el.dataset.count);
+            if (!target) return;
+            const hasPlus = el.querySelector('span') !== null;
+            const duration = 1500;
+            const start = performance.now();
+            function tick(now) {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              const cur = Math.floor(eased * target);
+              el.innerHTML = hasPlus ? `${cur}<span>+</span>` : cur;
+              if (p < 1) requestAnimationFrame(tick);
+              else el.innerHTML = hasPlus ? `${target}<span>+</span>` : target;
+            }
+            requestAnimationFrame(tick);
+          });
           statsObserver.disconnect();
         }
       });
@@ -1310,7 +1349,126 @@
       if (band) statsObserver.observe(band);
     });
 
-    // ===== BERITA PREVIEW =====
+    // ===== PHOTO HELPER =====
+    function renderPhoto(p, size) {
+      const hasPhoto = p.foto && String(p.foto).trim();
+      if (hasPhoto) {
+        return `<img class="dpp-photo-${size}" src="${escapeHtml(p.foto)}" alt="${escapeHtml(p.nama)}" loading="lazy"
+                     onerror="this.outerHTML='<div class=\\'dpp-initial-${size}\\'>${getInitials(p.nama)}</div>'">`;
+      }
+      return `<div class="dpp-initial-${size}">${getInitials(p.nama)}</div>`;
+    }
+
+    // ===== STRUKTUR DPP =====
+    async function renderStrukturDPP() {
+      try {
+        const all = await fetchPengurus();
+        const aktif = all.filter(p => String(p.aktif).toUpperCase() === 'YA');
+
+        const pengawas = aktif.filter(p => p.tingkat === 'Pengawas' || String(p.jabatan).toLowerCase().includes('pengawas'));
+        const penasehat = aktif.filter(p => p.tingkat === 'Penasehat' || String(p.jabatan).toLowerCase().includes('penasehat'));
+        const harian = aktif.filter(p => p.tingkat === 'Harian');
+        const departemen = aktif.filter(p => p.tingkat === 'Departemen');
+
+        const findH = j => harian.find(p => String(p.jabatan).toLowerCase() === j);
+
+        // Dewan Pengawas — featured
+        document.getElementById('dppPengawas').innerHTML = pengawas.map(p => `
+          <div class="dpp-card-featured">
+            ${renderPhoto(p, 'xl')}
+            <div class="dpp-card-featured__text">
+              <h4 class="dpp-card-featured__name">${escapeHtml(p.nama)}</h4>
+              <span class="dpp-card-featured__role">${escapeHtml(p.jabatan)}</span>
+            </div>
+          </div>
+        `).join('');
+
+        // Dewan Penasehat — inisial
+        document.getElementById('dppPenasehat').innerHTML = penasehat.map(p => `
+          <div class="dpp-card-mini">
+            <div class="dpp-initial-sm">${getInitials(p.nama)}</div>
+            <p class="dpp-card-mini__name">${escapeHtml(p.nama)}</p>
+            <p class="dpp-card-mini__role">${escapeHtml(p.jabatan)}</p>
+          </div>
+        `).join('');
+
+        // Ketua Umum — foto
+        const ketuaUmum = findH('ketua umum');
+        if (ketuaUmum) {
+          document.getElementById('dppKetuaUmum').innerHTML = `
+            <div class="dpp-hero-card">
+              ${renderPhoto(ketuaUmum, 'lg')}
+              <div class="dpp-hero-card__text">
+                <span class="dpp-hero-card__badge">Ketua Umum</span>
+                <h4 class="dpp-hero-card__name">${escapeHtml(ketuaUmum.nama)}</h4>
+                <p class="dpp-hero-card__role">Ketua Umum</p>
+              </div>
+            </div>
+          `;
+          if (ketuaUmum.foto && String(ketuaUmum.foto).trim()) {
+            const qa = document.getElementById('quoteAvatar');
+            if (qa) qa.innerHTML = `<img src="${escapeHtml(ketuaUmum.foto)}" alt="${escapeHtml(ketuaUmum.nama)}">`;
+          }
+        }
+
+        // Ketua Harian — foto
+        const ketuaHarian = findH('ketua harian');
+        if (ketuaHarian) {
+          document.getElementById('dppKetuaHarian').innerHTML = `
+            <div class="dpp-deputy-card">
+              ${renderPhoto(ketuaHarian, 'md')}
+              <div>
+                <h4 class="dpp-deputy-card__name">${escapeHtml(ketuaHarian.nama)}</h4>
+                <p class="dpp-deputy-card__role">Ketua Harian</p>
+              </div>
+            </div>
+          `;
+        }
+
+        // Sekjen & Bendahara — FOTO
+        const renderPhotoCard = (p) => {
+          if (!p) return '';
+          return `
+            <div class="dpp-mini-card dpp-mini-card--photo">
+              ${renderPhoto(p, 'xs')}
+              <p class="dpp-mini-card__name">${escapeHtml(p.nama)}</p>
+              <p class="dpp-mini-card__role">${escapeHtml(p.jabatan)}</p>
+            </div>
+          `;
+        };
+
+        // Wakil — inisial saja
+        const renderInitialCard = (p) => {
+          if (!p) return '';
+          return `
+            <div class="dpp-mini-card">
+              <div class="dpp-initial-xs">${getInitials(p.nama)}</div>
+              <p class="dpp-mini-card__name">${escapeHtml(p.nama)}</p>
+              <p class="dpp-mini-card__role">${escapeHtml(p.jabatan)}</p>
+            </div>
+          `;
+        };
+
+        document.getElementById('dppSekjen').innerHTML = renderPhotoCard(findH('sekretaris jenderal'));
+        document.getElementById('dppWakilSekjen').innerHTML = renderInitialCard(findH('wakil sekretaris'));
+        document.getElementById('dppBendahara').innerHTML = renderPhotoCard(findH('bendahara umum'));
+        document.getElementById('dppWakilBendahara').innerHTML = renderInitialCard(findH('wakil bendahara'));
+
+        // Departemen
+        document.getElementById('dppDepartemen').innerHTML = departemen.map(p => `
+          <div class="dpp-dept-card">
+            <div class="dpp-dept-card__icon">${getDeptIcon(p.jabatan)}</div>
+            <p class="dpp-dept-card__name">${escapeHtml(p.jabatan)}</p>
+            <p class="dpp-dept-card__ketua">${escapeHtml(p.nama)}</p>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        console.warn('Struktur DPP error:', err);
+      }
+    }
+
+    // ===== BERITA =====
     (async () => {
       const el = document.getElementById('beritaPreview');
       try {
@@ -1337,7 +1495,7 @@
       }
     })();
 
-    // ===== GALERI PREVIEW =====
+    // ===== GALERI =====
     (async () => {
       const el = document.getElementById('galeriPreview');
       try {
@@ -1359,7 +1517,7 @@
       }
     })();
 
-    // ===== MITRA STRIP =====
+    // ===== MITRA =====
     (async () => {
       const el = document.getElementById('mitraStrip');
       try {
@@ -1377,154 +1535,7 @@
       }
     })();
 
-    // ===== ORG SLIDER (with photo support) =====
-    let osCurrent = 0;
-    const osTotal = 2;
-    let osInitialized = false;
-
-    function getInitialsOrg(nama) {
-      return nama.split(' ').filter(w => w.length > 1)
-        .slice(0, 2).map(w => w[0].toUpperCase()).join('');
-    }
-
-    function renderPhoto(p, size) {
-      const hasPhoto = p.foto && String(p.foto).trim();
-      if (hasPhoto) {
-        return `<img class="os-photo os-photo--${size}" src="${escapeHtml(p.foto)}" alt="${escapeHtml(p.nama)}" onerror="this.outerHTML='<div class=\\'os-initial os-initial--${size}\\'>${getInitialsOrg(p.nama)}</div>'">`;
-      }
-      return `<div class="os-initial os-initial--${size}">${getInitialsOrg(p.nama)}</div>`;
-    }
-
-    function renderPcard(p, size = 'sm') {
-      return `
-        <div class="os-pcard">
-          ${renderPhoto(p, size)}
-          <p class="os-name">${escapeHtml(p.nama)}</p>
-          <p class="os-role">${escapeHtml(p.jabatan)}</p>
-        </div>
-      `;
-    }
-
-    function renderHeroCard(p) {
-      if (!p) return '';
-      return `
-        <div class="os-hero-card">
-          <span class="os-badge">Ketua Umum</span>
-          ${renderPhoto(p, 'xl')}
-          <p class="os-name">${escapeHtml(p.nama)}</p>
-          <p class="os-role">Ketua Umum</p>
-        </div>
-      `;
-    }
-
-    function renderDeputyCard(p) {
-      if (!p) return '';
-      return `
-        <div class="os-deputy-card">
-          ${renderPhoto(p, 'lg')}
-          <p class="os-name">${escapeHtml(p.nama)}</p>
-          <p class="os-role">${escapeHtml(p.jabatan)}</p>
-        </div>
-      `;
-    }
-
-    function renderMiniCard(p) {
-      if (!p) return '';
-      return `
-        <div class="os-pcard">
-          ${renderPhoto(p, 'sm')}
-          <p class="os-name">${escapeHtml(p.nama)}</p>
-          <p class="os-role">${escapeHtml(p.jabatan)}</p>
-        </div>
-      `;
-    }
-
-    function resizeViewport() {
-      const viewport = document.getElementById('osViewport');
-      const slides = document.querySelectorAll('.os-slide');
-      if (viewport && slides[osCurrent]) {
-        viewport.style.height = 'auto';
-        const h = slides[osCurrent].offsetHeight;
-        viewport.style.height = h + 'px';
-      }
-    }
-
-    function goToSlide(idx) {
-      osCurrent = Math.max(0, Math.min(osTotal - 1, idx));
-      const track = document.getElementById('osTrack');
-      if (!track) return;
-      track.style.transform = `translateX(-${osCurrent * 100}%)`;
-      document.querySelectorAll('.os-dot').forEach((d, i) => {
-        d.classList.toggle('is-active', i === osCurrent);
-      });
-      const prevBtn = document.getElementById('osPrev');
-      const nextBtn = document.getElementById('osNext');
-      if (prevBtn) prevBtn.disabled = osCurrent === 0;
-      if (nextBtn) nextBtn.disabled = osCurrent === osTotal - 1;
-      const labels = ['Dewan Pengawas & Penasehat', 'Badan Pengurus Harian'];
-      const hintEl = document.getElementById('osHint');
-      if (hintEl) hintEl.textContent = `Slide ${osCurrent + 1} dari ${osTotal} — ${labels[osCurrent]}`;
-      setTimeout(resizeViewport, 50);
-    }
-
-    (async () => {
-      try {
-        const all = await fetchPengurus();
-        const aktif = all.filter(p => String(p.aktif).toUpperCase() === 'YA');
-
-        const pengawas = aktif.filter(p => p.tingkat === 'Pengawas' || String(p.jabatan).toLowerCase().includes('pengawas'));
-        const penasehat = aktif.filter(p => p.tingkat === 'Penasehat' || String(p.jabatan).toLowerCase().includes('penasehat'));
-        const harian = aktif.filter(p => p.tingkat === 'Harian');
-        const findH = j => harian.find(p => String(p.jabatan).toLowerCase() === j);
-
-        // Kolonel Iwan (pengawas) foto besar
-        document.getElementById('osPengawas').innerHTML =
-          pengawas.length ? pengawas.map(p => renderPcard(p, 'lg')).join('') : '<div class="loading-mini">Belum ada data.</div>';
-        document.getElementById('osPenasehat').innerHTML =
-          penasehat.length ? penasehat.map(p => renderPcard(p, 'sm')).join('') : '<div class="loading-mini">Belum ada data.</div>';
-
-        const ketua = findH('ketua umum');
-        const ketuaHarian = findH('ketua harian');
-
-        document.getElementById('osKetuaUmum').innerHTML = renderHeroCard(ketua);
-        document.getElementById('osKetuaHarian').innerHTML = renderDeputyCard(ketuaHarian);
-        document.getElementById('osSekjen').innerHTML = renderMiniCard(findH('sekretaris jenderal'));
-        document.getElementById('osWakilSekjen').innerHTML = renderMiniCard(findH('wakil sekretaris'));
-        document.getElementById('osBendahara').innerHTML = renderMiniCard(findH('bendahara umum'));
-        document.getElementById('osWakilBendahara').innerHTML = renderMiniCard(findH('wakil bendahara'));
-
-        // Update quote avatar dengan foto Andre kalau ada
-        if (ketua && ketua.foto && String(ketua.foto).trim()) {
-          const avatar = document.getElementById('quoteAvatar');
-          if (avatar) avatar.innerHTML = `<img src="${escapeHtml(ketua.foto)}" alt="${escapeHtml(ketua.nama)}">`;
-        }
-
-        const dotsEl = document.getElementById('osDots');
-        dotsEl.innerHTML = Array.from({ length: osTotal }, (_, i) =>
-          `<button class="os-dot ${i === 0 ? 'is-active' : ''}" data-idx="${i}" aria-label="Slide ${i+1}"></button>`
-        ).join('');
-        dotsEl.querySelectorAll('.os-dot').forEach(d => {
-          d.addEventListener('click', () => goToSlide(parseInt(d.dataset.idx)));
-        });
-
-        document.getElementById('osPrev').addEventListener('click', () => goToSlide(osCurrent - 1));
-        document.getElementById('osNext').addEventListener('click', () => goToSlide(osCurrent + 1));
-
-        const viewport = document.querySelector('.os-viewport');
-        let startX = 0;
-        viewport.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
-        viewport.addEventListener('touchend', e => {
-          const diff = startX - e.changedTouches[0].clientX;
-          if (Math.abs(diff) > 60) goToSlide(diff > 0 ? osCurrent + 1 : osCurrent - 1);
-        }, { passive: true });
-
-        setTimeout(() => { goToSlide(0); osInitialized = true; }, 100);
-        window.addEventListener('resize', () => { if (osInitialized) resizeViewport(); });
-
-      } catch (err) {
-        console.warn('Org slider error:', err);
-      }
-    })();
+    document.addEventListener('DOMContentLoaded', renderStrukturDPP);
   </script>
 </body>
 </html>
