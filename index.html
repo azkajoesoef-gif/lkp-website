@@ -91,7 +91,6 @@
     .dpp-block__head h3 { font-family: var(--font-heading); font-size: 20px; color: var(--color-primary); margin: 0 0 6px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
     .dpp-block__head p { color: var(--color-text-soft); font-size: 13px; margin: 0; }
 
-    /* Base card (untuk semua) */
     .dpp-card {
       background: #fff;
       border-radius: 16px;
@@ -107,24 +106,19 @@
     }
     .dpp-card:hover { transform: translateY(-5px); }
 
-    /* Photo styles */
     .dpp-photo-xl { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(201,162,75,0.2); background: var(--color-bg-alt); }
     .dpp-photo-lg { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(201,162,75,0.3); background: var(--color-bg-alt); }
     .dpp-photo-md { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(201,162,75,0.25); background: var(--color-bg-alt); }
-    .dpp-photo-vice { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(148,163,184,0.25); background: var(--color-bg-alt); }
 
     .dpp-initial-xl { width: 130px; height: 130px; border-radius: 50%; background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 40px; flex-shrink: 0; box-shadow: 0 0 0 5px rgba(201,162,75,0.2); }
     .dpp-initial-lg { width: 100px; height: 100px; border-radius: 50%; background: var(--color-accent); color: var(--color-navy); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 800; font-size: 30px; flex-shrink: 0; box-shadow: 0 0 0 4px rgba(201,162,75,0.3); }
     .dpp-initial-md { width: 84px; height: 84px; border-radius: 50%; background: var(--color-navy-soft); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 24px; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(201,162,75,0.25); }
-    .dpp-initial-vice { width: 56px; height: 56px; border-radius: 50%; background: #94A3B8; color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: 16px; flex-shrink: 0; }
 
-    /* Card name & role */
     .dpp-name { font-family: var(--font-heading); font-weight: 700; color: var(--color-primary); margin: 0; line-height: 1.35; }
     .dpp-role { font-weight: 700; margin: 0; letter-spacing: 0.5px; text-transform: uppercase; }
     .dpp-tier { display: inline-block; font-size: 9px; font-weight: 800; padding: 3px 10px; border-radius: 999px; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 4px; }
     .dpp-tier--lead { background: var(--color-accent); color: var(--color-navy); }
     .dpp-tier--exec { background: rgba(201,162,75,0.2); color: var(--color-accent); }
-    .dpp-tier--sup { background: #E2E8F0; color: #64748B; }
 
     /* Dewan Pengawas — featured */
     .dpp-pengawas-wrap { max-width: 560px; margin: 0 auto; }
@@ -142,38 +136,27 @@
     .dpp-card--featured .dpp-name { font-size: 20px; margin-bottom: 6px; }
     .dpp-card--featured .dpp-role { color: var(--color-accent); font-size: 11px; letter-spacing: 1.2px; }
 
-    /* Dewan Penasehat — 3 kolom */
-        .dpp-penasehat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 0 auto; }
+    /* Dewan Penasehat — nama saja, no bingkai */
+    .dpp-penasehat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 0 auto; }
     @media (max-width: 700px) { .dpp-penasehat-grid { grid-template-columns: 1fr; max-width: 400px; } }
     .dpp-card--penasehat {
       border: 1.5px solid rgba(201,162,75,0.2);
-      padding: 18px 14px;
+      padding: 22px 14px;
       box-shadow: 0 3px 12px rgba(11,37,69,0.05);
-      gap: 8px;
+      gap: 6px;
       background: #fff;
+      justify-content: center;
     }
     .dpp-card--penasehat:hover { border-color: var(--color-accent); box-shadow: 0 10px 24px rgba(11,37,69,0.10); }
-    .dpp-card--penasehat .dpp-initial-md {
-      width: 60px;
-      height: 60px;
-      font-size: 18px;
-      box-shadow: 0 0 0 3px rgba(201,162,75,0.15);
-    }
-    .dpp-card--penasehat .dpp-name { font-size: 12.5px; }
-    .dpp-card--penasehat .dpp-role { color: var(--color-text-soft); font-size: 10px; }
-    .dpp-card--penasehat .dpp-tier { font-size: 8.5px; padding: 2px 8px; }
+    .dpp-card--penasehat .dpp-name { font-size: 13px; line-height: 1.4; }
+    .dpp-card--penasehat .dpp-role { color: var(--color-accent); font-size: 10px; letter-spacing: 0.5px; }
+    .dpp-card--penasehat .dpp-tier { font-size: 8.5px; padding: 2px 8px; margin-bottom: 6px; }
 
     /* ============================================================
-       BPH TREE — MIND MAP CONNECTED
+       BPH TREE
        ============================================================ */
-    .bph-tree {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
+    .bph-tree { display: flex; flex-direction: column; align-items: center; width: 100%; }
 
-    /* Ketua Umum — Hero card */
     .bph-hero {
       background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-soft) 100%);
       border: 2px solid var(--color-accent);
@@ -192,71 +175,17 @@
     .bph-hero__name { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #fff; margin: 6px 0 6px; line-height: 1.25; }
     .bph-hero__role { font-size: 11px; color: var(--color-accent); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
 
-    /* Vertical line from Ketua Umum */
-    .bph-line-v {
-      width: 2px;
-      height: 36px;
-      background: var(--color-accent);
-      position: relative;
-    }
-    .bph-line-v::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 7px solid var(--color-accent);
-    }
+    .bph-line-v { width: 2px; height: 36px; background: var(--color-accent); position: relative; }
+    .bph-line-v::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 7px solid var(--color-accent); }
 
-    /* Row dengan 3 kolom */
-    .bph-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      width: 100%;
-      max-width: 900px;
-      position: relative;
-      padding-top: 40px;
-    }
-    /* Horizontal bar */
-    .bph-row::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: calc(16.666% - 8px);
-      right: calc(16.666% - 8px);
-      height: 2px;
-      background: var(--color-accent);
-    }
-    @media (max-width: 700px) {
-      .bph-row { grid-template-columns: 1fr; gap: 40px; padding-top: 0; max-width: 400px; }
-      .bph-row::before { display: none; }
-    }
+    .bph-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; width: 100%; max-width: 900px; position: relative; padding-top: 40px; }
+    .bph-row::before { content: ''; position: absolute; top: 0; left: calc(16.666% - 8px); right: calc(16.666% - 8px); height: 2px; background: var(--color-accent); }
+    @media (max-width: 700px) { .bph-row { grid-template-columns: 1fr; gap: 40px; padding-top: 0; max-width: 400px; } .bph-row::before { display: none; } }
 
-    .bph-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-      position: relative;
-    }
-    /* Vertical drop from horizontal bar to card */
-    .bph-col::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 40px;
-      background: var(--color-accent);
-    }
+    .bph-col { display: flex; flex-direction: column; align-items: center; gap: 14px; position: relative; }
+    .bph-col::before { content: ''; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 2px; height: 40px; background: var(--color-accent); }
     @media (max-width: 700px) { .bph-col::before { display: none; } }
 
-    /* Trio card — Eksekutif */
     .bph-card {
       background: #fff;
       border: 2px solid rgba(201,162,75,0.3);
@@ -272,49 +201,29 @@
       box-shadow: 0 4px 14px rgba(11,37,69,0.06);
       position: relative;
     }
-    .bph-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 32px rgba(11,37,69,0.14);
-      border-color: var(--color-accent);
-    }
+    .bph-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(11,37,69,0.14); border-color: var(--color-accent); }
     .bph-card .dpp-name { font-size: 14px; }
     .bph-card .dpp-role { color: var(--color-accent); font-size: 10.5px; }
 
-    /* Vertical line between card and vice */
-    .bph-line-v-sm {
-      width: 2px;
-      height: 20px;
-      background: rgba(201,162,75,0.4);
-      position: relative;
-    }
-    .bph-line-v-sm::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0; height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid rgba(201,162,75,0.4);
-    }
+    .bph-line-v-sm { width: 2px; height: 20px; background: rgba(201,162,75,0.4); position: relative; }
+    .bph-line-v-sm::after { content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid rgba(201,162,75,0.4); }
 
-    /* Vice card */
+    /* Vice card — nama saja, no bingkai */
     .bph-vice {
       background: var(--color-bg-alt);
       border: 1.5px dashed #CBD5E1;
       border-radius: 12px;
-      padding: 14px 12px;
+      padding: 16px 12px;
       text-align: center;
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 4px;
       transition: all 220ms ease;
     }
     .bph-vice:hover { border-color: var(--color-accent); background: #FFFDF7; }
-    .bph-vice .dpp-name { font-size: 12px; }
+    .bph-vice .dpp-name { font-size: 12.5px; line-height: 1.4; }
     .bph-vice .dpp-role { color: #64748B; font-size: 9.5px; letter-spacing: 0.5px; }
 
     /* ===== DEPARTEMEN ===== */
@@ -340,13 +249,7 @@
     .pilar-card:nth-child(5) { grid-column: 4 / span 2; }
     @media (max-width: 900px) { .pilar-grid { grid-template-columns: repeat(2, 1fr); } .pilar-card, .pilar-card:nth-child(4), .pilar-card:nth-child(5) { grid-column: auto; } }
     @media (max-width: 600px) { .pilar-grid { grid-template-columns: 1fr; } }
-    .pilar-card {
-      background: #fff; border-radius: 16px; padding: 32px 24px;
-      box-shadow: 0 3px 14px rgba(11,37,69,0.06);
-      border-bottom: 4px solid var(--color-accent);
-      transition: all 280ms cubic-bezier(.4,0,.2,1);
-      position: relative; overflow: hidden;
-    }
+    .pilar-card { background: #fff; border-radius: 16px; padding: 32px 24px; box-shadow: 0 3px 14px rgba(11,37,69,0.06); border-bottom: 4px solid var(--color-accent); transition: all 280ms cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
     .pilar-card::before { content: ''; position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(201,162,75,0.08) 0%, transparent 70%); transition: transform 400ms ease; }
     .pilar-card:hover { transform: translateY(-8px); box-shadow: 0 20px 45px rgba(11,37,69,0.14); border-bottom-color: var(--color-cta); }
     .pilar-card:hover::before { transform: scale(1.5); }
@@ -500,7 +403,6 @@
     </div>
   </div>
 
-  <!-- STRUKTUR DPP -->
   <section class="sec sec--alt">
     <div class="container">
       <div class="sec-head">
@@ -818,10 +720,9 @@
           </div>
         `).join('');
 
-        // ===== DEWAN PENASEHAT =====
+        // ===== DEWAN PENASEHAT — nama saja, tanpa inisial =====
         document.getElementById('dppPenasehat').innerHTML = penasehat.map(p => `
           <div class="dpp-card dpp-card--penasehat">
-            <div class="dpp-initial-md">${getInitials(p.nama)}</div>
             <span class="dpp-tier dpp-tier--exec">Penasehat</span>
             <p class="dpp-name">${escapeHtml(p.nama)}</p>
             <p class="dpp-role">${escapeHtml(p.jabatan)}</p>
@@ -857,7 +758,7 @@
           </div>
         `;
 
-        // ===== BPH — SEKRETARIAT (Sekjen + Wakil) =====
+        // ===== BPH — SEKRETARIAT (Sekjen + Wakil tanpa inisial) =====
         const sekjen = findH('sekretaris jenderal');
         const wakilSek = findH('wakil sekretaris');
         document.getElementById('bphSekjenCol').innerHTML = `
@@ -870,14 +771,13 @@
           ${wakilSek ? `
             <div class="bph-line-v-sm"></div>
             <div class="bph-vice">
-              <div class="dpp-initial-vice">${getInitials(wakilSek.nama)}</div>
               <p class="dpp-name">${escapeHtml(wakilSek.nama)}</p>
               <p class="dpp-role">${escapeHtml(wakilSek.jabatan)}</p>
             </div>
           ` : ''}
         `;
 
-        // ===== BPH — BENDAHARA (Bendahara + Wakil) =====
+        // ===== BPH — BENDAHARA (Bendahara + Wakil tanpa inisial) =====
         const bendahara = findH('bendahara umum');
         const wakilBend = findH('wakil bendahara');
         document.getElementById('bphBendaharaCol').innerHTML = `
@@ -890,7 +790,6 @@
           ${wakilBend ? `
             <div class="bph-line-v-sm"></div>
             <div class="bph-vice">
-              <div class="dpp-initial-vice">${getInitials(wakilBend.nama)}</div>
               <p class="dpp-name">${escapeHtml(wakilBend.nama)}</p>
               <p class="dpp-role">${escapeHtml(wakilBend.jabatan)}</p>
             </div>
